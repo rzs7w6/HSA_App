@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace HSA_App
 {
-    public partial class OCRPage : ContentPage
+    public partial class ReceiptVaultPage : ContentPage
     {
-        public OCRPage()
+        public ReceiptVaultPage()
         {
             InitializeComponent();
         }

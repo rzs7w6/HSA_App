@@ -2,10 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HSA_App.LoginPage">
-  <StackLayout>
-    <Label Text="UMB Health Services Application" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
-    <Entry x:Name="username" Placeholder="Username" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
-    <Entry x:Name="password" Placeholder="Username" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsPassword="True"/>
-    <Button x:Name="loginButton" Text="Login" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Clicked="handleLogin"/>
+  <StackLayout Spacing="50">
+    <Label  Text="UMB Health Services Application"
+            FontSize="30"
+            HorizontalTextAlignment="Center"
+            VerticalOptions="Start"
+            HorizontalOptions="FillAndExpand"
+            Margin="0,50,0,0" />
+    <Entry  x:Name="username"
+            Placeholder="Username"
+            HeightRequest="50"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand" />
+    <Entry  x:Name="password"
+            Placeholder="Password"
+            HeightRequest="50"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand"
+            IsPassword="True"  />
+    <Label x:Name="display" Text="blank" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+    <Button x:Name="loginButton"
+            Clicked="handleLogin"
+            Text="Login"
+            HeightRequest="50"
+            VerticalOptions="End"
+            HorizontalOptions="FillAndExpand" />
   </StackLayout>
 </ContentPage>
