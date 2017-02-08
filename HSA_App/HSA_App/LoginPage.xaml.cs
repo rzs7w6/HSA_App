@@ -17,7 +17,11 @@ namespace HSA_App
 
         public void handleLogin(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage();
+            //if (username.Equals("rzs7w6") && password.Equals("password"))
+            //{
+            //    App.Current.MainPage = new NavigationPage();
+            //}
+            display.Text = password.Text + " " + username.Text;
         }
     }
 }
