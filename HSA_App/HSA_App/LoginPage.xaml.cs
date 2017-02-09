@@ -17,11 +17,15 @@ namespace HSA_App
 
         public void handleLogin(object sender, EventArgs e)
         {
-            //if (username.Equals("rzs7w6") && password.Equals("password"))
-            //{
-            //    App.Current.MainPage = new NavigationPage();
-            //}
-            display.Text = password.Text + " " + username.Text;
+            if (username.Text.Equals("rzs7w6") && password.Text.Equals("password"))
+            {
+                App.Current.MainPage = new NavigationPage();
+            }
+            else
+            {
+                display.Text = "Incorrect Username and/or Password";
+                display.TextColor = Color.Red;
+            }
         }
     }
 }
