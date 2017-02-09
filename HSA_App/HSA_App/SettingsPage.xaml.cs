@@ -19,5 +19,9 @@ namespace HSA_App
         {
             App.Current.MainPage = new LoginPage();
         }
+        public void handleUpdateAccount(object sender, EventArgs e)
+        {
+            //TODO handle update account information
+        }
     }
 }

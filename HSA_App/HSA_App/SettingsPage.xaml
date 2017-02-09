@@ -16,6 +16,12 @@
             HeightRequest="100"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand" />
+    <Button x:Name="updateAccountButton"
+            Clicked="handleUpdateAccount"
+            Text="Update Account"
+            HeightRequest="100"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand" />
     <Label x:Name="display"
            Text=""
            VerticalOptions="End"
