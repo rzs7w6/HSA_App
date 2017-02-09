@@ -3,5 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Settings"
              x:Class="HSA_App.SettingsPage">
-  <Label Text="Do Settings Shit" VerticalOptions="Center" HorizontalOptions="Center" />
+  <StackLayout Spacing="50">
+    <Label  Text="Settings"
+            FontSize="30"
+            HorizontalTextAlignment="Center"
+            VerticalOptions="Start"
+            HorizontalOptions="FillAndExpand"
+            Margin="0,50,0,0" />
+    <Button x:Name="logoutButton"
+            Clicked="handleLogout"
+            Text="Logout"
+            HeightRequest="100"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand" />
+    <Button x:Name="updateAccountButton"
+            Clicked="handleUpdateAccount"
+            Text="Update Account"
+            HeightRequest="100"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand" />
+    <Label x:Name="display"
+           Text=""
+           VerticalOptions="End"
+           HorizontalOptions="FillAndExpand"
+           HorizontalTextAlignment="Center" />
+  </StackLayout>
 </ContentPage>

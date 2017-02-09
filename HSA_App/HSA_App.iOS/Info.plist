@@ -25,7 +25,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>HSA_App</string>
 	<key>CFBundleIdentifier</key>
-	<string>KenrickNiedbalski.Test</string>
+	<string>com.yourcompany.HSA_App</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
