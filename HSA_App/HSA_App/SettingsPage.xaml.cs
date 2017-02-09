@@ -14,5 +14,10 @@ namespace HSA_App
         {
             InitializeComponent();
         }
+
+        public void handleLogout(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new LoginPage();
+        }
     }
 }
