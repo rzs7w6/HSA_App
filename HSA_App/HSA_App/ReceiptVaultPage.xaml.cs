@@ -14,5 +14,16 @@ namespace HSA_App
         {
             InitializeComponent();
         }
+
+
+		public void handleManual(object sender, EventArgs e)
+		{
+			manualReceipt.Text = "Handling Manual Receipt";
+		}
+
+		public void handleOCR(object sender, EventArgs e)
+		{
+			captureReceipt.Text = "Doing OCR Shit";
+		}
     }
 }

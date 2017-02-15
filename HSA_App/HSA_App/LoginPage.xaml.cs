@@ -8,24 +8,32 @@ using Xamarin.Forms;
 
 namespace HSA_App
 {
-    public partial class LoginPage : ContentPage
-    {
-        public LoginPage()
-        {
-            InitializeComponent();
-        }
+	public partial class LoginPage : ContentPage
+	{
+		public LoginPage()
+		{
+			InitializeComponent();
+		}
 
-        public void handleLogin(object sender, EventArgs e)
-        {
-            if (username.Text.Equals("rzs7w6") && password.Text.Equals("password"))
-            {
-                App.Current.MainPage = new NavigationPage();
-            }
-            else
-            {
-                display.Text = "Incorrect Username and/or Password";
-                display.TextColor = Color.Red;
-            }
-        }
-    }
+
+
+		public void handleLogin(object sender, EventArgs e)
+		{
+			if (username.Text.Equals("test") && password.Text.Equals("password"))
+			{
+				App.Current.MainPage = new NavigationPage();
+			}
+			else
+			{
+				display.Text = "Incorrect Username and/or Password";
+				display.TextColor = Color.Red;
+			}
+		}
+
+		public void handlePasswordHelp(object sender, EventArgs e)
+		{
+			display.Text = "You have requested help with your username/password";
+
+		}
+	}
 }
