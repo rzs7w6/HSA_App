@@ -1,7 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Coupons"
              x:Class="HSA_App.CouponPage">
-  <Label Text="Do Coupon Shit" VerticalOptions="Center" HorizontalOptions="Center" />
+	<StackLayout Spacing="50">
+		<Button
+			x:Name="couponButton"
+			Text="Find Coupons"
+			Clicked="handleCoupon"
+			HeightRequest="50"
+			VerticalOptions="Center"
+			HorizontalOptions="Center"/>
+
+	</StackLayout>	
+  
 </ContentPage>

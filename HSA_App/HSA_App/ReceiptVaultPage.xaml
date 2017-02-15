@@ -1,7 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Receipt Vault"
              x:Class="HSA_App.ReceiptVaultPage">
-  <Label Text="Do OCR Shit" VerticalOptions="Center" HorizontalOptions="Center" />
+  <StackLayout Margin="0, 50, 0, 0">
+  	<Button
+			x:Name="captureReceipt"
+			Text="Capture Receipt with Camera"
+			VerticalOptions="Start"
+			Clicked="handleOCR"/>
+	<Button
+			x:Name="manualReceipt"
+			Text="Enter Receipt Manually"
+			VerticalOptions="CenterAndExpand"
+			HorizontalOptions="CenterAndExpand"
+			Clicked="handleManual"/>
+
+	</StackLayout>
+
 </ContentPage>
