@@ -14,5 +14,14 @@ namespace HSA_App
         {
             InitializeComponent();
         }
-    }
+
+
+		public void handleCoupon(object sender, EventArgs e)
+		{
+			couponButton.Text = "Found coupons";
+		}
+    
+	
+	}
+
 }

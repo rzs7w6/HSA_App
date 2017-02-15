@@ -15,15 +15,15 @@ namespace HSA_App
             InitializeComponent();
         }
 
-        public async void takePicture(Object sender, EventArgs e)
-        {
-            var cameraProvider = DependencyService.Get<ICameraProvider>();
-            var pictureResult = await cameraProvider.TakePictureAsync();
 
-            if (pictureResult != null)
-            {
-                //Do stuff
-            }
-        }
+		public void handleManual(object sender, EventArgs e)
+		{
+			manualReceipt.Text = "Handling Manual Receipt";
+		}
+
+		public void handleOCR(object sender, EventArgs e)
+		{
+			captureReceipt.Text = "Doing OCR Shit";
+		}
     }
 }
