@@ -14,5 +14,16 @@ namespace HSA_App
         {
             InitializeComponent();
         }
+
+        public async void takePicture(Object sender, EventArgs e)
+        {
+            var cameraProvider = DependencyService.Get<ICameraProvider>();
+            var pictureResult = await cameraProvider.TakePictureAsync();
+
+            if (pictureResult != null)
+            {
+                //Do stuff
+            }
+        }
     }
 }

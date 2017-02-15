@@ -38,9 +38,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CameraResult.cs" />
     <Compile Include="CouponPage.xaml.cs">
       <DependentUpon>CouponPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ICameraProvider.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
