@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HSA_App
 {
-    interface ICameraProvider
+    public interface ICameraProvider
     {
         Task<CameraResult> TakePictureAsync();
     }
