@@ -15,10 +15,6 @@
 			VerticalOptions="End"
 			HorizontalOptions="CenterAndExpand"
 			Clicked="handleManual" />
-    <Label
-      x:Name="display"
-      Text="()"
-      />
 	</StackLayout>
 
 </ContentPage>
