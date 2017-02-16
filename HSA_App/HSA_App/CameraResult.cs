@@ -9,8 +9,8 @@ namespace HSA_App
 {
     public class CameraResult
     {
-        public ImageSource Image { get; set; }
+        public ImageSource Picture { get; set; }
 
-        public string FileUri { get; set; }
+        public string FilePath { get; set; }
     }
 }

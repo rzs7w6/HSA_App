@@ -29,7 +29,7 @@ namespace HSA_App
 
             if (pictureResult != null)
             {
-                //WTF GOES HERE
+                
             }
         }
     }
