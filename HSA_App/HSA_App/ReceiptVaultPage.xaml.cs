@@ -23,14 +23,25 @@ namespace HSA_App
         public async void handleOCR(object sender, EventArgs e)
         {
             captureReceipt.Text = "Doing OCR Shit";
-
             var cameraProvider = DependencyService.Get<ICameraProvider>();
-            var pictureResult = await cameraProvider.TakePictureAsync();
-
-            if (pictureResult != null)
+            if (cameraProvider != null)
             {
-                
+                var pictureResult = await cameraProvider.TakePictureAsync();
+                //if (pictureResult != null)
+                //{
+                //    manualReceipt.Text = "Not null";
+                //}
+                //else
+                //{
+                //    manualReceipt.Text = "Null as f";
+                //}
+                manualReceipt.Text += "WTF IS IT NULL OR NOT?";
             }
+            else
+            {
+                manualReceipt.Text += "WTF IS IT NULL OR NOT?";
+            }
+            manualReceipt.Text += "WTF IS IT NULL OR NOT? JUST TELL ME";
         }
     }
 }
