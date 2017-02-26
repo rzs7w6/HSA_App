@@ -8,16 +8,16 @@
             HorizontalTextAlignment="Center"
             VerticalOptions="Start"
             HorizontalOptions="FillAndExpand"
-            Margin="0,50,0,0" />
+            Margin="0,40,0,0" />
     <Entry  x:Name="username"
             Placeholder="Username"
-            HeightRequest="50"
+            HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand" 
             Text="" />
     <Entry  x:Name="password"
             Placeholder="Password"
-            HeightRequest="50"
+            HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand"
             IsPassword="True"  
@@ -25,19 +25,20 @@
     <Button x:Name="loginButton"
             Clicked="handleLogin"
             Text="Login"
-            HeightRequest="50"
+            HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand" />
     <Label x:Name="display"
-           Text=""
-           VerticalOptions="End"
+           Text=""	
+           VerticalOptions="FillAndExpand"
            HorizontalOptions="FillAndExpand" 
            HorizontalTextAlignment="Center" />
 	<Button x:Name="forgotPassword"
 			Text="Forgot username/password"
 			Clicked="handlePasswordHelp"
+			Margin="0,0,0,100"
 			HorizontalOptions="Center"
-			VerticalOptions="Center"/>
+			VerticalOptions="End"/>
 		
   </StackLayout>
 </ContentPage>
