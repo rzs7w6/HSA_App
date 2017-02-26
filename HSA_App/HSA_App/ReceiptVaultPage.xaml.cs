@@ -14,16 +14,34 @@ namespace HSA_App
         {
             InitializeComponent();
         }
-
-
-		public void handleManual(object sender, EventArgs e)
+        
+        public void handleManual(object sender, EventArgs e)
 		{
 			manualReceipt.Text = "Handling Manual Receipt";
 		}
 
-		public void handleOCR(object sender, EventArgs e)
-		{
-			captureReceipt.Text = "Doing OCR Shit";
-		}
+        public async void handleOCR(object sender, EventArgs e)
+        {
+            captureReceipt.Text = "Doing OCR Shit";
+            var cameraProvider = DependencyService.Get<ICameraProvider>();
+            if (cameraProvider != null)
+            {
+                var pictureResult = await cameraProvider.TakePictureAsync();
+                //if (pictureResult != null)
+                //{
+                //    manualReceipt.Text = "Not null";
+                //}
+                //else
+                //{
+                //    manualReceipt.Text = "Null as f";
+                //}
+                manualReceipt.Text += "WTF IS IT NULL OR NOT?";
+            }
+            else
+            {
+                manualReceipt.Text += "WTF IS IT NULL OR NOT?";
+            }
+            manualReceipt.Text += "WTF IS IT NULL OR NOT? JUST TELL ME";
+        }
     }
 }
