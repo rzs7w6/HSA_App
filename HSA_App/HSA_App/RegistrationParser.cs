@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace HSA_App
 {
-    interface RegistrationParser
+    internal class RegistrationParser
     {
+        static int check;
         enum errors { act_num, act_name, act_pass };
         public static int checkAccount(string actNum)
         {
-            if (actNum == NULL || actNum == "" || actNum.Length() != 11 || actNum.All(char.IsDigit()) == false)
+            if (actNum == null || actNum == "" || actNum.Length != 11 || int.TryParse(actNum, out check) == false)
             {
-                return errors.act_num;
+                return (int) errors.act_num;
             }
             else
             {
@@ -24,7 +26,7 @@ namespace HSA_App
 
         public static int checkName(string actName)
         {
-            if (actName == null || actName == "" || actName.Length() > 45 || actName.All(char.IsDigit()) == true || actName.All(char.Equals(" ")) == true)
+            if (actName == null || actName == "" || actName.Length > 45 || int.TryParse(actName, out check) == true || actName.All(char.Equals(" ")) == true)
             {
                 return act_name;
             }
