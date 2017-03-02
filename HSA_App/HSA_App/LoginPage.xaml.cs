@@ -8,17 +8,31 @@ using Xamarin.Forms;
 
 namespace HSA_App
 {
-	public partial class LoginPage : ContentPage
+	public partial class LoginPage : ContentPage, RegistrationParser
 	{
 		public LoginPage()
 		{
 			InitializeComponent();
 		}
 
+        public int checkAccount(string actNum)
+        {
+            throw new NotImplementedException();
+        }
 
+        public int checkName(string actName)
+        {
+            throw new NotImplementedException();
+        }
 
-		public void handleLogin(object sender, EventArgs e)
+        public int checkPassword(string actPass)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void handleLogin(object sender, EventArgs e)
 		{
+            
 			if (username.Text.Equals("test") && password.Text.Equals("password"))
 			{
 				App.Current.MainPage = new NavigationPage();
