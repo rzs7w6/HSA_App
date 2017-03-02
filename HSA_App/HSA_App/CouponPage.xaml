@@ -12,6 +12,12 @@
 			VerticalOptions="Center"
 			HorizontalOptions="Center"/>
 
-	</StackLayout>	
+	</StackLayout>
+	<ListView
+		x:Name="list"
+		IsPullToRefreshEnabled="true"
+		SeparatorColor="Blue">
+		
+	</ListView>
   
 </ContentPage>
