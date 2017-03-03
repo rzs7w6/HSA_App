@@ -10,9 +10,11 @@ namespace HSA_App
 {
     public partial class CouponPage : ContentPage
     {
+
         public CouponPage()
         {
             InitializeComponent();
+
         }
 
 
@@ -20,6 +22,8 @@ namespace HSA_App
 		{
 			couponButton.Text = "Found coupons";
 		}
+
+
     
 	
 	}

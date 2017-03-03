@@ -1,30 +1,43 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HSA_App.LoginPage">
-  <StackLayout Spacing="50">
-    <Label  Text="UMB Health Services Application"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="HSA_App.RegistrationPage">
+		<StackLayout Spacing="20">
+			<Label  Text="Registration"
             FontSize="30"
             HorizontalTextAlignment="Center"
             VerticalOptions="Start"
             HorizontalOptions="FillAndExpand"
             Margin="0,40,0,0" />
-    <Entry  x:Name="username"
-            Placeholder="Username"
+		<Entry  x:Name="name"
+            Placeholder="Full name"
             HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand" 
             Text="" />
-    <Entry  x:Name="password"
-            Placeholder="Password"
+    	<Entry  x:Name="username"
+            Placeholder="username"
             HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand"
-            IsPassword="True"  
             Text="" />
-    <Button x:Name="loginButton"
-            Clicked="handleLogin"
-            Text="Login"
+		<Entry x:Name="password1"
+			Placeholder="password"
+			HeightRequest="45"
+			VerticalOptions="Center"
+			HorizontalOptions="FillAndExpand"
+			IsPassword="false"
+			Text=""/>
+		<Entry x:Name="password2"
+			Placeholder="password"
+			HeightRequest="45"
+			VerticalOptions="Center"
+			HorizontalOptions="FillAndExpand"
+			IsPassword="false"
+			Text=""/>
+    <Button x:Name="regButton"
+            Clicked="handleReg"
+            Text="Register"
             HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand" />
@@ -33,12 +46,5 @@
            VerticalOptions="FillAndExpand"
            HorizontalOptions="FillAndExpand" 
            HorizontalTextAlignment="Center" />
-	<Button x:Name="forgotPassword"
-			Text="Forgot username/password"
-			Clicked="handlePasswordHelp"
-			Margin="0,0,0,100"
-			HorizontalOptions="Center"
-			VerticalOptions="End"/>
-		
-  </StackLayout>
+		</StackLayout>
 </ContentPage>
