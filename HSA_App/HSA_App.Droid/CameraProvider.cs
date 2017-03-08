@@ -31,7 +31,8 @@ namespace HSA_App.Droid
 
     public class CameraProvider : ICameraProvider
     {
-        private static File file;
+        public string filePath { get; set; }
+        private static File file { get; set; }
         private static File pictureDirectory;
 
         private static TaskCompletionSource<CameraResult> tcs;
@@ -40,7 +41,7 @@ namespace HSA_App.Droid
         {
             Intent intent = new Intent(MediaStore.ActionImageCapture);
 
-            pictureDirectory = new File(Environment.GetExternalStoragePublicDirectory(Environment.DirectoryPictures), "CameraAppDemo");
+            pictureDirectory = new File(Environment.GetExternalStoragePublicDirectory(Environment.DirectoryPictures), "OCR Images");
 
             if (!pictureDirectory.Exists())
             {
@@ -48,12 +49,12 @@ namespace HSA_App.Droid
             }
 
             file = new File(pictureDirectory, String.Format("photo_{0}.jpg", Guid.NewGuid()));
-
+            filePath = file.AbsolutePath.ToString();
             intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(file));
 
             var activity = (Activity)Forms.Context;
             activity.StartActivityForResult(intent, 0);
-
+            
             tcs = new TaskCompletionSource<CameraResult>();
 
             return tcs.Task;
