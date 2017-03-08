@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace HSA_App
 {
-	public partial class LoginPage : ContentPage, RegistrationParser
+	public partial class LoginPage : ContentPage
 	{
 		public LoginPage()
 		{
