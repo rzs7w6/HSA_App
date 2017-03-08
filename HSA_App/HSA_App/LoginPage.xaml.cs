@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace HSA_App
 {
-	public partial class LoginPage : ContentPage, RegistrationParser
+	public partial class LoginPage : ContentPage
 	{
 		public LoginPage()
 		{
@@ -42,6 +42,11 @@ namespace HSA_App
 				display.Text = "Incorrect Username and/or Password";
 				display.TextColor = Color.Red;
 			}
+		}
+
+		public void handleRegister(object sender, EventArgs e)
+		{
+			App.Current.MainPage = new RegistrationPage();
 		}
 
 		public void handlePasswordHelp(object sender, EventArgs e)
