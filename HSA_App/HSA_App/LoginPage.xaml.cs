@@ -44,6 +44,11 @@ namespace HSA_App
 			}
 		}
 
+		public void handleRegister(object sender, EventArgs e)
+		{
+			App.Current.MainPage = new RegistrationPage();
+		}
+
 		public void handlePasswordHelp(object sender, EventArgs e)
 		{
 			display.Text = "You have requested help with your username/password";
