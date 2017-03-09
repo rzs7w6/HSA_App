@@ -1,7 +1,4 @@
-﻿using Android;
-using Android.Widget;
-using HSA_App;
-using Java.IO;
+﻿using HSA_App;
 using System;
 using System.Collections.Generic;
 using System.Linq;
