@@ -13,6 +13,7 @@ namespace HSA_App
         public NavigationPage()
         {
             this.Title = "Tabbed Page";
+			this.Children.Add(new LandingPage());
             this.Children.Add(new ReceiptVaultPage());
             this.Children.Add(new CouponPage());
             this.Children.Add(new SettingsPage());
