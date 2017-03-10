@@ -14,7 +14,18 @@ namespace HSA_App
 
 		public void handleReg(object sender, EventArgs e)
 		{
-			display.Text = "Username available/not available. REGISTRATION IS ON THE WAY!!";
+			int successFlag;
+			successFlag = 1;
+
+			if (successFlag == 0)
+			{
+				username.Text = "USERNAME ALREADY TAKEN";
+				username.TextColor = Color.Red;
+			}
+			else
+			{
+				App.Current.MainPage = new LoginPage();
+			}
 		}
 	}
 }
