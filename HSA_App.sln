@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSA_App.WinPhone", "HSA_App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSA_App.Windows", "HSA_App\HSA_App.Windows\HSA_App.Windows.csproj", "{DF1E5993-5E68-46C0-A0AB-8763E99B4299}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E95FB82E-978E-4EB5-870D-6AC0D3E6C11B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
