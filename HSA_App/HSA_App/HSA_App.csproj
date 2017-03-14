@@ -50,7 +50,6 @@
     <Compile Include="ReceiptVaultPage.xaml.cs">
       <DependentUpon>ReceiptVaultPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistrationParser.cs" />
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
