@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HSA_App.LoginPage">
-  <StackLayout Spacing="50">
+  <StackLayout Spacing="20">
     <Label  Text="UMB Health Services Application"
             FontSize="30"
             HorizontalTextAlignment="Center"
@@ -33,6 +33,12 @@
            VerticalOptions="FillAndExpand"
            HorizontalOptions="FillAndExpand" 
            HorizontalTextAlignment="Center" />
+		<Button x:Name="registerUser"
+			Text="New User? Register here"
+			Clicked="handleRegister"
+			Margin="0,0,0,0"
+			HorizontalOptions="Center"
+			VerticalOptions="FillAndExpand"/>
 	<Button x:Name="forgotPassword"
 			Text="Forgot username/password"
 			Clicked="handlePasswordHelp"

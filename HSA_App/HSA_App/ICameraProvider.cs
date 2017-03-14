@@ -8,6 +8,7 @@ namespace HSA_App
 {
     public interface ICameraProvider
     {
+        string filePath { get; set; }
         Task<CameraResult> TakePictureAsync();
     }
 }
