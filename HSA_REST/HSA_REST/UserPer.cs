@@ -5,6 +5,7 @@ using System.Web;
 using HSA_REST.Models;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace HSA_REST
 {
@@ -27,6 +28,37 @@ namespace HSA_REST
                Console.WriteLine(ex.Message);
                Console.WriteLine("Connection failed");
             }
+        }
+
+        public User getUser(string accountNum)
+        {
+            User u = new User();
+            MySql.Data.MySqlClient.MySqlDataReader MySqlReader = null;
+            string sqlString = "SELECT * FROM user WHERE UserName = " + accountNum;
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
+
+            try
+            {
+                MySqlReader = cmd.ExecuteReader();
+            }
+            catch (SqlException oError)
+            {
+                //bFailed = true;
+                Console.WriteLine(oError.Message);
+            }
+
+            if (MySqlReader.Read())
+            {
+                u.AccountNumber = MySqlReader.GetInt32(0);
+                u.FirstName = MySqlReader.GetString(1);
+                u.LastName = MySqlReader.GetString(2);
+                u.Birthday = MySqlReader.GetDateTime(3);
+                u.HashedPassword = MySqlReader.GetString(4);
+                u.UserName = MySqlReader.GetString(5);
+                return u;
+            }
+
+            return null;
         }
 
         public long saveUser(User userToSave)
