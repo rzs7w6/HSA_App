@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 using Xamarin.Forms;
 
 namespace HSA_App
@@ -15,8 +14,6 @@ namespace HSA_App
             InitializeComponent();
 
             MainPage = new HSA_App.LoginPage();
-            
-            
         }
 
         protected override void OnStart()

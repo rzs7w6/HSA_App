@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using HSA_REST.Models;
-using System.Collections;
+
 
 namespace HSA_REST.Controllers
 {
@@ -17,21 +17,17 @@ namespace HSA_REST.Controllers
             return new string[] { "Person1", "Person2" };
         }
 
-        /*
-        public ArrayList Get()
-        {
-
-        }
-        */
-
         // GET: api/Person/5
-        public User Get(string id)
+        public User Get(int id)
         {
-
-            UserPer up = new UserPer();
-            User user = up.getUser(id);
-
-            return user;
+            User person = new Models.User();
+            person.ID = id;
+            person.LastName = "Smith";
+            person.FirstName = "Same";
+            person.HashedPassword = "sdfwer234234defsdfsre33r";
+            person.Birthday = DateTime.Parse("5/5/1880");
+            person.UserName = "big man";
+            return person;
         }
 
         // POST: api/Person
