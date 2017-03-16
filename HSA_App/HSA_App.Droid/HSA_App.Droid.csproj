@@ -136,6 +136,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="HSA_App.Droid.csproj.bak" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
