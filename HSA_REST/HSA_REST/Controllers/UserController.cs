@@ -17,6 +17,11 @@ namespace HSA_REST.Controllers
             return new string[] { "Person1", "Person2" };
         }
 
+        //public bool isUserDuplicate(string uname)
+        //{
+
+        //}
+
         /*
         public ArrayList Get()
         {
@@ -27,7 +32,6 @@ namespace HSA_REST.Controllers
         // GET: api/Person/5
         public User Get(string id)
         {
-
             UserPer up = new UserPer();
             User user = up.getUser(id);
 
