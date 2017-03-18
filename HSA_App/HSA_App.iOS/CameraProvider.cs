@@ -20,6 +20,7 @@ namespace HSA_App.iOS
 
     public class CameraProvider : ICameraProvider
     {
+        public string filePath { get; set; }
         public Task<CameraResult> TakePictureAsync()
         {
             var tcs = new TaskCompletionSource<CameraResult>();
