@@ -15,39 +15,80 @@ namespace HSA_App
 			InitializeComponent();
 		}
 
-        public int checkAccount(string actNum)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int checkName(string actName)
-        {
-            throw new NotImplementedException();
-        }
-
         public int checkPassword(string actPass)
-        {
-            throw new NotImplementedException();
-        }
+		{
+			bool upper = false;
+			bool lower = false;
+			bool number = false;
+			bool special = false;
+
+			foreach (char letter in actPass)
+			{
+				if (System.Char.IsDigit(letter))
+				{
+					number = true;
+				}
+
+				if (System.Char.IsLower(letter))
+				{
+					lower = true;
+				}
+
+				if (System.Char.IsUpper(letter))
+				{
+					upper = true;
+				}
+
+				if (System.Char.IsSymbol(letter) || System.Char.IsPunctuation(letter))
+				{
+					special = true;
+				}
+			}
+
+			if (upper == false || lower == false || number == false || special == false)
+			{
+				return -1;
+			}
+			else
+			{
+				return 1;
+			}
+
+		}
 
         public void handleLogin(object sender, EventArgs e)
 		{
-            
+			//TESTING PURPOSES!!
 			if (username.Text.Equals("test") && password.Text.Equals("password"))
 			{
 				App.Current.MainPage = new NavigationPage();
 			}
+
+			//Good To go! The password contains all necassary components to be a password
+			if (checkPassword(password.Text) == -1)
+			{
+				display.Text = "Incorrect Password!";
+				display.TextColor = Color.Red;
+
+				password.BackgroundColor = Color.Red;
+			}
 			else
 			{
-				display.Text = "Incorrect Username and/or Password";
-				display.TextColor = Color.Red;
+				display.Text = "";
+				display.TextColor = Color.White;
+
+				password.BackgroundColor = Color.White;
 			}
+
+			//ADD QUERY LOGIC HERE TO TEST PROPER USERNAME/PASSWORD COMBO!!!
 		}
+
 
 		public void handleRegister(object sender, EventArgs e)
 		{
 			App.Current.MainPage = new RegistrationPage();
 		}
+
 
 		public void handlePasswordHelp(object sender, EventArgs e)
 		{

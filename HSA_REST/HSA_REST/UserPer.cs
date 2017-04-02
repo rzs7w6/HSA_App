@@ -52,7 +52,7 @@ namespace HSA_REST
                 u.AccountNumber = MySqlReader.GetInt32(0);
                 u.FirstName = MySqlReader.GetString(1);
                 u.LastName = MySqlReader.GetString(2);
-                u.Birthday = MySqlReader.GetDateTime(3);
+                u.Birthday = MySqlReader.GetString(3);
                 u.HashedPassword = MySqlReader.GetString(4);
                 u.UserName = MySqlReader.GetString(5);
                 return u;
@@ -61,14 +61,44 @@ namespace HSA_REST
             return null;
         }
 
+        public bool isUserDuplicate(User user)
+        {
+            //MySql.Data.MySqlClient.MySqlDataReader MySqlReader2 = null;
+
+            String sqlString = "SELECT * FROM user WHERE AccountNumber =" + user.AccountNumber + " OR UserName =" + "'" + user.UserName + "'";
+            //String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, HashedPassword, UserName) VALUES ('2343245','Bryan','Boswell','jk4h3kj3h5k4j3h5k', 'Dododo')";
+            MySql.Data.MySqlClient.MySqlCommand cmd2 = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
+            //conn.Open();
+
+            
+
+            if (cmd2.ExecuteReader().HasRows)
+            {
+                conn.Close();
+                return true;
+                //MySqlReader2.Close();
+            }
+            else
+            {
+                conn.Close();
+                return false;
+            }
+
+        }
+
         public long saveUser(User userToSave)
         {
-            String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, Birthday, HashedPassword, UserName) VALUES ('" + userToSave.AccountNumber + "','" + userToSave.FirstName + "','" + userToSave.LastName + "','" + userToSave.Birthday.ToString("yyyy-MM-dd HH:mm:ss") + "','" + userToSave.HashedPassword + "','" + userToSave.UserName + "')";
-            //String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, HashedPassword, UserName) VALUES ('2343245','Bryan','Boswell','jk4h3kj3h5k4j3h5k', 'Dododo')";
-            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
-            cmd.ExecuteNonQuery();
-            long id = cmd.LastInsertedId;
-            return id;
+            if (!isUserDuplicate(userToSave))
+            {
+                conn.Open();
+                String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, Birthday, HashedPassword, UserName) VALUES ('" + userToSave.AccountNumber + "','" + userToSave.FirstName + "','" + userToSave.LastName + "','" + userToSave.Birthday + "','" + userToSave.HashedPassword + "','" + userToSave.UserName + "')";
+                //String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, HashedPassword, UserName) VALUES ('2343245','Bryan','Boswell','jk4h3kj3h5k4j3h5k', 'Dododo')";
+                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
+                cmd.ExecuteNonQuery();
+                long id = cmd.LastInsertedId;
+                return id;
+            }
+            return -1;
         }
 
     }
