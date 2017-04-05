@@ -8,6 +8,7 @@ namespace HSA_App
 {
 	public partial class RegistrationPage : ContentPage
 	{
+
 		public RegistrationPage()
 		{
 			InitializeComponent();
@@ -204,4 +205,5 @@ namespace HSA_App
 			}
         }
 	}
+
 }

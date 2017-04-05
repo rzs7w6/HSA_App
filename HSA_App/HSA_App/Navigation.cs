@@ -8,15 +8,16 @@ using Xamarin.Forms;
 
 namespace HSA_App
 {
-    public class NavigationPage : TabbedPage
+    public class Navigation : TabbedPage
     {
-        public NavigationPage()
+        public Navigation()
         {
-            this.Title = "Tabbed Page";
+            this.Title = "UMB";
 			this.Children.Add(new LandingPage());
-            this.Children.Add(new ReceiptVaultPage());
+            this.Children.Add(new RecieptPage());
             this.Children.Add(new CouponPage());
             this.Children.Add(new SettingsPage());
+            //this.Children.Add(new RecieptPage());
         }
     }
 }
