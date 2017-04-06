@@ -61,7 +61,8 @@ namespace HSA_App
 			//TESTING PURPOSES!!
 			if (username.Text.Equals("test") && password.Text.Equals("password"))
 			{
-				App.Current.MainPage = new NavigationPage();
+                //App.Current.MainPage = new Navigation();
+                App.Current.MainPage = new NavigationPage(new Navigation());
 			}
 
 			//Good To go! The password contains all necassary components to be a password
