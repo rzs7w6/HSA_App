@@ -30,11 +30,11 @@ namespace HSA_REST
             }
         }
 
-        public User getUser(string accountNum)
+        public User getUser(string userName)
         {
             User u = new User();
             MySql.Data.MySqlClient.MySqlDataReader MySqlReader = null;
-            string sqlString = "SELECT * FROM user WHERE UserName = " + accountNum;
+            string sqlString = "SELECT * FROM user WHERE UserName = " + userName;
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
 
             try

@@ -31,6 +31,6 @@ namespace HSA_App
 
     public class Rootobject
     {
-        public User[] users { get; set; }
+        public User users { get; set; }
     }
 }
