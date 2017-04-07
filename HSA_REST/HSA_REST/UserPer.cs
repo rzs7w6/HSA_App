@@ -49,7 +49,7 @@ namespace HSA_REST
 
             if (MySqlReader.Read())
             {
-                u.AccountNumber = MySqlReader.GetInt32(0);
+                u.AccountNumber = MySqlReader.GetInt64(0);
                 u.FirstName = MySqlReader.GetString(1);
                 u.LastName = MySqlReader.GetString(2);
                 u.Birthday = MySqlReader.GetString(3);
