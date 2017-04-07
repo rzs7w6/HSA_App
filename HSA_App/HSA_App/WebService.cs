@@ -16,7 +16,7 @@ namespace HSA_App
 
         }
         
-        public async Task<User[]> RegisterUser(User user)
+        public async Task<User> RegisterUser(User user)
         {
             Debug.WriteLine(user);
             var client = new System.Net.Http.HttpClient();
@@ -40,6 +40,26 @@ namespace HSA_App
             }
 
             return null;
+        }
+
+        public async Task<User> GetUsers(String username, String password)
+        {
+            var client = new System.Net.Http.HttpClient();
+
+            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user");
+            
+            var response = await client.GetAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user/"+"\"" + username +"\"");
+
+            var usersJson = response.Content.ReadAsStringAsync().Result;
+
+            User returnPerson = JsonConvert.DeserializeObject<User>(usersJson);
+            Debug.WriteLine(returnPerson.HashedPassword);
+            if (returnPerson.HashedPassword.Equals(password))
+                return returnPerson;
+            else
+                return null;
+
+
         }
 
     }

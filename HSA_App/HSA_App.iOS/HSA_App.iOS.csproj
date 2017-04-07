@@ -51,7 +51,7 @@
     <CodesignKey>iPhone Developer: kenrickniedbalski@icloud.com (3KWTD8FGPG)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>3edb3adf-ff3d-441a-8f6d-94ea2e129a92</CodesignProvision>
+    <CodesignProvision>187002da-a007-4a14-a863-eaf91c053ebb</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
