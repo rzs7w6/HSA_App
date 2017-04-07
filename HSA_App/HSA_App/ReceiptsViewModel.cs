@@ -66,14 +66,30 @@ namespace HSA_App
 
                 var client = new VisionServiceClient("ebccaf8faed7407eb5b2108193d7b13a");
 
-                using (var stream = photo.GetStream())
-                    text = await client.RecognizeTextAsync(stream);
+				using (var stream = photo.GetStream())
+				{
+					stream.Seek(0, System.IO.SeekOrigin.Begin);
+					text = await client.RecognizeTextAsync(stream);
+				}
 
                 var numbers = from region in text.Regions
                               from line in region.Lines
                               from word in line.Words
                               where word?.Text?.Contains("$") ?? false
                               select word.Text.Replace("$", string.Empty);
+
+				foreach (var region in text.Regions)
+				{
+					foreach (var line in region.Lines)
+					{
+						var word = string.Join(" ", line.Words.Select(w => w.Text));
+						if (word.Contains("$"))
+						{
+							Debug.WriteLine(word);
+						}
+
+					}
+				}
 
 
                 double temp = 0.0;
@@ -97,9 +113,8 @@ namespace HSA_App
             }
             catch (Exception ex)
             {
-                await (Application.Current?.MainPage?.DisplayAlert("Error",
-                    $"Something bad happened: {ex.Message}", "OK") ??
-                    Task.FromResult(true));
+                await (Application.Current?.MainPage?.DisplayAlert("Error",$"Something bad happened: {ex.StackTrace}", "OK") ??
+                Task.FromResult(true));
 
                 PrintStatus(string.Format("ERROR: {0}", ex.Message));
 
