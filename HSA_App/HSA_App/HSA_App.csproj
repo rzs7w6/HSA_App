@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="WebService.cs" />
+    <Compile Include="Coupon.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
