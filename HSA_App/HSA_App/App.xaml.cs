@@ -13,7 +13,7 @@ namespace HSA_App
         {
             InitializeComponent();
 
-            MainPage = new HSA_App.CouponPage();
+            MainPage = new HSA_App.LoginPage();
         }
 
         protected override void OnStart()
