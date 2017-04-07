@@ -46,9 +46,6 @@
       <DependentUpon>CouponPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ICameraProvider.cs" />
-    <Compile Include="LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Navigation.cs" />
     <Compile Include="ReceiptVaultPage.xaml.cs">
       <DependentUpon>ReceiptVaultPage.xaml</DependentUpon>
@@ -126,12 +123,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="LoginPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CouponPage.xaml">

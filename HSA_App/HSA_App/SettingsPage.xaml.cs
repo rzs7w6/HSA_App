@@ -17,7 +17,7 @@ namespace HSA_App
 
         public void handleLogout(object sender, EventArgs e)
         {
-            App.Current.MainPage = new LoginPage();
+            App.Current.MainPage = new CouponPage();
         }
         public void handleUpdateAccount(object sender, EventArgs e)
         {
