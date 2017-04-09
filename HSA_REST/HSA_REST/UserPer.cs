@@ -30,11 +30,11 @@ namespace HSA_REST
             }
         }
 
-        public User getUser(string accountNum)
+        public User getUser(string userName)
         {
             User u = new User();
             MySql.Data.MySqlClient.MySqlDataReader MySqlReader = null;
-            string sqlString = "SELECT * FROM user WHERE UserName = " + accountNum;
+            string sqlString = "SELECT * FROM user WHERE UserName = " + userName;
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
 
             try
@@ -49,7 +49,7 @@ namespace HSA_REST
 
             if (MySqlReader.Read())
             {
-                u.AccountNumber = MySqlReader.GetInt32(0);
+                u.AccountNumber = MySqlReader.GetInt64(0);
                 u.FirstName = MySqlReader.GetString(1);
                 u.LastName = MySqlReader.GetString(2);
                 u.Birthday = MySqlReader.GetString(3);
