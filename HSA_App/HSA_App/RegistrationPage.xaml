@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:HSA_App"
 	Title="Registration Page"
 	x:Class="HSA_App.RegistrationPage">
 		<StackLayout Spacing="5">
@@ -28,7 +29,18 @@
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand"
 			Keyboard="Email"
-            Text="" />
+            Text="">
+            	<Entry.Behaviors>
+	  		<local:EmailBehaviorValidator x:Name="emailValidator"/>
+		</Entry.Behaviors>
+
+		</Entry>
+		<Image Grid.Row="0"
+	   Grid.Column="2"
+	   x:Name="emailSuccessErrorImage"
+	   Style="{Binding Source={x:Reference emailValidator},
+	                        Path=IsValid,
+	                        Converter={StaticResource boolToStyleImage}}"/>
 		<Entry x:Name="accountNum"
 			Placeholder="Account Number"
 			Keyboard="Numeric"
