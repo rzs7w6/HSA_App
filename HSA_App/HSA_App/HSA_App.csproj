@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="WebService.cs" />
+    <Compile Include="Coupon.cs" />
     <Compile Include="EmailBehaviorValidator.cs" />
   </ItemGroup>
   <ItemGroup>
