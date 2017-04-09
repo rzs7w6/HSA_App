@@ -16,6 +16,7 @@ namespace HSA_App
         public String Birthday { get; set; }
         public String HashedPassword { get; set; }
         public String UserName { get; set; }
+        public String Salt { get; set; }
     }
     /*
     public string Summary
