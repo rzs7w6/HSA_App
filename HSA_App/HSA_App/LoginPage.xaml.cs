@@ -110,7 +110,7 @@ namespace HSA_App
 		public void handlePasswordHelp(object sender, EventArgs e)
 		{
 			display.Text = "You have requested help with your username/password";
-
+            EmailHandler.sendForgotPasswordEmail("zane.spalding@gmail.com");
 		}
 	}
 }
