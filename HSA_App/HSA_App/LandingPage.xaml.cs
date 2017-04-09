@@ -10,7 +10,7 @@ namespace HSA_App
 		public LandingPage()
 		{
 			InitializeComponent();
-			accountBalance.Text = "$3000.00";
+			//accountBalance.Text = "$3000.00";
 		}
 	}
 }
