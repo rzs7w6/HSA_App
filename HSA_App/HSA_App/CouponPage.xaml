@@ -13,22 +13,13 @@
 			HorizontalOptions="Center"
             >
         </Button>
-       <ListView.couponList
-		x:Name="couponList"
-		IsPullToRefreshEnabled="true"
-		SeparatorColor="Blue">
-
-        </ListView.couponList>
-        <Button
-			x:Name="couponButton"
-			Text="Find Coupons"
-			Clicked="handleCoupon"
-			HeightRequest="50"
-			VerticalOptions="Center"
-			HorizontalOptions="Center"/>
-
-	</StackLayout>
-    -->
+        <ListView x:Name="CouponView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding StoreName}" Detail="{Binding CouponDetails}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>

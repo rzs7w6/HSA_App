@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -13,13 +14,25 @@ namespace HSA_App
 {
     public partial class CouponPage : ContentPage
     {
-        List<Coupon> couponList = new List<Coupon>();
-        public string[] testData = { "CVS", "Free Shit", "Hyvee", "Not Free Shit" };
-        
         public CouponPage()
         {
-           InitializeComponent();
+            InitializeComponent();
+            CouponListPage();
+          
         }
+
+        ObservableCollection<Coupon> coupons = new ObservableCollection<Coupon>();
+        private void CouponListPage()
+        {
+            //defined in XAML to follow
+            CouponView.ItemsSource = coupons;
+            coupons.Add(new Coupon { StoreName = "cVs", CouponDetails = "Free Bitch Mittens" });
+            coupons.Add(new Coupon { StoreName = "Bitchmart", CouponDetails = "Nad Creme" });
+            coupons.Add(new Coupon { StoreName = "WalGREEN", CouponDetails = "Bud of Lyfe" });
+            coupons.Add(new Coupon { StoreName = "Drug Store #1", CouponDetails = "Drugs" });
+            coupons.Add(new Coupon { StoreName = "Rite Aids", CouponDetails = "G Easy Was Here" });
+            coupons.Add(new Coupon { StoreName = "HighMee", CouponDetails = "Fresher Green In Every Aisle" });
+        }   
         private void GetCoupons(object sender, EventArgs e)
         {
                 /*  var rxcui = "198440";
@@ -37,15 +50,8 @@ namespace HSA_App
                           {
                           }
                       }
-                  }*/
-                for (int i = 0; i < testData.Length / 2; i++)
-                {
-                    Coupon coupon = new Coupon();
-                    coupon.StoreName = testData[i];
-                    coupon.CouponDetails = testData[i++];
-                    couponList.Add(coupon);
-                }
-                
+                  }
+                */
 
             }
     }

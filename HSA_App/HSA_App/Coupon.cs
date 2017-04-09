@@ -8,7 +8,7 @@ namespace HSA_App
 {
 	class Coupon
 	{
-		public string StoreName;
-		public string CouponDetails;
+		public string StoreName { get; set; }
+		public string CouponDetails { get; set; }
 	}
 }
