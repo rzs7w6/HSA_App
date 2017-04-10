@@ -69,6 +69,7 @@
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="ViewReceiptViewModel.cs" />
     <Compile Include="WebService.cs" />
     <Compile Include="Coupon.cs" />
     <Compile Include="EmailBehaviorValidator.cs" />

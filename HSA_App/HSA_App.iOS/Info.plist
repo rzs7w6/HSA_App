@@ -53,6 +53,11 @@
 		<string>Icon-Small.png</string>
 		<string>Icon-Small@2x.png</string>
 	</array>
+  <key>UIRequiredDeviceCapabilities</key>
+  <array>
+    <string>front-facing-camera</string>
+    <string>still-camera</string>
+  </array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
