@@ -14,13 +14,14 @@ namespace HSA_App
 			InitializeComponent();
 		}
 
-		/*Check Account Number
+
+        /*Check Account Number
 
 			1.) Ensure the string can be converted to an int
 			2.) Ensure the string has the correct length to represent an account number
 
 		*/
-		public Int64 checkAccount(String actNum)
+        public Int64 checkAccount(String actNum)
 		{
 			Int64 number;
 
