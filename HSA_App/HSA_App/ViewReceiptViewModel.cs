@@ -21,19 +21,18 @@ using System.IO;
 
 namespace HSA_App
 {
-    class ReceiptsViewModel : INotifyPropertyChanged
+    class ViewReceiptViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Receipt> Invoices { get; } = new ObservableCollection<Receipt>();
+        public ObservableCollection<Receipt> InvoicesFromDB { get; } = new ObservableCollection<Receipt>();
 
         public string Message { get; set; } = "Hello World!";
+        
+        Command viewInvoicesCommand = null;
+        public Command ViewInvoicesCommand =>
+                    viewInvoicesCommand ?? (viewInvoicesCommand = new Command(async () => await ExecuteViewInvoicesCommandAsync()));
 
-        Command addInvoiceCommand = null;
-        public Command AddInvoiceCommand =>
-                    addInvoiceCommand ?? (addInvoiceCommand = new Command(async () => await ExecuteAddInvoiceCommandAsync()));
-
-        async Task ExecuteAddInvoiceCommandAsync()
+        async Task ExecuteViewInvoicesCommandAsync()
         {
-            double total = 0.0;
             try
             {
                 IsBusy = true;
@@ -42,6 +41,7 @@ namespace HSA_App
                 await CrossMedia.Current.Initialize();
 
                 MediaFile photo;
+                byte[] source; //New
                 if (CrossMedia.Current.IsCameraAvailable)
                 {
                     photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
@@ -60,61 +60,33 @@ namespace HSA_App
                     PrintStatus("Photo was null :(");
                     return;
                 }
-                
-
-                // 2. Add  OCR logic.
-                OcrResults text;
-
-                var client = new VisionServiceClient("ebccaf8faed7407eb5b2108193d7b13a");
-
-				using (var stream = photo.GetStream())
-				{
-					stream.Seek(0, System.IO.SeekOrigin.Begin);
-					text = await client.RecognizeTextAsync(stream);
-				}
-
-                var numbers = from region in text.Regions
-                              from line in region.Lines
-                              from word in line.Words
-                              where word?.Text?.Contains("$") ?? false
-                              select word.Text.Replace("$", string.Empty);
-
-				foreach (var region in text.Regions)
-				{
-					foreach (var line in region.Lines)
-					{
-						var word = string.Join(" ", line.Words.Select(w => w.Text));
-						if (word.Contains("$"))
-						{
-							Debug.WriteLine(word);
-						}
-
-					}
-				}
-
-
-                double temp = 0.0;
-                total = numbers?.Count() > 0 ?
-                        numbers.Max(x => double.TryParse(x, out temp) ? temp : 0) :
-                        0;
-
-
-
-                PrintStatus($"Found total {total.ToString("C")} " +
-                    $"and we had {text.Regions.Count()} regions");
-
-
-                // 3. Add to data-bound collection.
-                Invoices.Add(new Receipt
+                //New stuff
+                else
                 {
-                    Total = total,
-                    Photo = photo.Path,
-                    TimeStamp = DateTime.Now
-                });
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        photo.GetStream().CopyTo(memoryStream);
+                        photo.Dispose();
+                        source = memoryStream.ToArray();
+                        Debug.WriteLine(source);
+                    }
+                    var image = new Image
+                    {
+                        Source = ImageSource.FromStream(() => new MemoryStream(source))
+                    };
+                    InvoicesFromDB.Add(new Receipt
+                    {
+                        Total = 0,
+                        Photo = image.Source.ToString(),
+                        TimeStamp = DateTime.Now
+                    });
+                }
+                //End new stuff
+
             }
             catch (Exception ex)
             {
-                await (Application.Current?.MainPage?.DisplayAlert("Error",$"Something bad happened: {ex.StackTrace}", "OK") ??
+                await (Application.Current?.MainPage?.DisplayAlert("Error", $"Something bad happened: {ex.StackTrace}", "OK") ??
                 Task.FromResult(true));
 
                 PrintStatus(string.Format("ERROR: {0}", ex.Message));

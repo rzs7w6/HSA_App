@@ -39,8 +39,7 @@
 	   Grid.Column="2"
 	   x:Name="emailSuccessErrorImage"
 	   Style="{Binding Source={x:Reference emailValidator},
-	                        Path=IsValid,
-	                        Converter={StaticResource boolToStyleImage}}"/>
+	                        Path=IsValid}"/>
 		<Entry x:Name="accountNum"
 			Placeholder="Account Number"
 			Keyboard="Numeric"

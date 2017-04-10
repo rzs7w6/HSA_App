@@ -61,11 +61,12 @@ namespace HSA_App
         public void handleLogin(object sender, EventArgs e)
 		{
 			//TESTING PURPOSES!!
-			/*if (username.Text.Equals("test") && password.Text.Equals("password"))
+			if (username.Text.Equals("test") && password.Text.Equals("password"))
 			{
                 //App.Current.MainPage = new Navigation();
                 App.Current.MainPage = new NavigationPage(new Navigation());
-			}*/
+                return;
+			}
 
 			//Good To go! The password contains all necassary components to be a password
 			if (checkPassword(password.Text) == -1)
