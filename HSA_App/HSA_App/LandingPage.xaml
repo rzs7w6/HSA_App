@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 	         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	         Title="Home"
-	         x:Class="HSA_App.LandingPage">
+	         x:Class="HSA_App.LandingPage"
+             Icon="home.png">
 	<StackLayout Spacing="10" >
 		<Image Source="logo.png"/>
-        <!--<StackLayout Spacing="10" BackgroundColor="Gray">
+        <StackLayout Spacing="10" BackgroundColor="Gray">
             <Label x:Name="label"
 			Text="Account balance"
 			HorizontalOptions="Center"
@@ -25,7 +26,7 @@
             <Label Text="HelloWorld"
                    FontSize="16"/>
 
-        </StackLayout>-->
         </StackLayout>
+    </StackLayout>
     
 </ContentPage>
