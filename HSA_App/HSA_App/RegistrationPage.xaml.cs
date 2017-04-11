@@ -123,7 +123,7 @@ namespace HSA_App
 		}
 
 
-		public void handleReg(object sender, EventArgs e)
+		public async void handleReg(object sender, EventArgs e)
 		{
 
 			//Check First Name
@@ -208,8 +208,8 @@ namespace HSA_App
 
                 person.Birthday = birthday;
 				var sv = new WebService();
-				var es = sv.RegisterUser(person);
-                App.Current.MainPage = new NavigationPage(new Navigation());
+				var es = await sv.RegisterUser(person);
+                App.Current.MainPage = new NavigationPage(new Navigation(es));
 
             }
         }
