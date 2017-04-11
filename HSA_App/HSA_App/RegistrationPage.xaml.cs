@@ -12,15 +12,17 @@ namespace HSA_App
 		public RegistrationPage()
 		{
 			InitializeComponent();
+            dobPicker.SetValue (DatePicker.MaximumDateProperty, DateTime.Now);
 		}
 
-		/*Check Account Number
+
+        /*Check Account Number
 
 			1.) Ensure the string can be converted to an int
 			2.) Ensure the string has the correct length to represent an account number
 
 		*/
-		public Int64 checkAccount(String actNum)
+        public Int64 checkAccount(String actNum)
 		{
 			Int64 number;
 
@@ -199,7 +201,12 @@ namespace HSA_App
 
                 person.HashedPassword = password1.Text;
 
-				//person.Birthday = Convert.ToDateTime(dobLabel.Text);
+				int year = dobPicker.Date.Year;
+                int day = dobPicker.Date.Day;
+                int month = dobPicker.Date.Month;
+                string birthday = year + "-" + day + "-" + month;
+
+                person.Birthday = birthday;
 				var sv = new WebService();
 				var es = sv.RegisterUser(person);
                 App.Current.MainPage = new NavigationPage(new Navigation());
