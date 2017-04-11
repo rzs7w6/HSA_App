@@ -9,16 +9,13 @@ namespace HSA_App
 	{
 		public LandingPage()
 		{
-<<<<<<< HEAD
 			//InitializeComponent();
 			//accountBalance.Text = "$3000.00";
-=======
 			InitializeComponent();
 
 			accountBalance.Text = "$3000.00";
-            CouponListPage();
+           	 	CouponListPage();
 
->>>>>>> master
 		}
         ObservableCollection<Coupon> coupons = new ObservableCollection<Coupon>();
         private void CouponListPage()

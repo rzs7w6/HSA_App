@@ -7,7 +7,7 @@
     <ScrollView>
 
 	<StackLayout Spacing="5">
-			<Label  Text="Registration"
+	<Label  Text="Registration"
             FontSize="30"
             HorizontalTextAlignment="Center"
             VerticalOptions="Start"
@@ -37,14 +37,8 @@
                     <local:EmailBehaviorValidator x:Name="emailValidator"/>
                 </Entry.Behaviors>
             </Entry>
-            
-
-
-
-            
-                      
+                   
 		<Entry x:Name="accountNum"
-
 			Placeholder="Account Number"
 			Keyboard="Numeric"
 			HorizontalOptions="CenterAndExpand"
