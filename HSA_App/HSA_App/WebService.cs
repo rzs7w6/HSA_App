@@ -83,7 +83,9 @@ namespace HSA_App
 
             //var salt = Crypto.CreateSalt(16);
 
+            
 
+            var bytes = Crypto.EncryptAes(password, password, Encoding.GetBytes(returnPerson.Salt));
 
             //var str = Crypto.DecryptAes(, returnPerson.HashedPassword, salt);
             //Debug.WriteLine("Decryted " + str);
