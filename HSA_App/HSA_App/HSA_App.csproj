@@ -73,7 +73,6 @@
     <Compile Include="WebService.cs" />
     <Compile Include="Coupon.cs" />
     <Compile Include="EmailBehaviorValidator.cs" />
-    <Compile Include="BooleanToObjectConverter&lt;T&gt;.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
