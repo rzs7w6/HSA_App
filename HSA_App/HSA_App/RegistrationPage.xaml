@@ -4,9 +4,60 @@
 	xmlns:local="clr-namespace:HSA_App"
 	Title="Registration Page"
 	x:Class="HSA_App.RegistrationPage">
+<<<<<<< Updated upstream
     <ScrollView>
         <StackLayout Spacing="5">
             <Label  Text="Registration"
+=======
+	<ContentPage.Resources>
+    <ResourceDictionary>
+
+      <local:BooleanToObjectConverter x:Key="boolToStyleImage"
+                                              x:TypeArguments="Style">
+        <local:BooleanToObjectConverter.FalseObject>
+          <Style TargetType="Image">
+            <Setter Property="HeightRequest" Value="20" />
+            <Setter Property="Source" Value="{local:ImageResource HSA_App.Images.error.png}" />
+          </Style>
+        </local:BooleanToObjectConverter.FalseObject>
+
+        <local:BooleanToObjectConverter.TrueObject>
+          <Style TargetType="Image">
+            <Setter Property="HeightRequest" Value="20" />
+            <Setter Property="Source" Value="{local:ImageResource HSA_App.Images.success.png}" />
+          </Style>
+        </local:BooleanToObjectConverter.TrueObject>
+      </local:BooleanToObjectConverter>
+
+      <Style x:Key="baseStyle"
+             TargetType="Label">
+        <Setter Property="XAlign" Value="Start" />
+        <Setter Property="YAlign" Value="Center" />
+        <Setter Property="FontSize" Value="Micro" />
+        <Setter Property="FontAttributes" Value="Italic" />
+      </Style>
+      <local:BooleanToObjectConverter x:Key="boolToStyleEmail"
+                                           x:TypeArguments="Style">
+        <local:BooleanToObjectConverter.FalseObject>
+           <Style TargetType="Label" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="TextColor" Value="#F44336" />
+            <Setter Property="Text" Value="Enter a valid email" />
+          </Style>
+        </local:BooleanToObjectConverter.FalseObject>
+        
+        <local:BooleanToObjectConverter.TrueObject>
+          <Style TargetType="Label" BasedOn="{StaticResource baseStyle}">
+            <Setter Property="TextColor" Value="#4CAF50" />
+            <Setter Property="Text" Value="Your email looks good" />
+          </Style>
+        </local:BooleanToObjectConverter.TrueObject>
+
+      </local:BooleanToObjectConverter>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+		<StackLayout Spacing="5">
+			<Label  Text="Registration"
+>>>>>>> Stashed changes
             FontSize="30"
             HorizontalTextAlignment="Center"
             VerticalOptions="Start"
@@ -35,6 +86,7 @@
                     <local:EmailBehaviorValidator x:Name="emailValidator"/>
                 </Entry.Behaviors>
 
+<<<<<<< Updated upstream
             </Entry>
             <Image Grid.Row="0"
 	   Grid.Column="2"
@@ -46,6 +98,17 @@
 
 
             <Entry x:Name="accountNum"
+=======
+		</Entry>
+		<Image Grid.Row="0"
+		   Grid.Column="2"
+		   x:Name="emailSuccessErrorImage" 
+		   Style="{Binding Source={x:Reference emailValidator},
+		                        Path=IsValid,
+	                        Converter={StaticResource boolToStyleImage}}"/>
+                      
+		<Entry x:Name="accountNum"
+>>>>>>> Stashed changes
 			Placeholder="Account Number"
 			Keyboard="Numeric"
 			HorizontalOptions="CenterAndExpand"
