@@ -4,87 +4,88 @@
 	xmlns:local="clr-namespace:HSA_App"
 	Title="Registration Page"
 	x:Class="HSA_App.RegistrationPage">
-		<StackLayout Spacing="5">
+    <ScrollView>
+
+	<StackLayout Spacing="5">
 			<Label  Text="Registration"
             FontSize="30"
             HorizontalTextAlignment="Center"
             VerticalOptions="Start"
             HorizontalOptions="FillAndExpand"
             Margin="0,40,0,0" />
-		<Entry  x:Name="fname"
+            <Entry  x:Name="fname"
             Placeholder="First name"
             HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand"
             Text="" />
-		<Entry  x:Name="lname"
+            <Entry  x:Name="lname"
             Placeholder="Last name"
             HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand" 
             Text="" />
-		<Entry  x:Name="email"
+
+            <Entry  x:Name="email"
+
             Placeholder="Email"
             HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand"
-			Keyboard="Email"
-            Text="">
-            	<Entry.Behaviors>
-	  		<local:EmailBehaviorValidator x:Name="emailValidator"/>
-		</Entry.Behaviors>
+			Keyboard="Email">
+                <Entry.Behaviors>
+                    <local:EmailBehaviorValidator x:Name="emailValidator"/>
+                </Entry.Behaviors>
+            </Entry>
+            
 
-		</Entry>
-		<Image Grid.Row="0"
-	   Grid.Column="2"
-	   x:Name="emailSuccessErrorImage"
-           
-	   Style="{Binding Source={x:Reference emailValidator},
-	                        Path=IsValid}" />
-                          
-      
-      
+
+
+            
+                      
 		<Entry x:Name="accountNum"
+
 			Placeholder="Account Number"
 			Keyboard="Numeric"
 			HorizontalOptions="CenterAndExpand"
 			VerticalOptions="CenterAndExpand"
 			Text=""/>
-		<Label x:Name="dobLabel"
+            <Label x:Name="dobLabel"
 			Text="Date of Birth"
 			HorizontalOptions="CenterAndExpand"
 			VerticalOptions="CenterAndExpand"/>
-		<DatePicker VerticalOptions="CenterAndExpand"
+            <DatePicker VerticalOptions="CenterAndExpand"
 			HorizontalOptions="CenterAndExpand"
-			x:Name="dobPicker">
-			<DatePicker.Format>yyyy-dd-MM</DatePicker.Format>
-		</DatePicker>
-			
-    	<Entry  x:Name="username"
+			x:Name="dobPicker" Date="{Binding DOB}">
+                <DatePicker.Format>yyyy-dd-MM</DatePicker.Format>
+            </DatePicker>
+
+            <Entry  x:Name="username"
             Placeholder="username"
             HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand"
             Text="" />
-		<Entry x:Name="password1"
+            <Entry x:Name="password1"
 			Placeholder="password"
 			HeightRequest="45"
 			VerticalOptions="Center"
 			HorizontalOptions="FillAndExpand"
 			IsPassword="true"
 			Text=""/>
-		<Entry x:Name="password2"
+            <Entry x:Name="password2"
 			Placeholder="confirm password"
 			HeightRequest="45"
 			VerticalOptions="Center"
 			HorizontalOptions="FillAndExpand"
 			IsPassword="true"
 			Text=""/>
-    <Button x:Name="regButton"
+            <Button x:Name="regButton"
             Clicked="handleReg"
             Text="Register"
             HeightRequest="45"
             VerticalOptions="EndAndExpand"
             HorizontalOptions="FillAndExpand" />
-		</StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
