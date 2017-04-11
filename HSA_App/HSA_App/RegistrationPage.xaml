@@ -23,25 +23,14 @@
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand" 
             Text="" />
-		<Entry  x:Name="email"
+        <Entry  x:Name="email"
             Placeholder="Email"
             HeightRequest="45"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand"
 			Keyboard="Email"
-            Text="">
-            	<Entry.Behaviors>
-	  		<local:EmailBehaviorValidator x:Name="emailValidator"/>
-		</Entry.Behaviors>
-
-		</Entry>
-		<Image Grid.Row="0"
-	   Grid.Column="2"
-	   x:Name="emailSuccessErrorImage"
-	   Style="{Binding Source={x:Reference emailValidator},
-	                        Path=IsValid,
-	                        Converter={StaticResource boolToStyleImage}}"/>
-		<Entry x:Name="accountNum"
+            Text=""/>
+        <Entry x:Name="accountNum"
 			Placeholder="Account Number"
 			Keyboard="Numeric"
 			HorizontalOptions="CenterAndExpand"
