@@ -84,9 +84,9 @@
             <Image Grid.Row="0"
 	   Grid.Column="2"
 	   x:Name="emailSuccessErrorImage"
-           
 	   Style="{Binding Source={x:Reference emailValidator},
-	                        Path=IsValid}" />
+	                        Path=IsValid,
+	                        Converter={StaticResource boolToStyleImage}}"/>
 
 
 
