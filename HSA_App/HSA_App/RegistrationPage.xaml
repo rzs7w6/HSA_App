@@ -4,11 +4,7 @@
 	xmlns:local="clr-namespace:HSA_App"
 	Title="Registration Page"
 	x:Class="HSA_App.RegistrationPage">
-<<<<<<< Updated upstream
     <ScrollView>
-        <StackLayout Spacing="5">
-            <Label  Text="Registration"
-=======
 	<ContentPage.Resources>
     <ResourceDictionary>
 
@@ -57,7 +53,6 @@
   </ContentPage.Resources>
 		<StackLayout Spacing="5">
 			<Label  Text="Registration"
->>>>>>> Stashed changes
             FontSize="30"
             HorizontalTextAlignment="Center"
             VerticalOptions="Start"
@@ -85,8 +80,6 @@
                 <Entry.Behaviors>
                     <local:EmailBehaviorValidator x:Name="emailValidator"/>
                 </Entry.Behaviors>
-
-<<<<<<< Updated upstream
             </Entry>
             <Image Grid.Row="0"
 	   Grid.Column="2"
@@ -97,9 +90,7 @@
 
 
 
-            <Entry x:Name="accountNum"
-=======
-		</Entry>
+            <Entry x:Name="accountNum"/>
 		<Image Grid.Row="0"
 		   Grid.Column="2"
 		   x:Name="emailSuccessErrorImage" 
@@ -108,7 +99,6 @@
 	                        Converter={StaticResource boolToStyleImage}}"/>
                       
 		<Entry x:Name="accountNum"
->>>>>>> Stashed changes
 			Placeholder="Account Number"
 			Keyboard="Numeric"
 			HorizontalOptions="CenterAndExpand"
