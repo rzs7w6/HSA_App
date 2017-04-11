@@ -25,5 +25,6 @@ namespace HSA_App
 		{
 			return ((T)value).Equals(this.TrueObject);
 		}
+
 	}
 }
