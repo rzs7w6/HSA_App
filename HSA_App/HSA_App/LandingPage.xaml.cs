@@ -9,8 +9,12 @@ namespace HSA_App
 	{
 		public LandingPage()
 		{
+<<<<<<< Updated upstream
 			InitializeComponent();
-			accountBalance.Text = "$3000.00";
+			//accountBalance.Text = "$3000.00";
+=======
+			
+>>>>>>> Stashed changes
 		}
 	}
 }

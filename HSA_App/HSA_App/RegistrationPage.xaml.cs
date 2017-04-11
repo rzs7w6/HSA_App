@@ -12,22 +12,24 @@ namespace HSA_App
 		public RegistrationPage()
 		{
 			InitializeComponent();
+            dobPicker.SetValue (DatePicker.MaximumDateProperty, DateTime.Now);
 		}
 
-		/*Check Account Number
+
+        /*Check Account Number
 
 			1.) Ensure the string can be converted to an int
 			2.) Ensure the string has the correct length to represent an account number
 
 		*/
-		public int checkAccount(String actNum)
+        public Int64 checkAccount(String actNum)
 		{
-			int number;
+			Int64 number;
 
 			//Checks the Account for all numbers (Attempt to convert)
 			try
 			{
-				number = Convert.ToInt32(actNum);
+				number = Convert.ToInt64(actNum);
 			}
 			catch (Exception ex)
 			{
@@ -194,15 +196,22 @@ namespace HSA_App
 				person.FirstName = fname.Text;
 				person.LastName = lname.Text;
 				person.UserName = username.Text;
-				person.AccountNumber = Convert.ToInt32(accountNum.Text);
-				person.HashedPassword = password1.Text;
+                person.AccountNumber = Convert.ToInt64(accountNum.Text);
+                //Debug.WriteLine("\n\n\n\n\nThere was Nour account number!  " + person.AccountNumber);
 
-				//person.Birthday = Convert.ToDateTime(dobLabel.Text);
+                person.HashedPassword = password1.Text;
+
+				int year = dobPicker.Date.Year;
+                int day = dobPicker.Date.Day;
+                int month = dobPicker.Date.Month;
+                string birthday = year + "-" + day + "-" + month;
+
+                person.Birthday = birthday;
 				var sv = new WebService();
 				var es = sv.RegisterUser(person);
-				App.Current.MainPage = new LandingPage();
+                App.Current.MainPage = new NavigationPage(new Navigation());
 
-			}
+            }
         }
 	}
 

@@ -17,7 +17,7 @@ namespace HSA_App
             this.Children.Add(new RecieptPage());
             this.Children.Add(new CouponPage());
             this.Children.Add(new SettingsPage());
-            //this.Children.Add(new RecieptPage());
+            this.Children.Add(new RecieptVaultPage());
         }
     }
 }

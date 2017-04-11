@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Net.Http;
 
 using Xamarin.Forms;
 
@@ -63,6 +65,7 @@ namespace HSA_App
 			{
                 //App.Current.MainPage = new Navigation();
                 App.Current.MainPage = new NavigationPage(new Navigation());
+                return;
 			}
 
 			//Good To go! The password contains all necassary components to be a password
@@ -81,8 +84,22 @@ namespace HSA_App
 				password.BackgroundColor = Color.White;
 			}
 
-			//ADD QUERY LOGIC HERE TO TEST PROPER USERNAME/PASSWORD COMBO!!!
-		}
+            //ADD QUERY LOGIC HERE TO TEST PROPER USERNAME/PASSWORD COMBO!!!
+
+            var sv = new WebService();
+            var es = sv.GetUsers(username.Text, password.Text);
+            if(es != null)
+            {
+                App.Current.MainPage = new NavigationPage(new Navigation());
+            }
+            //User returnUser = new User();
+            //registerUser = es
+
+            //Debug.WriteLine("es is " + es.ToString());
+
+            //compare the password from the user returned to the one in the form
+            
+        }
 
 
 		public void handleRegister(object sender, EventArgs e)
@@ -94,7 +111,7 @@ namespace HSA_App
 		public void handlePasswordHelp(object sender, EventArgs e)
 		{
 			display.Text = "You have requested help with your username/password";
-
+            EmailHandler.sendForgotPasswordEmail("zane.spalding@gmail.com");
 		}
 	}
 }

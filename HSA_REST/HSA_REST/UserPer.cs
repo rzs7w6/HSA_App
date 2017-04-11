@@ -30,11 +30,11 @@ namespace HSA_REST
             }
         }
 
-        public User getUser(string accountNum)
+        public User getUser(string userName)
         {
             User u = new User();
             MySql.Data.MySqlClient.MySqlDataReader MySqlReader = null;
-            string sqlString = "SELECT * FROM user WHERE UserName = " + accountNum;
+            string sqlString = "SELECT * FROM user WHERE UserName = " + userName;
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
 
             try
@@ -49,12 +49,13 @@ namespace HSA_REST
 
             if (MySqlReader.Read())
             {
-                u.AccountNumber = MySqlReader.GetInt32(0);
+                u.AccountNumber = MySqlReader.GetInt64(0);
                 u.FirstName = MySqlReader.GetString(1);
                 u.LastName = MySqlReader.GetString(2);
                 u.Birthday = MySqlReader.GetString(3);
                 u.HashedPassword = MySqlReader.GetString(4);
                 u.UserName = MySqlReader.GetString(5);
+                u.Salt = MySqlReader.GetString(6);
                 return u;
             }
 
@@ -91,7 +92,7 @@ namespace HSA_REST
             if (!isUserDuplicate(userToSave))
             {
                 conn.Open();
-                String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, Birthday, HashedPassword, UserName) VALUES ('" + userToSave.AccountNumber + "','" + userToSave.FirstName + "','" + userToSave.LastName + "','" + userToSave.Birthday + "','" + userToSave.HashedPassword + "','" + userToSave.UserName + "')";
+                String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, Birthday, HashedPassword, UserName, Salt) VALUES ('" + userToSave.AccountNumber + "','" + userToSave.FirstName + "','" + userToSave.LastName + "','" + userToSave.Birthday + "','" + userToSave.HashedPassword + "','" + userToSave.UserName + "','" + userToSave.Salt + "')";
                 //String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, HashedPassword, UserName) VALUES ('2343245','Bryan','Boswell','jk4h3kj3h5k4j3h5k', 'Dododo')";
                 MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
                 cmd.ExecuteNonQuery();
