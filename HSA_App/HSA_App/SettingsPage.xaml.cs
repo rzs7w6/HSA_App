@@ -10,9 +10,12 @@ namespace HSA_App
 {
     public partial class SettingsPage : ContentPage
     {
-        public SettingsPage()
+		User me; 
+
+        public SettingsPage(User user)
         {
             InitializeComponent();
+			me = user;
         }
 
         public void handleLogout(object sender, EventArgs e)

@@ -7,10 +7,12 @@ namespace HSA_App
 {
 	public partial class LandingPage : ContentPage
 	{
-		public LandingPage()
+		User me;
+
+		public LandingPage(User user)
 		{
 			InitializeComponent();
-
+			me = user;
 			accountBalance.Text = "$3000.00";
             CouponListPage();
 
