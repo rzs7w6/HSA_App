@@ -2,29 +2,39 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 	         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	         Title="Home"
-	         x:Class="HSA_App.LandingPage"
-             Icon="home.png">
-	<StackLayout Spacing="10" >
-		<Image Source="logo.png"/>
-        <StackLayout Spacing="10" BackgroundColor="Gray">
+
+	         x:Class="HSA_App.LandingPage">
+    <StackLayout Spacing="10">
+        <StackLayout Spacing="10" BackgroundColor="#0A3079">
             <Label x:Name="label"
 			Text="Account balance"
 			HorizontalOptions="Center"
 			VerticalOptions="Fill"
 			FontSize="16"
-            TextColor="Aqua"   
+            TextColor="White"   
                />
             <Label x:Name="accountBalance"
 			Text=""
 			HorizontalOptions="Center"
 			VerticalOptions="Fill"
 			FontSize="40"
-            TextColor="Blue"   
+            TextColor="White" 
                />
         </StackLayout>
-        <StackLayout Spacing="10" BackgroundColor="Blue">
-            <Label Text="HelloWorld"
-                   FontSize="16"/>
+        <StackLayout Spacing="10">
+            <Label  x:Name="ExampleShiz"
+                    Text="Transaction History"
+                   HorizontalOptions="Center"
+			       VerticalOptions="Fill"
+			       FontSize="16"
+                   />
+            <ListView x:Name="TransactionView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding StoreName}" Detail="{Binding CouponDetails}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
         </StackLayout>
     </StackLayout>
