@@ -6,7 +6,7 @@
 	x:Class="HSA_App.RegistrationPage">
     <ScrollView>
 	<ContentPage.Resources>
-    <ResourceDictionary>
+   	 <ResourceDictionary>
 
       <local:BooleanToObjectConverter x:Key="boolToStyleImage"
                                               x:TypeArguments="Style">
@@ -51,7 +51,7 @@
       </local:BooleanToObjectConverter>
     </ResourceDictionary>
   </ContentPage.Resources>
-		<StackLayout Spacing="5">
+	<StackLayout Spacing="5">
 			<Label  Text="Registration"
             FontSize="30"
             HorizontalTextAlignment="Center"

@@ -11,6 +11,10 @@ namespace HSA_App
 		{
 			InitializeComponent();
 			//accountBalance.Text = "$3000.00";
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 		}
 	}
 }
