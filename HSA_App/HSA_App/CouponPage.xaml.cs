@@ -14,11 +14,13 @@ namespace HSA_App
 {
     public partial class CouponPage : ContentPage
     {
-        public CouponPage()
+		User me;
+
+        public CouponPage(User user)
         {
             InitializeComponent();
             CouponListPage();
-          
+			me = user;
         }
 
         ObservableCollection<Coupon> coupons = new ObservableCollection<Coupon>();

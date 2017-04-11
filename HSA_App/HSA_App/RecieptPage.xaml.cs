@@ -10,10 +10,12 @@ namespace HSA_App
 {
     public partial class RecieptPage : ContentPage
     {
-        public RecieptPage()
+		User me;
+
+        public RecieptPage(User user)
         {
             InitializeComponent();
-
+			me = user;
             BindingContext = new ReceiptsViewModel();
             
         }
