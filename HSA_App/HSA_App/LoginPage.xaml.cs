@@ -60,16 +60,8 @@ namespace HSA_App
 
 		}
 
-        public void handleLogin(object sender, EventArgs e)
+        public async void handleLogin(object sender, EventArgs e)
 		{
-			//TESTING PURPOSES!!
-			if (username.Text.Equals("test") && password.Text.Equals("password"))
-			{
-                //App.Current.MainPage = new Navigation();
-                App.Current.MainPage = new NavigationPage(new NavigationLocal());
-                return;
-			}
-
 			//Good To go! The password contains all necassary components to be a password
 			if (checkPassword(password.Text) == -1)
 			{
@@ -82,25 +74,29 @@ namespace HSA_App
 			{
 				display.Text = "";
 				display.TextColor = Color.White;
-
 				password.BackgroundColor = Color.White;
+
+				var sv = new WebService();
+				User user = await sv.GetUsers(username.Text, password.Text);
+
+				if (user != null)
+				{
+					App.Current.MainPage = new NavigationPage(new Navigation(user));
+				}
+				/*
+				if (es != null)
+				{
+					/*string decrypted = Crypto.DecryptAes(Encoding.Unicode.GetBytes(password.Text), password.Text, Encoding.Unicode.GetBytes(es.Salt));
+					Debug.WriteLine(decrypted + "\n");
+					Debug.WriteLine(password.Text + "\n");
+					App.Current.MainPage = new NavigationPage(new Navigation(es));
+				}*/
+				else
+				{
+					display.Text = "Invalid login information!";
+				}
+
 			}
-
-            //ADD QUERY LOGIC HERE TO TEST PROPER USERNAME/PASSWORD COMBO!!!
-
-            var sv = new WebService();
-            var es = sv.GetUsers(username.Text, password.Text);
-            if(es != null)
-            {
-                App.Current.MainPage = new NavigationPage(new NavigationLocal());
-            }
-            //User returnUser = new User();
-            //registerUser = es
-
-            //Debug.WriteLine("es is " + es.ToString());
-
-            //compare the password from the user returned to the one in the form
-            
         }
 
 

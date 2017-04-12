@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Coupons"
+             Icon="coupon.png"
              x:Class="HSA_App.CouponPage">
     <StackLayout Spacing="10">
         <Button
