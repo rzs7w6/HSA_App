@@ -51,6 +51,9 @@ namespace HSA_App
             ISymmetricKeyAlgorithmProvider aes = WinRTCrypto.SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithm.AesCbcPkcs7);
             ICryptographicKey symetricKey = aes.CreateSymmetricKey(key);
             var bytes = WinRTCrypto.CryptographicEngine.Encrypt(symetricKey, Encoding.UTF8.GetBytes(data));
+
+			//DecryptAes(bytes, password, salt);
+
             return bytes;
         }
         /// <summary>    

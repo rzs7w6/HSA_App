@@ -76,21 +76,27 @@ namespace HSA_App
 				display.TextColor = Color.White;
 				password.BackgroundColor = Color.White;
 
+				//Start our webservice
 				var sv = new WebService();
+
+				//Getuser object back based on username
 				User user = await sv.GetUsers(username.Text, password.Text);
+
+				//Create byte array from string
+				byte[] EncryptedPass = Encoding.UTF8.GetBytes(user.HashedPassword);
+				byte[] Salt = Encoding.UTF8.GetBytes(user.Salt);
+
+				//Decrypt That hoe
+				byte[] encrypted = Crypto.EncryptAes(password.Text, password.Text,Salt);
+
+				//Unecrypted Password
+				Debug.WriteLine(Encoding.UTF8.GetString(encrypted,0,encrypted.Length));
+				Debug.WriteLine(user.HashedPassword);
 
 				if (user != null)
 				{
 					App.Current.MainPage = new NavigationPage(new NavigationLocal(user));
 				}
-				/*
-				if (es != null)
-				{
-					/*string decrypted = Crypto.DecryptAes(Encoding.Unicode.GetBytes(password.Text), password.Text, Encoding.Unicode.GetBytes(es.Salt));
-					Debug.WriteLine(decrypted + "\n");
-					Debug.WriteLine(password.Text + "\n");
-					App.Current.MainPage = new NavigationPage(new Navigation(es));
-				}*/
 				else
 				{
 					display.Text = "Invalid login information!";
