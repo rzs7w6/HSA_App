@@ -203,7 +203,7 @@ namespace HSA_App
 				//person.Birthday = Convert.ToDateTime(dobLabel.Text);
 				var sv = new WebService();
 				var es = sv.RegisterUser(person);
-                App.Current.MainPage = new NavigationPage(new Navigation());
+                App.Current.MainPage = new NavigationPage(new NavigationLocal());
 
             }
         }

@@ -51,10 +51,7 @@
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Navigation.cs" />
-    <Compile Include="ReceiptVaultPage.xaml.cs">
-      <DependentUpon>ReceiptVaultPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="NavigationLocal.cs" />
     <Compile Include="RecieptPage.xaml.cs">
       <DependentUpon>RecieptPage.xaml</DependentUpon>
     </Compile>
@@ -69,7 +66,7 @@
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
-    <Compile Include="ViewReceiptViewModel.cs" />
+    <Compile Include="ViewReceiptsPage.cs" />
     <Compile Include="WebService.cs" />
     <Compile Include="Coupon.cs" />
     <Compile Include="EmailBehaviorValidator.cs" />
@@ -153,12 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SettingsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ReceiptVaultPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

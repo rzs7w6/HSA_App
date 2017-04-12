@@ -12,6 +12,8 @@ namespace HSA_App
 {
 	public partial class LoginPage : ContentPage
 	{
+        public NavigationLocal navigation = new NavigationLocal();
+
 		public LoginPage()
 		{
 			InitializeComponent();
@@ -64,7 +66,7 @@ namespace HSA_App
 			if (username.Text.Equals("test") && password.Text.Equals("password"))
 			{
                 //App.Current.MainPage = new Navigation();
-                App.Current.MainPage = new NavigationPage(new Navigation());
+                App.Current.MainPage = new NavigationPage(new NavigationLocal());
                 return;
 			}
 
@@ -90,7 +92,7 @@ namespace HSA_App
             var es = sv.GetUsers(username.Text, password.Text);
             if(es != null)
             {
-                App.Current.MainPage = new NavigationPage(new Navigation());
+                App.Current.MainPage = new NavigationPage(new NavigationLocal());
             }
             //User returnUser = new User();
             //registerUser = es
