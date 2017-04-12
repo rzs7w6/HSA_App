@@ -69,7 +69,23 @@ namespace HSA_App
                         bytes =  memoryStream.ToArray();
                     }
 
-                    sources.Add(ImageSource.FromStream(() => new MemoryStream(bytes)));
+                    //sources.Add(ImageSource.FromStream(() => new MemoryStream(bytes)));
+
+                    //Create new user object
+                    ReceiptRest rec = new ReceiptRest();
+                    rec.AccountNumber = 12345678910;
+                    rec.Total = 5;
+                    rec.Date = "5-21-1860";
+                    rec.Image = bytes;
+
+                    //rec.AccountNumber = Convert.ToInt64(accountNum.Text);
+                    //Debug.WriteLine("\n\n\n\n\nThere was Nour account number!  " + person.AccountNumber);
+
+                    //person.HashedPassword = password1.Text;
+
+                    var sv = new WebService();
+                    var es = sv.RegisterReceipt(rec);
+                    //App.Current.MainPage = new NavigationPage(new NavigationLocal(person));
 
                 }
                 
