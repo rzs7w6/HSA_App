@@ -7,7 +7,13 @@
     <ScrollView>
 
 	<StackLayout Spacing="5">
-			<Label  Text="Registration"
+           <Button x:Name="backButton"
+            Clicked="handleBack"
+            Text="Back"
+            HeightRequest="45"
+            VerticalOptions="Start"
+            HorizontalOptions="Start" />
+            <Label  Text="Registration"
             FontSize="30"
             HorizontalTextAlignment="Center"
             VerticalOptions="Start"

@@ -122,6 +122,10 @@ namespace HSA_App
 
 		}
 
+        public void handleBack(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new LoginPage();
+        }
 
 		public async void handleReg(object sender, EventArgs e)
 		{
