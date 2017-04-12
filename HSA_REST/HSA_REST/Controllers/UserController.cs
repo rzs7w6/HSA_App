@@ -46,6 +46,7 @@ namespace HSA_REST.Controllers
             id = pp.saveUser(value);
         }
 
+
         // PUT: api/Person/5
         public void Put(int id, [FromBody]string value)
         {
@@ -55,5 +56,15 @@ namespace HSA_REST.Controllers
         public void Delete(int id)
         {
         }
+
+
+        public void Post([FromBody]Receipt value)
+        {
+            UserPer pp = new UserPer();
+            long id;
+            id = pp.saveReceipt(value);
+        }
+
+
     }
 }

@@ -102,5 +102,18 @@ namespace HSA_REST
             return -1;
         }
 
+        public long saveReceipt(Receipt receiptToSave)
+        {
+
+                conn.Open();
+                String sqlString = "INSERT INTO user(AccountNumber, Total, Date, Image) VALUES ('" + receiptToSave.AccountNumber + "','" + receiptToSave.Total + "','" + receiptToSave.Date + "','" + receiptToSave.Image + "')";
+                //String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, HashedPassword, UserName) VALUES ('2343245','Bryan','Boswell','jk4h3kj3h5k4j3h5k', 'Dododo')";
+                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
+                cmd.ExecuteNonQuery();
+                long id = cmd.LastInsertedId;
+                return id;
+          
+        }
+
     }
 }

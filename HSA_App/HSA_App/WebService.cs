@@ -57,6 +57,37 @@ namespace HSA_App
             return null;
         }
 
+        public async Task<User> RegisterReceipt(ReceiptRest rec)
+        {
+            //Create a new client object to access our resftull service
+            var client = new System.Net.Http.HttpClient();
+
+            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user");
+            
+            //Convert object to Json to pass to restfull service
+            var json = JsonConvert.SerializeObject(rec);
+
+            try
+            {
+                //POST CALL TO RESTFULL SERVICE
+                StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
+                var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user", content);
+                var RecJson = response.Content.ReadAsStringAsync().Result;
+                var rootobject = JsonConvert.DeserializeObject<Rootobject>(RecJson);
+
+
+                return rootobject.users;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            return null;
+        }
+
+
+
         public async Task <User> GetUsers(String username, String password)
         {
 			var client = new System.Net.Http.HttpClient();
