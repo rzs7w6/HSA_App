@@ -12,7 +12,7 @@ namespace HSA_App
 {
 	public partial class LoginPage : ContentPage
 	{
-        public NavigationLocal navigation = new NavigationLocal();
+        //public NavigationLocal navigation = new NavigationLocal(user);
 
 		public LoginPage()
 		{
@@ -81,7 +81,7 @@ namespace HSA_App
 
 				if (user != null)
 				{
-					App.Current.MainPage = new NavigationPage(new Navigation(user));
+					App.Current.MainPage = new NavigationPage(new NavigationLocal(user));
 				}
 				/*
 				if (es != null)

@@ -213,7 +213,7 @@ namespace HSA_App
                 person.Birthday = birthday;
 				var sv = new WebService();
 				var es = sv.RegisterUser(person);
-                App.Current.MainPage = new NavigationPage(new NavigationLocal(es));
+                App.Current.MainPage = new NavigationPage(new NavigationLocal(person));
 
             }
         }
