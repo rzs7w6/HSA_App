@@ -30,10 +30,9 @@ namespace HSA_App
             //Crypto.
             var salt = Crypto.CreateSalt(16);
             Debug.WriteLine("Encrypting String " + data + ", with salt " + BitConverter.ToString(salt));
+
             var bytes = Crypto.EncryptAes(pass, pass, salt);
-
             user.HashedPassword = (BitConverter.ToString(bytes)).ToString();
-
             user.Salt = (BitConverter.ToString(salt)).ToString();
 
 
@@ -65,37 +64,17 @@ namespace HSA_App
             return null;
         }
 
-        public async Task<User> GetUsers(String username, String password)
+        public async Task <User> GetUsers(String username, String password)
         {
-            var client = new System.Net.Http.HttpClient();
-
-            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user");
+			var client = new System.Net.Http.HttpClient();
             
-            var response = await client.GetAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user/"+"\"" + username +"\"");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user/");
 
-            var usersJson = response.Content.ReadAsStringAsync().Result;
+			var response = await client.GetAsync( client.BaseAddress +"\"" + username +"\"");
 
-            User returnPerson = JsonConvert.DeserializeObject<User>(usersJson);
-            Debug.WriteLine(returnPerson.HashedPassword);
-
-            //var data = "Cryptographic example";
-            var pass = password;
-
-            //var salt = Crypto.CreateSalt(16);
-
-            
-
-            var bytes = Crypto.EncryptAes(password, password, Encoding.GetBytes(returnPerson.Salt));
-
-            //var str = Crypto.DecryptAes(, returnPerson.HashedPassword, salt);
-            //Debug.WriteLine("Decryted " + str);
-
-            if (returnPerson.HashedPassword.Equals(password))
-                return returnPerson;
-            else
-                return null;
-
-
+			var usersJson = response.Content.ReadAsStringAsync().Result;
+		 	
+			return JsonConvert.DeserializeObject<User>(usersJson);
         }
 
     }

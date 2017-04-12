@@ -12,6 +12,7 @@ namespace HSA_App
 		public RegistrationPage()
 		{
 			InitializeComponent();
+            dobPicker.SetValue (DatePicker.MaximumDateProperty, DateTime.Now);
 		}
 
 
@@ -122,7 +123,7 @@ namespace HSA_App
 		}
 
 
-		public void handleReg(object sender, EventArgs e)
+		public async void handleReg(object sender, EventArgs e)
 		{
 
 			//Check First Name
@@ -200,10 +201,15 @@ namespace HSA_App
 
                 person.HashedPassword = password1.Text;
 
-				//person.Birthday = Convert.ToDateTime(dobLabel.Text);
+				int year = dobPicker.Date.Year;
+                int day = dobPicker.Date.Day;
+                int month = dobPicker.Date.Month;
+                string birthday = year + "-" + day + "-" + month;
+
+                person.Birthday = birthday;
 				var sv = new WebService();
-				var es = sv.RegisterUser(person);
-                App.Current.MainPage = new NavigationPage(new Navigation());
+				var es = await sv.RegisterUser(person);
+                App.Current.MainPage = new NavigationPage(new Navigation(es));
 
             }
         }
