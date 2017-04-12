@@ -69,7 +69,11 @@ namespace HSA_App
                         bytes =  memoryStream.ToArray();
                     }
 
-                    sources.Add(ImageSource.FromStream(() => new MemoryStream(bytes)));
+                        sources.Add(ImageSource.FromStream(() => new MemoryStream(bytes))); //This will move
+                    //Add to database
+                        //POST bytes, DateTime.UtcNow, total, xxxxxxxx (divorced from main navigation for now)
+                        
+                        
 
                 }
                 
@@ -177,6 +181,12 @@ namespace HSA_App
         List<ImageSource> sources = new List<ImageSource>();
         async Task ExecuteViewInvoiceCommandAsync()
         {
+            //Retrieve from database
+                //
+            //Clear sources
+                //sources.Clear();
+            //Add to sources
+                //sources.Add(ImageSource.FromStream(() => new MemoryStream(bytes)));
             var viewPage = new ViewReceiptsPage(sources);
 
             await App.Current.MainPage.Navigation.PushModalAsync(viewPage);
