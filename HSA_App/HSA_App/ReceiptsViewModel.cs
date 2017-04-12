@@ -60,6 +60,18 @@ namespace HSA_App
                     PrintStatus("Photo was null :(");
                     return;
                 }
+                else
+                {
+                    byte[] bytes;
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        photo.GetStream().CopyTo(memoryStream);
+                        bytes =  memoryStream.ToArray();
+                    }
+
+                    sources.Add(ImageSource.FromStream(() => new MemoryStream(bytes)));
+
+                }
                 
 
                 // 2. Add  OCR logic.
@@ -156,6 +168,18 @@ namespace HSA_App
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(Message));
             }
+        }
+
+        //Dealing with viewing images please
+        Command viewInvoiceCommand = null;
+        public Command ViewInvoiceCommand =>
+                    viewInvoiceCommand ?? (viewInvoiceCommand = new Command(async () => await ExecuteViewInvoiceCommandAsync()));
+        List<ImageSource> sources = new List<ImageSource>();
+        async Task ExecuteViewInvoiceCommandAsync()
+        {
+            var viewPage = new ViewReceiptsPage(sources);
+
+            await App.Current.MainPage.Navigation.PushModalAsync(viewPage);
         }
 
     }
