@@ -58,6 +58,7 @@ namespace HSA_REST.Controllers
         }
 
 
+        // POST: api/receipt
         public void Post([FromBody]Receipt value)
         {
             UserPer pp = new UserPer();

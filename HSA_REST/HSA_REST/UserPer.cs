@@ -16,7 +16,7 @@ namespace HSA_REST
         public UserPer()
         {
             string myConnectionString;
-            myConnectionString = "server=us-cdbr-azure-central-a.cloudapp.net; port=3306; database=umbcapstone; user=b6f1178a2ef7af; pwd=20593ecb";
+            myConnectionString = "localhost; port=3306; database=umbcapstone; user=root; pwd=Capstone1!";
             try
             {
                 conn = new MySql.Data.MySqlClient.MySqlConnection();
@@ -56,6 +56,7 @@ namespace HSA_REST
                 u.HashedPassword = MySqlReader.GetString(4);
                 u.UserName = MySqlReader.GetString(5);
                 u.Salt = MySqlReader.GetString(6);
+                u.Email = MySqlReader.GetString(7);
                 return u;
             }
 
@@ -92,7 +93,7 @@ namespace HSA_REST
             if (!isUserDuplicate(userToSave))
             {
                 conn.Open();
-                String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, Birthday, HashedPassword, UserName, Salt) VALUES ('" + userToSave.AccountNumber + "','" + userToSave.FirstName + "','" + userToSave.LastName + "','" + userToSave.Birthday + "','" + userToSave.HashedPassword + "','" + userToSave.UserName + "','" + userToSave.Salt + "')";
+                String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, Birthday, HashedPassword, UserName, Salt, Email) VALUES ('" + userToSave.AccountNumber + "','" + userToSave.FirstName + "','" + userToSave.LastName + "','" + userToSave.Birthday + "','" + userToSave.HashedPassword + "','" + userToSave.UserName + "','" + userToSave.Salt + userToSave.Email + "')";
                 //String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, HashedPassword, UserName) VALUES ('2343245','Bryan','Boswell','jk4h3kj3h5k4j3h5k', 'Dododo')";
                 MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
                 cmd.ExecuteNonQuery();
@@ -106,7 +107,7 @@ namespace HSA_REST
         {
 
                 conn.Open();
-                String sqlString = "INSERT INTO user(AccountNumber, Total, Date, Image) VALUES ('" + receiptToSave.AccountNumber + "','" + receiptToSave.Total + "','" + receiptToSave.Date + "','" + receiptToSave.Image + "')";
+                String sqlString = "INSERT INTO receipt(AccountNumber, Total, Date, Image) VALUES ('" + receiptToSave.AccountNumber + "','" + receiptToSave.Total + "','" + receiptToSave.Date + "','" + receiptToSave.Image + "')";
                 //String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, HashedPassword, UserName) VALUES ('2343245','Bryan','Boswell','jk4h3kj3h5k4j3h5k', 'Dododo')";
                 MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
                 cmd.ExecuteNonQuery();

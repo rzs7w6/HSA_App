@@ -72,9 +72,11 @@ namespace HSA_App
                 //POST CALL TO RESTFULL SERVICE
                 StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
                 var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user", content);
-                var RecJson = response.Content.ReadAsStringAsync().Result;
-                var rootobject = JsonConvert.DeserializeObject<Rootobject>(RecJson);
 
+                Debug.WriteLine(response.Content);
+
+                var RecJson = response.Content.ReadAsStringAsync().Result;
+                var rootobject = JsonConvert.DeserializeObject<RootobjectRest>(RecJson);
 
                 return rootobject.users;
             }
