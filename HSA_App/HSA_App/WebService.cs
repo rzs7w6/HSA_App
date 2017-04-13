@@ -18,42 +18,35 @@ namespace HSA_App
 
         public async Task<User> RegisterUser(User user)
         {
-            Debug.WriteLine(user);
-            var client = new System.Net.Http.HttpClient();
+			//Create a new client object to access our resftull service
+			var client = new System.Net.Http.HttpClient();
 
             client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user");
 
-
-            var data = "Cryptographic example";
             var pass = user.HashedPassword;
             
-            //Crypto.
+			//Get the Salt (Byte[])
             var salt = Crypto.CreateSalt(16);
-            Debug.WriteLine("Encrypting String " + data + ", with salt " + BitConverter.ToString(salt));
 
+			//Get the encrypted password
             var bytes = Crypto.EncryptAes(pass, pass, salt);
-            user.HashedPassword = (BitConverter.ToString(bytes)).ToString();
-            user.Salt = (BitConverter.ToString(salt)).ToString();
 
+			//Store the string of "bytes" in our user object to be passed to the database
+            user.HashedPassword = Encoding.UTF8.GetString(bytes, 0, bytes.Length);
+			user.Salt = Encoding.UTF8.GetString(salt, 0, salt.Length);
 
-
-            Debug.WriteLine((BitConverter.ToString(salt)).ToString());
-
+			//Convert object to Json to pass to restfull service
             var json = JsonConvert.SerializeObject(user);
-
-            // Debug.WriteLine("hasssssshhhhh\n\n\n\n " + BitConverter.ToString(bytes));
-            //var bytes2 = Crypto.
-            Debug.WriteLine("Encrypted, Now Decrypting");
-            //var str = Crypto.DecryptAes(bytes, pass, salt);
-            //Debug.WriteLine("Decryted " + str);
 
             try
             {
+				//POST CALL TO RESTFULL SERVICE
                 StringContent content = new StringContent(json,UnicodeEncoding.UTF8, "application/json");
-                //Debug.WriteLine("\n\n\nContent is: "+ content + "\n\n\n\n");
                 var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user", content);
                 var UserJson = response.Content.ReadAsStringAsync().Result;
                 var rootobject = JsonConvert.DeserializeObject<Rootobject>(UserJson);
+
+
                 return rootobject.users;
             }
             catch(Exception ex)
@@ -63,6 +56,39 @@ namespace HSA_App
 
             return null;
         }
+
+        public async Task<User> RegisterReceipt(ReceiptRest rec)
+        {
+            //Create a new client object to access our resftull service
+            var client = new System.Net.Http.HttpClient();
+
+            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user");
+            
+            //Convert object to Json to pass to restfull service
+            var json = JsonConvert.SerializeObject(rec);
+
+            try
+            {
+                //POST CALL TO RESTFULL SERVICE
+                StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
+                var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user", content);
+
+                Debug.WriteLine(response.Content);
+
+                var RecJson = response.Content.ReadAsStringAsync().Result;
+                var rootobject = JsonConvert.DeserializeObject<RootobjectRest>(RecJson);
+
+                return rootobject.users;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            return null;
+        }
+
+
 
         public async Task <User> GetUsers(String username, String password)
         {

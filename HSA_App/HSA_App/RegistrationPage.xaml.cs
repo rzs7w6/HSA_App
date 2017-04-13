@@ -212,8 +212,8 @@ namespace HSA_App
 
                 person.Birthday = birthday;
 				var sv = new WebService();
-				var es = await sv.RegisterUser(person);
-                App.Current.MainPage = new NavigationPage(new Navigation(es));
+				var es = sv.RegisterUser(person);
+                App.Current.MainPage = new NavigationPage(new NavigationLocal(person));
 
             }
         }
