@@ -93,7 +93,7 @@ namespace HSA_REST
             if (!isUserDuplicate(userToSave))
             {
                 conn.Open();
-                String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, Birthday, HashedPassword, UserName, Salt, Email) VALUES ('" + userToSave.AccountNumber + "','" + userToSave.FirstName + "','" + userToSave.LastName + "','" + userToSave.Birthday + "','" + userToSave.HashedPassword + "','" + userToSave.UserName + "','" + userToSave.Salt + userToSave.Email + "')";
+                String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, Birthday, HashedPassword, UserName, Salt, Email) VALUES ('" + userToSave.AccountNumber + "','" + userToSave.FirstName + "','" + userToSave.LastName + "','" + userToSave.Birthday + "','" + userToSave.HashedPassword + "','" + userToSave.UserName + "','" + userToSave.Salt + "','" + userToSave.Email + "')";
                 //String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, HashedPassword, UserName) VALUES ('2343245','Bryan','Boswell','jk4h3kj3h5k4j3h5k', 'Dododo')";
                 MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
                 cmd.ExecuteNonQuery();
