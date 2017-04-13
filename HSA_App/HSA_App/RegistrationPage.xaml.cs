@@ -130,6 +130,7 @@ namespace HSA_App
 			if (checkName(fname.Text) == -1)
 			{
 				fname.BackgroundColor = Color.Red;
+
 			}
 			else
 			{
