@@ -12,7 +12,7 @@ namespace HSA_App
 		public RegistrationPage()
 		{
 			InitializeComponent();
-            dobPicker.SetValue (DatePicker.MaximumDateProperty, DateTime.Now);
+            		dobPicker.SetValue (DatePicker.MaximumDateProperty, DateTime.Now);
 		}
 
 
@@ -25,7 +25,7 @@ namespace HSA_App
         public Int64 checkAccount(String actNum)
 		{
 			Int64 number;
-
+				
 			//Checks the Account for all numbers (Attempt to convert)
 			try
 			{
@@ -41,9 +41,9 @@ namespace HSA_App
 			//Check the length of the account to be 11
 			try
 			{
-				if (actNum.Length != 11)
+				if (actNum.Length != 9)
 				{
-					Debug.WriteLine("Account Number was NOT of length 11!!!\n");
+					Debug.WriteLine("Account Number was NOT of length 9!!!\n");
 					return -1;
 				}
 
