@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace HSA_REST.Controllers
 {
-    public class UserController : ApiController
+    public class ReceiptController : ApiController
     {
         // GET: api/user
         public IEnumerable<string> Get()
@@ -30,20 +30,20 @@ namespace HSA_REST.Controllers
         */
 
         // GET: api/user/"username"
-        public User Get(string userName)
+        public Receipt Get(string recName)
         {
-            UserPer up = new UserPer();
-            User user = up.getUser(userName);
+            ReceiptPer up = new ReceiptPer();
+            Receipt receipt = up.getReceipt(recName);
 
-            return user;
+            return receipt;
         }
 
-        // POST: api/user
-        public void Post([FromBody]User value)
+        // POST: api/Receipt
+        public void Post([FromBody]Receipt value)
         {
-            UserPer pp = new UserPer();
+            ReceiptPer pp = new ReceiptPer();
             long id;
-            id = pp.saveUser(value);
+            id = pp.saveReceipt(value);
         }
 
 
@@ -56,7 +56,6 @@ namespace HSA_REST.Controllers
         public void Delete(int id)
         {
         }
-
 
 
     }
