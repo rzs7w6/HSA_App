@@ -20,6 +20,7 @@ namespace HSA_App
 
         public void handleLogout(object sender, EventArgs e)
         {
+            me = null;
             App.Current.MainPage = new LoginPage();
         }
         public void handleUpdateAccount(object sender, EventArgs e)

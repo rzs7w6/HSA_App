@@ -96,9 +96,9 @@ namespace HSA_App
             
 			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user/");
 
-			var response = await client.GetAsync( client.BaseAddress +"\"" + username +"\"");
+			var response = await client.GetAsync(client.BaseAddress +"\"" + username +"\"");
 
-			var usersJson = response.Content.ReadAsStringAsync().Result;
+            var usersJson = response.Content.ReadAsStringAsync().Result;
 		 	
 			return JsonConvert.DeserializeObject<User>(usersJson);
         }
