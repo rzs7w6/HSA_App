@@ -14,7 +14,7 @@ namespace HSA_REST.Controllers
         // GET: api/user
         public IEnumerable<string> Get()
         {
-            return new string[] { "Person1", "Person2" };
+            return new string[] { "Person1R", "Person2R" };
         }
 
         //public bool isUserDuplicate(string uname)
@@ -30,10 +30,10 @@ namespace HSA_REST.Controllers
         */
 
         // GET: api/user/"username"
-        public Receipt Get(string recName)
+        public Receipt Get(Int64 username)
         {
             ReceiptPer up = new ReceiptPer();
-            Receipt receipt = up.getReceipt(recName);
+            Receipt receipt = up.getReceipt(username);
 
             return receipt;
         }
