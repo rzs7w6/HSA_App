@@ -82,6 +82,12 @@ namespace HSA_App
 				//Getuser object back based on username
 				User user = await sv.GetUsers(username.Text, password.Text);
 
+                if(user == null)
+                {
+                    display.Text = "Invalid login information!";
+                }
+                //Debug.WriteLine("just want to check user");
+                /*
 				//Create byte array from string
 				byte[] EncryptedPass = Encoding.UTF8.GetBytes(user.HashedPassword);
 				byte[] Salt = Encoding.UTF8.GetBytes(user.Salt);
@@ -100,7 +106,16 @@ namespace HSA_App
 				else
 				{
 					display.Text = "Invalid login information!";
-				}
+				}*/
+
+                if (user.UserName.Equals(username.Text))
+                {
+                    App.Current.MainPage = new NavigationPage(new NavigationLocal(user));
+                }
+                else
+                {
+                    display.Text = "Invalid login information!";
+                }
 
 			}
         }
