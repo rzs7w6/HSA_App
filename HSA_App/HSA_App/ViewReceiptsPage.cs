@@ -26,7 +26,7 @@ namespace HSA_App
                 parent.Children.Add(image);
             }
 
-            Content = parent;
+            Content = new ScrollView { Content = parent };
         }
     }
 }
