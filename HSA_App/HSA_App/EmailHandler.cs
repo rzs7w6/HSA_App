@@ -11,7 +11,7 @@ namespace HSA_App
     class EmailHandler
     {
         private static String userName = "rzs7w6";
-        private static String password = "***REMOVED***";
+        private static String password = "";
         private static readonly HttpClient client = new HttpClient();
 
         public static async Task<bool> sendForgotPasswordEmail(String recepient)
