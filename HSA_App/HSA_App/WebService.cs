@@ -57,12 +57,12 @@ namespace HSA_App
             return null;
         }
 
-        public async Task<User> RegisterReceipt(ReceiptRest rec)
+        public async Task<ReceiptRest> RegisterReceipt(ReceiptRest rec)
         {
             //Create a new client object to access our resftull service
             var client = new System.Net.Http.HttpClient();
 
-            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user");
+            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt");
             
             //Convert object to Json to pass to restfull service
             var json = JsonConvert.SerializeObject(rec);
@@ -71,14 +71,14 @@ namespace HSA_App
             {
                 //POST CALL TO RESTFULL SERVICE
                 StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
-                var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user", content);
+                var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt", content);
 
                 Debug.WriteLine(response.Content);
 
                 var RecJson = response.Content.ReadAsStringAsync().Result;
                 var rootobject = JsonConvert.DeserializeObject<RootobjectRest>(RecJson);
 
-                return rootobject.users;
+                return rootobject.receipt;
             }
             catch (Exception ex)
             {
@@ -101,6 +101,19 @@ namespace HSA_App
             var usersJson = response.Content.ReadAsStringAsync().Result;
 		 	
 			return JsonConvert.DeserializeObject<User>(usersJson);
+        }
+
+        public async Task<ReceiptRest> GetReceipts(Int64 accountNumber)
+        {
+            var client = new System.Net.Http.HttpClient();
+
+            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt/");
+
+            var response = await client.GetAsync(client.BaseAddress + accountNumber.ToString());
+
+            var receiptJson = response.Content.ReadAsStringAsync().Result;
+
+            return JsonConvert.DeserializeObject<ReceiptRest>(receiptJson);
         }
 
     }
