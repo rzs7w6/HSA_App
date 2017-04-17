@@ -199,16 +199,19 @@ namespace HSA_App
             var sv = new WebService();
 
             //Getuser object back based on username
-            ReceiptRest receipt = await sv.GetReceipts(12345678901);
+            List<ReceiptRest> receipt = await sv.GetReceipts(12345678901);
 
             if (receipt == null)
             {
                 //display.Text = "Invalid login information!";
             }
             //Clear sources
-            //sources.Clear();
+            sources.Clear();
             //Add to sources
-            sources.Add(ImageSource.FromStream(() => new MemoryStream(receipt.Image)));
+            foreach (ReceiptRest index in receipt)
+            {
+                sources.Add(ImageSource.FromStream(() => new MemoryStream(index.Image)));
+            }
             var viewPage = new ViewReceiptsPage(sources);
 
             await App.Current.MainPage.Navigation.PushModalAsync(viewPage);

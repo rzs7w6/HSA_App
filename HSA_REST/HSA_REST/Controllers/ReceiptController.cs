@@ -30,10 +30,10 @@ namespace HSA_REST.Controllers
         */
 
         // GET: api/user/"username"
-        public Receipt Get(Int64 username)
+        public List<Receipt> Get(Int64 username)
         {
             ReceiptPer up = new ReceiptPer();
-            Receipt receipt = up.getReceipt(username);
+            List<Receipt> receipt = up.getReceipt(username);
 
             return receipt;
         }

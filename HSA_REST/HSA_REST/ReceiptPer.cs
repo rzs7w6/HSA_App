@@ -30,8 +30,9 @@ namespace HSA_REST
             }
         }
 
-        public Receipt getReceipt(Int64 username)
+        public List<Receipt> getReceipt(Int64 username)
         {
+            List<Receipt> list = new List<Receipt>();
             Receipt u = new Receipt();
             Console.WriteLine("\n\n\n\n"+username);
             MySqlDataReader MySqlReader = null;
@@ -51,7 +52,7 @@ namespace HSA_REST
 
 
 
-            if (MySqlReader.Read())
+            while (MySqlReader.Read())
             {
                 
                 u.AccountNumber = MySqlReader.GetInt64(0);
@@ -62,10 +63,10 @@ namespace HSA_REST
 
                 //u.Image = null;
                 //u.Image = MySqlReader.GetBytes(3,5, buff,8,6);
-                return u;
+                list.Add(u);
             }
-            
-            return null;
+
+            return list;
         }
 
         public long saveReceipt(Receipt receiptToSave)
