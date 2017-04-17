@@ -43,6 +43,7 @@
     <Compile Include="Crypto.cs" />
     <Compile Include="EmailHandler.cs" />
     <Compile Include="Expense.cs" />
+    <Compile Include="Receipt.cs" />
     <Compile Include="ReceiptsViewModel.cs" />
     <Compile Include="CouponPage.xaml.cs">
       <DependentUpon>CouponPage.xaml</DependentUpon>
@@ -51,10 +52,7 @@
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Navigation.cs" />
-    <Compile Include="ReceiptVaultPage.xaml.cs">
-      <DependentUpon>ReceiptVaultPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="NavigationLocal.cs" />
     <Compile Include="RecieptPage.xaml.cs">
       <DependentUpon>RecieptPage.xaml</DependentUpon>
     </Compile>
@@ -69,7 +67,7 @@
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
-    <Compile Include="ViewReceiptViewModel.cs" />
+    <Compile Include="ViewReceiptsPage.cs" />
     <Compile Include="WebService.cs" />
     <Compile Include="Coupon.cs" />
     <Compile Include="EmailBehaviorValidator.cs" />
@@ -156,17 +154,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ReceiptVaultPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="RecieptPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+<<<<<<< HEAD
+=======
+  <ItemGroup />
+>>>>>>> master
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

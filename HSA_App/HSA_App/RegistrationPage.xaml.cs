@@ -122,6 +122,10 @@ namespace HSA_App
 
 		}
 
+        public void handleBack(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new LoginPage();
+        }
 
 		public async void handleReg(object sender, EventArgs e)
 		{
@@ -209,8 +213,8 @@ namespace HSA_App
 
                 person.Birthday = birthday;
 				var sv = new WebService();
-				var es = await sv.RegisterUser(person);
-                App.Current.MainPage = new NavigationPage(new Navigation(es));
+				var es = sv.RegisterUser(person);
+                App.Current.MainPage = new NavigationPage(new NavigationLocal(person));
 
             }
         }

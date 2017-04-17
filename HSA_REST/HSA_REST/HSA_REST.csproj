@@ -114,6 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Compile Include="Controllers\ReceiptController.cs" />
+    <Compile Include="Models\Receipt.cs" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -127,6 +129,7 @@
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="ReceiptPer.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>

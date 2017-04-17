@@ -7,6 +7,7 @@
              Icon="receipt.png">
   <ContentPage.ToolbarItems>
     <ToolbarItem Command="{Binding AddInvoiceCommand}" Text="Add" />
+    <ToolbarItem Command="{Binding ViewInvoiceCommand}" Text="View" />
   </ContentPage.ToolbarItems>
   <ContentPage.Content>
     

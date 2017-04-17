@@ -15,6 +15,7 @@ namespace HSA_REST.Models
         public String HashedPassword { get; set; }
         public String UserName { get; set; }
         public String Salt { get; set; }
+        public String Email { get; set; }
 
     }
 }

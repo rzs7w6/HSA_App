@@ -19,6 +19,8 @@ namespace HSA_REST
                 routeTemplate: "api/{controller}/{username}",
                 defaults: new { username = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute("DefaultApi1", "api/{controller}/{AccountNumber}");
         }
     }
 }
