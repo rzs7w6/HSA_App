@@ -21,7 +21,7 @@ namespace HSA_App
 
     public class RootobjectRest
     {
-        public User users { get; set; }
+        public ReceiptRest receipt { get; set; }
     }
 
 }
