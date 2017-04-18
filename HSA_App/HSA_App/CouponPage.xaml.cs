@@ -28,12 +28,12 @@ namespace HSA_App
         {
             //defined in XAML to follow
             CouponView.ItemsSource = coupons;
-            coupons.Add(new Coupon { StoreName = "cVs", CouponDetails = "Free Bitch Mittens" });
-            coupons.Add(new Coupon { StoreName = "Bitchmart", CouponDetails = "Nad Creme" });
-            coupons.Add(new Coupon { StoreName = "WalGREEN", CouponDetails = "Bud of Lyfe" });
-            coupons.Add(new Coupon { StoreName = "Drug Store #1", CouponDetails = "Drugs" });
-            coupons.Add(new Coupon { StoreName = "Rite Aids", CouponDetails = "G Easy Was Here" });
-            coupons.Add(new Coupon { StoreName = "HighMee", CouponDetails = "Fresher Green In Every Aisle" });
+            coupons.Add(new Coupon { StoreName = "CVS", CouponDetails = "Medicine" });
+            coupons.Add(new Coupon { StoreName = "Walmart", CouponDetails = "Medicine" });
+            coupons.Add(new Coupon { StoreName = "Walgreens", CouponDetails = "Medicine" });
+            coupons.Add(new Coupon { StoreName = "Drug Store #1", CouponDetails = "Medicine" });
+            coupons.Add(new Coupon { StoreName = "Rite Aide", CouponDetails = "Medicine" });
+            coupons.Add(new Coupon { StoreName = "HyVee", CouponDetails = "Medicine" });
         }   
         private void GetCoupons(object sender, EventArgs e)
         {

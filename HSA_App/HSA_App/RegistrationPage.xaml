@@ -3,95 +3,119 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:local="clr-namespace:HSA_App"
 	Title="Registration Page"
-	x:Class="HSA_App.RegistrationPage">
+	x:Class="HSA_App.RegistrationPage"
+             BackgroundColor="#f9f9f9">
     <ScrollView>
 
-	<StackLayout Spacing="5">
-           <Button x:Name="backButton"
-            Clicked="handleBack"
-            Text="Back"
-            HeightRequest="45"
-            VerticalOptions="Start"
-            HorizontalOptions="Start" />
-            <Label  Text="Registration"
-            FontSize="30"
-            HorizontalTextAlignment="Center"
-            VerticalOptions="Start"
-            HorizontalOptions="FillAndExpand"
-            Margin="0,40,0,0" />
-            <Entry  x:Name="fname"
-            Placeholder="First name"
-            HeightRequest="45"
-            VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand"
-            Text="" />
+        <StackLayout Spacing="5" Margin="15">
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical"  HorizontalOptions="Start">
+                    <Button 
+                        x:Name="backButton"
+                        Clicked="handleBack"
+                        Text="Back"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        Margin="0"
+                           />   
+                </StackLayout>
+                <StackLayout Orientation="Vertical"  HorizontalOptions="StartAndExpand">
+                    <Label  
+                        Text="Registration"
+                        FontSize="30"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Start"
+			            HorizontalOptions="Fill"
+                        Margin="0,0,0,0" />
+                </StackLayout>  
+            </StackLayout>
+
+            <Entry  
+                x:Name="fname"
+                Placeholder="First name"
+                HeightRequest="45"
+                VerticalOptions="Center"
+			    HorizontalOptions="Fill"
+                Text="" 
+                TextColor="#0A3079"/>
+
             <Entry  x:Name="lname"
-            Placeholder="Last name"
-            HeightRequest="45"
-            VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand" 
-            Text="" />
+                Placeholder="Last name"
+                HeightRequest="45"
+                VerticalOptions="Center"
+			    HorizontalOptions="Fill" 
+                Text="" />
 
-            <Entry  x:Name="email"
-
-            Placeholder="Email"
-            HeightRequest="45"
-            VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand"
-			Keyboard="Email">
+            <Entry  
+                x:Name="email"
+                Placeholder="Email"
+                HeightRequest="45"
+                VerticalOptions="Center"
+			    HorizontalOptions="Fill"
+			    Keyboard="Email"
+                TextColor="#0A3079">
                 <Entry.Behaviors>
                     <local:EmailBehaviorValidator x:Name="emailValidator"/>
                 </Entry.Behaviors>
             </Entry>
-            
 
+            <Entry 
+                x:Name="accountNum"
+			    Placeholder="Account Number"
+			    Keyboard="Numeric"
+			    VerticalOptions="Center"
+			    HorizontalOptions="Fill"
+			    Text=""
+                TextColor="#0A3079"/>
 
-
-            
-                      
-		<Entry x:Name="accountNum"
-
-			Placeholder="Account Number"
-			Keyboard="Numeric"
-			HorizontalOptions="CenterAndExpand"
-			VerticalOptions="CenterAndExpand"
-			Text=""/>
-            <Label x:Name="dobLabel"
-			Text="Date of Birth"
-			HorizontalOptions="CenterAndExpand"
-			VerticalOptions="CenterAndExpand"/>
+            <Label 
+                x:Name="dobLabel"
+			    Text="Date of Birth"
+			    VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+			    HorizontalOptions="Fill"
+                TextColor="#0A3079"
+                   />
             <DatePicker VerticalOptions="CenterAndExpand"
-			HorizontalOptions="CenterAndExpand"
-			x:Name="dobPicker" Date="{Binding DOB}">
+			        HorizontalOptions="CenterAndExpand"
+			        x:Name="dobPicker" Date="{Binding DOB}">
                 <DatePicker.Format>yyyy-dd-MM</DatePicker.Format>
             </DatePicker>
-
+            
             <Entry  x:Name="username"
-            Placeholder="username"
-            HeightRequest="45"
-            VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand"
-            Text="" />
+                Placeholder="username"
+                HeightRequest="45"
+                VerticalOptions="Center"
+			    HorizontalOptions="Fill"
+                Text=""
+                TextColor="#0A3079"/>
+            
             <Entry x:Name="password1"
-			Placeholder="password"
-			HeightRequest="45"
-			VerticalOptions="Center"
-			HorizontalOptions="FillAndExpand"
-			IsPassword="true"
-			Text=""/>
+			    Placeholder="password"
+			    HeightRequest="45"
+			    VerticalOptions="Center"
+			    HorizontalOptions="Fill"
+			    IsPassword="true"
+			    Text=""
+                TextColor="#0A3079"/>
+            
             <Entry x:Name="password2"
-			Placeholder="confirm password"
-			HeightRequest="45"
-			VerticalOptions="Center"
-			HorizontalOptions="FillAndExpand"
-			IsPassword="true"
-			Text=""/>
+			    Placeholder="confirm password"
+			    HeightRequest="45"
+			    VerticalOptions="Center"
+			    HorizontalOptions="Fill"
+			    IsPassword="true"
+			    Text=""
+                TextColor="#0A3079"/>
+            
             <Button x:Name="regButton"
-            Clicked="handleReg"
-            Text="Register"
-            HeightRequest="45"
-            VerticalOptions="EndAndExpand"
-            HorizontalOptions="FillAndExpand" />
+                Clicked="handleReg"
+                Text="Register"
+                HeightRequest="45"
+                VerticalOptions="End"
+			    HorizontalOptions="Fill"
+                TextColor="#0A3079"
+                BackgroundColor="White"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
