@@ -17,6 +17,7 @@ namespace HSA_App
             InitializeComponent();
 			me = user;
             BindingContext = new ReceiptsViewModel();
+
         }
     }
 }
