@@ -80,7 +80,7 @@ namespace HSA_REST
             cmd.Parameters.Add("@accountnum", MySqlDbType.Int64).Value = receiptToSave.AccountNumber;
             cmd.Parameters.Add("@total", MySqlDbType.Float).Value = receiptToSave.Total;
             cmd.Parameters.Add("@date", MySqlDbType.VarChar).Value = receiptToSave.Date;
-            cmd.Parameters.Add("@image", MySqlDbType.Blob).Value = receiptToSave.Image;
+            cmd.Parameters.Add("@image", MySqlDbType.LongBlob).Value = receiptToSave.Image;
             cmd.ExecuteNonQuery();
             long id = cmd.LastInsertedId;
             return id;
