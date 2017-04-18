@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:HSA_App"
              x:Class="HSA_App.RecieptPage"
-             Title="Receipts"
+             BackgroundColor="#f9f9f9"
              Icon="receipt.png">
   <ContentPage.ToolbarItems>
     <ToolbarItem Command="{Binding AddInvoiceCommand}" Text="Add" />
