@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Settings"
+             BackgroundColor="#f9f9f9"
              Icon="settings.png"
              x:Class="HSA_App.SettingsPage">
-  <StackLayout Spacing="50">
+    <StackLayout Spacing="15" Margin="15">
     <Label  Text="Settings"
-            FontSize="30"
+            FontSize="16"
             HorizontalTextAlignment="Center"
-            VerticalOptions="Start"
-            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"
+            HorizontalOptions="Fill"
             Margin="0,50,0,0" />
     <Button x:Name="logoutButton"
             Clicked="handleLogout"
             Text="Logout"
-            HeightRequest="100"
+            
             VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand" />
+            HorizontalOptions="Fill" />
     <Button x:Name="updateAccountButton"
             Clicked="handleUpdateAccount"
             Text="Update Account"
-            HeightRequest="100"
+            
             VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand" />
+            HorizontalOptions="Fill" />
     <Label x:Name="display"
            Text=""
            VerticalOptions="End"
