@@ -8,27 +8,36 @@
     <ScrollView>
 
         <StackLayout Spacing="5" Margin="15">
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical"  HorizontalOptions="Start">
+                    <Button 
+                        x:Name="backButton"
+                        Clicked="handleBack"
+                        Text="Back"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        Margin="0"
+                           />   
+                </StackLayout>
+                <StackLayout Orientation="Vertical"  HorizontalOptions="StartAndExpand">
+                    <Label  
+                        Text="Registration"
+                        FontSize="30"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Start"
+			            HorizontalOptions="Fill"
+                        Margin="0,0,0,0" />
+                </StackLayout>  
+            </StackLayout>
 
-            <Button x:Name="backButton"
-                Clicked="handleBack"
-                Text="Back"
-                VerticalOptions="Start"
-                HorizontalOptions="Start"
-                    Margin="0"/>
-
-            <Label  Text="Registration"
-                FontSize="30"
-                HorizontalTextAlignment="Center"
-                VerticalOptions="Start"
-			    HorizontalOptions="Fill"
-                Margin="0,40,0,0" />
-
-            <Entry  x:Name="fname"
+            <Entry  
+                x:Name="fname"
                 Placeholder="First name"
                 HeightRequest="45"
                 VerticalOptions="Center"
 			    HorizontalOptions="Fill"
-                Text="" />
+                Text="" 
+                TextColor="#0A3079"/>
 
             <Entry  x:Name="lname"
                 Placeholder="Last name"
@@ -43,36 +52,43 @@
                 HeightRequest="45"
                 VerticalOptions="Center"
 			    HorizontalOptions="Fill"
-			    Keyboard="Email">
+			    Keyboard="Email"
+                TextColor="#0A3079">
                 <Entry.Behaviors>
                     <local:EmailBehaviorValidator x:Name="emailValidator"/>
                 </Entry.Behaviors>
             </Entry>
 
-            <Entry x:Name="accountNum"
-
+            <Entry 
+                x:Name="accountNum"
 			    Placeholder="Account Number"
 			    Keyboard="Numeric"
 			    VerticalOptions="Center"
 			    HorizontalOptions="Fill"
-			    Text=""/>
-            
-            <Label x:Name="dobLabel"
+			    Text=""
+                TextColor="#0A3079"/>
+
+            <Label 
+                x:Name="dobLabel"
 			    Text="Date of Birth"
 			    VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
 			    HorizontalOptions="Fill"
-                <DatePicker VerticalOptions="CenterAndExpand"
+                TextColor="#0A3079"
+                   />
+            <DatePicker VerticalOptions="CenterAndExpand"
 			        HorizontalOptions="CenterAndExpand"
 			        x:Name="dobPicker" Date="{Binding DOB}">
-                    <DatePicker.Format>yyyy-dd-MM</DatePicker.Format>
-                </DatePicker>
-
+                <DatePicker.Format>yyyy-dd-MM</DatePicker.Format>
+            </DatePicker>
+            
             <Entry  x:Name="username"
                 Placeholder="username"
                 HeightRequest="45"
                 VerticalOptions="Center"
 			    HorizontalOptions="Fill"
-                Text="" />
+                Text=""
+                TextColor="#0A3079"/>
             
             <Entry x:Name="password1"
 			    Placeholder="password"
@@ -80,7 +96,8 @@
 			    VerticalOptions="Center"
 			    HorizontalOptions="Fill"
 			    IsPassword="true"
-			    Text=""/>
+			    Text=""
+                TextColor="#0A3079"/>
             
             <Entry x:Name="password2"
 			    Placeholder="confirm password"
@@ -88,14 +105,17 @@
 			    VerticalOptions="Center"
 			    HorizontalOptions="Fill"
 			    IsPassword="true"
-			    Text=""/>
+			    Text=""
+                TextColor="#0A3079"/>
             
             <Button x:Name="regButton"
                 Clicked="handleReg"
                 Text="Register"
                 HeightRequest="45"
                 VerticalOptions="End"
-			    HorizontalOptions="Fill" />
+			    HorizontalOptions="Fill"
+                TextColor="#0A3079"
+                BackgroundColor="White"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

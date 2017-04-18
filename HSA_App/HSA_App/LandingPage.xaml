@@ -4,7 +4,7 @@
 	         BackgroundColor="#f9f9f9"
 			 Icon="home.png" 
 	         x:Class="HSA_App.LandingPage">
-    <StackLayout Spacing="10" Margin="15">
+    <StackLayout Spacing="10">
         <StackLayout Spacing="10" BackgroundColor="#0A3079">
             <Label x:Name="label"
 			Text="Account balance"
@@ -21,7 +21,7 @@
             TextColor="White" 
                />
         </StackLayout>
-        <StackLayout Spacing="10">
+        <StackLayout Spacing="10" Margin="15">
             <Label  x:Name="ExampleShiz"
                     Text="Transaction History"
                    HorizontalOptions="Center"
