@@ -19,11 +19,6 @@ namespace HSA_App
 
     }
 
-    public class RootobjectRest1
-    {
-        public List<ReceiptRest> receipt { get; set; }
-    }
-
     public class RootobjectRest
     {
         public ReceiptRest receipt { get; set; }
