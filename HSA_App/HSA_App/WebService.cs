@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace HSA_App
 {
@@ -57,12 +58,12 @@ namespace HSA_App
             return null;
         }
 
-        public async Task<User> RegisterReceipt(ReceiptRest rec)
+        public async Task<ReceiptRest> RegisterReceipt(ReceiptRest rec)
         {
             //Create a new client object to access our resftull service
             var client = new System.Net.Http.HttpClient();
 
-            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user");
+            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt");
             
             //Convert object to Json to pass to restfull service
             var json = JsonConvert.SerializeObject(rec);
@@ -71,14 +72,14 @@ namespace HSA_App
             {
                 //POST CALL TO RESTFULL SERVICE
                 StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
-                var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user", content);
+                var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt", content);
 
                 Debug.WriteLine(response.Content);
 
                 var RecJson = response.Content.ReadAsStringAsync().Result;
                 var rootobject = JsonConvert.DeserializeObject<RootobjectRest>(RecJson);
 
-                return rootobject.users;
+                return rootobject.receipt;
             }
             catch (Exception ex)
             {
@@ -93,14 +94,32 @@ namespace HSA_App
         public async Task <User> GetUsers(String username, String password)
         {
 			var client = new System.Net.Http.HttpClient();
-            
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user/");
+
+            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user/");
 
 			var response = await client.GetAsync(client.BaseAddress +"\"" + username +"\"");
 
             var usersJson = response.Content.ReadAsStringAsync().Result;
 		 	
 			return JsonConvert.DeserializeObject<User>(usersJson);
+        }
+
+        public async Task<List<ReceiptRest>> GetReceipts(Int64 accountNumber)
+        {
+            var client = new System.Net.Http.HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt/");
+            try
+            {
+                var response = await client.GetAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt/" + accountNumber.ToString());
+                var receiptJson = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<ReceiptRest>>(receiptJson);
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine("\n\n\n\n\n\n"+ex);
+            }
+            return null;
         }
 
     }

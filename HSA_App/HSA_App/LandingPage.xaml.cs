@@ -24,12 +24,12 @@ namespace HSA_App
         {
             //defined in XAML to follow
             TransactionView.ItemsSource = coupons;
-            coupons.Add(new Coupon { StoreName = "cVs", CouponDetails = "$10" });
-            coupons.Add(new Coupon { StoreName = "Bitchmart", CouponDetails = "$10" });
-            coupons.Add(new Coupon { StoreName = "WalGREEN", CouponDetails = "$10" });
+            coupons.Add(new Coupon { StoreName = "CVS", CouponDetails = "$10" });
+            coupons.Add(new Coupon { StoreName = "Walmart", CouponDetails = "$10" });
+            coupons.Add(new Coupon { StoreName = "Walgreens", CouponDetails = "$10" });
             coupons.Add(new Coupon { StoreName = "Drug Store #1", CouponDetails = "$10" });
-            coupons.Add(new Coupon { StoreName = "Rite Aids", CouponDetails = "$10" });
-            coupons.Add(new Coupon { StoreName = "HighMee", CouponDetails = "$10" });
+            coupons.Add(new Coupon { StoreName = "Rite Aide", CouponDetails = "$10" });
+            coupons.Add(new Coupon { StoreName = "HyVee", CouponDetails = "$10" });
         }
     }
 }

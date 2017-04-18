@@ -73,7 +73,7 @@ namespace HSA_App
 
                     //Create new user object
                     ReceiptRest rec = new ReceiptRest();
-                    rec.AccountNumber = 12345678910;
+                    rec.AccountNumber = 12345678901;
                     rec.Total = 5;
                     rec.Date = "5-21-1860";
                     rec.Image = bytes;
@@ -195,11 +195,23 @@ namespace HSA_App
         async Task ExecuteViewInvoiceCommandAsync()
         {
             //Retrieve from database
-                //
+            //Start our webservice
+            var sv = new WebService();
+
+            //Getuser object back based on username
+            List<ReceiptRest> receipt = await sv.GetReceipts(12345678901);
+
+            if (receipt == null)
+            {
+                //display.Text = "Invalid login information!";
+            }
             //Clear sources
-                //sources.Clear();
+            sources.Clear();
             //Add to sources
-                //sources.Add(ImageSource.FromStream(() => new MemoryStream(bytes)));
+            foreach (ReceiptRest index in receipt)
+            {
+                sources.Add(ImageSource.FromStream(() => new MemoryStream(index.Image)));
+            }
             var viewPage = new ViewReceiptsPage(sources);
 
             await App.Current.MainPage.Navigation.PushModalAsync(viewPage);
