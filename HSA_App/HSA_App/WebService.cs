@@ -28,14 +28,15 @@ namespace HSA_App
             
 			//Get the Salt (Byte[])
             var salt = Crypto.CreateSalt(16);
-
+            /*
 			//Get the encrypted password
             var bytes = Crypto.EncryptAes(pass, pass, salt);
 
 			//Store the string of "bytes" in our user object to be passed to the database
             user.HashedPassword = Encoding.UTF8.GetString(bytes, 0, bytes.Length);
-			user.Salt = Encoding.UTF8.GetString(salt, 0, salt.Length);
-
+			*/
+            user.Salt = Encoding.UTF8.GetString(salt, 0, salt.Length);
+            
 			//Convert object to Json to pass to restfull service
             var json = JsonConvert.SerializeObject(user);
 
@@ -64,10 +65,10 @@ namespace HSA_App
             var client = new System.Net.Http.HttpClient();
 
             client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt");
-            
+
             //Convert object to Json to pass to restfull service
             var json = JsonConvert.SerializeObject(rec);
-
+            Debug.WriteLine("\n\n\nthe string has " +json.Length+" characters");
             try
             {
                 //POST CALL TO RESTFULL SERVICE
@@ -102,6 +103,19 @@ namespace HSA_App
             var usersJson = response.Content.ReadAsStringAsync().Result;
 		 	
 			return JsonConvert.DeserializeObject<User>(usersJson);
+        }
+
+        public async Task<Balance> GetBalance(Int64 accountNumber)
+        {
+            var client = new System.Net.Http.HttpClient();
+
+            client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/balance/");
+
+            var response = await client.GetAsync(client.BaseAddress + accountNumber.ToString());
+
+            var usersJson = response.Content.ReadAsStringAsync().Result;
+
+            return JsonConvert.DeserializeObject<Balance>(usersJson);
         }
 
         public async Task<List<ReceiptRest>> GetReceipts(Int64 accountNumber)

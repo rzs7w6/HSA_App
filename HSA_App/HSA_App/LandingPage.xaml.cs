@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace HSA_App
 {
@@ -11,12 +12,35 @@ namespace HSA_App
 
 		public LandingPage(User user)
 		{
+            if (user == null)
+                Debug.WriteLine("\n\n\n\n\nTHE USER IS NULL\n\n\n\n");
 			InitializeComponent();
-			me = user;
-			accountBalance.Text = "$3000.00";
+			//me = user;
+			//accountBalance.Text = "$3000.00";
+            getBalance(user);
+            
             CouponListPage();
 
 		}
+
+        private async void getBalance(User user)
+        {
+            var sv = new WebService();
+
+            Balance balance = await sv.GetBalance(user.AccountNumber);
+
+            accountBalance.Text = balance.AccountBalance.ToString();
+
+            if(balance == null)
+            {
+                accountBalance.Text = "0";
+            }
+            else
+            {
+                accountBalance.Text = balance.AccountBalance.ToString();
+            }
+        }
+
         ObservableCollection<Coupon> coupons = new ObservableCollection<Coupon>();
         private void CouponListPage()
         {

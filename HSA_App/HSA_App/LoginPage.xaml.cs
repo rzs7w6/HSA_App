@@ -108,12 +108,13 @@ namespace HSA_App
 					display.Text = "Invalid login information!";
 				}*/
 
-                if (user.UserName.Equals(username.Text))
+                if (user.UserName.Equals(username.Text) && user.HashedPassword.Equals(password.Text))
                 {
                     App.Current.MainPage = new NavigationPage(new NavigationLocal(user));
                 }
                 else
                 {
+                    display.TextColor = Color.Red;
                     display.Text = "Invalid login information!";
                 }
 

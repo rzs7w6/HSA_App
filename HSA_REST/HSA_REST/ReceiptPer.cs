@@ -73,7 +73,7 @@ namespace HSA_REST
         {
 
             //conn.Open();
-            var buff = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
+            //var buff = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
             //String sqlString = "INSERT INTO receipt(AccountNumber, Total, Date, Image) VALUES ('" + receiptToSave.AccountNumber + "','" + receiptToSave.Total + "','" + receiptToSave.Date + "','" + "@image" + "')";
             //String sqlString = "INSERT INTO receipt(AccountNumber, Total, Date, Image) VALUES ('" + 12345678900 + "','" + 45.6 + "','" + "3-34-1999" + "','" + receiptToSave.Image + "')";
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand("insert into receipt set AccountNumber = @accountnum, Total = @total, Date = @date, Image = @image", conn);
