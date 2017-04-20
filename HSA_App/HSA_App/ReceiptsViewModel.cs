@@ -74,8 +74,8 @@ namespace HSA_App
                     //Create new user object
                     ReceiptRest rec = new ReceiptRest();
                     rec.AccountNumber = 12345678901;
-                    rec.Total = 5;
-                    rec.Date = "5-21-1860";
+                    rec.Total = 10;
+                    rec.Date = "4-18-2017";
                     rec.Image = bytes;
 
                     //rec.AccountNumber = Convert.ToInt64(accountNum.Text);
@@ -192,6 +192,9 @@ namespace HSA_App
         public Command ViewInvoiceCommand =>
                     viewInvoiceCommand ?? (viewInvoiceCommand = new Command(async () => await ExecuteViewInvoiceCommandAsync()));
         List<ImageSource> sources = new List<ImageSource>();
+        private User user;
+
+
         async Task ExecuteViewInvoiceCommandAsync()
         {
             //Retrieve from database

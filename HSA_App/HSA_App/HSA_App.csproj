@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Balance.cs" />
     <Compile Include="CameraResult.cs" />
     <Compile Include="CardViewCell.cs" />
     <Compile Include="Crypto.cs" />

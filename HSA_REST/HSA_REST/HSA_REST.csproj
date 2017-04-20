@@ -114,7 +114,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Compile Include="BalancePer.cs" />
+    <Compile Include="Controllers\BalanceController.cs" />
     <Compile Include="Controllers\ReceiptController.cs" />
+    <Compile Include="Models\Balance.cs" />
     <Compile Include="Models\Receipt.cs" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config">
