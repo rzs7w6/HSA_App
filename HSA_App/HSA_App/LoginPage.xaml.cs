@@ -85,7 +85,7 @@ namespace HSA_App
 					//Getuser object back based on username
 					User user = await sv.GetUsers(username.Text, password.Text);
 
-					if (user == null)
+					if (user.UserName == null)
 					{
 						display.Text = "Invalid login information!";
 					}
