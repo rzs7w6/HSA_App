@@ -210,6 +210,8 @@ namespace HSA_App
 
             if (receipt == null)
             {
+                Debug.WriteLine("Receipt was null");
+                return;
                 //display.Text = "Invalid login information!";
             }
             //Clear sources
