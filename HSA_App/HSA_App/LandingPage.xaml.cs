@@ -30,11 +30,11 @@ namespace HSA_App
 
             if(balance == null)
             {
-                accountBalance.Text = "0";
+                accountBalance.Text = "$0.00";
             }
             else
             {
-                accountBalance.Text = balance.AccountBalance.ToString();
+                accountBalance.Text = "$" + balance.AccountBalance.ToString();
             }
         }
 
