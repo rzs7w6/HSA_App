@@ -111,7 +111,7 @@ namespace HSA_App
 			
 				}
 			}
-        }
+        
 
 
 		public void handleRegister(object sender, EventArgs e)
