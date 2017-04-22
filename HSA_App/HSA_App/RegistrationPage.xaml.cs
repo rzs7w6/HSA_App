@@ -212,8 +212,21 @@ namespace HSA_App
 
                 person.Birthday = birthday;
 				var sv = new WebService();
-				var es = sv.RegisterUser(person);
-                App.Current.MainPage = new NavigationPage(new NavigationLocal(person));
+				var es = await sv.RegisterUser(person);
+
+				Balance balance = new Balance();
+				balance.AccountBalance = 0;
+				balance.AccountNumber = person.AccountNumber;
+
+				int result = await sv.GenerateBalance(balance);
+				if (result == 1)
+				{
+					App.Current.MainPage = new NavigationPage(new NavigationLocal(person));
+				}
+				else
+				{
+					Debug.WriteLine("ERROR WITH BALANCE CREATION!!\n");
+				}
 
             }
         }

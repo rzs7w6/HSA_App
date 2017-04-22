@@ -50,6 +50,8 @@ namespace HSA_App
                 await CrossMedia.Current.Initialize();
 
                 MediaFile photo;
+
+                ReceiptRest rec = new ReceiptRest();
                 if (CrossMedia.Current.IsCameraAvailable)
                 {
                     photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
@@ -76,19 +78,19 @@ namespace HSA_App
                         photo.GetStream().CopyTo(memoryStream);
                         bytes =  memoryStream.ToArray();
                     }
-                    //Create new user object
-                    ReceiptRest rec = new ReceiptRest();
+                    ////Create new user object
+                    //ReceiptRest rec = new ReceiptRest();
                     rec.AccountNumber = user.AccountNumber;
                     //rec.AccountNumber = 12345678910;
-                    rec.Total = 10;
-                    rec.Date = "4-18-2017";
+                    //rec.Total = 10;
+                    //rec.Date = "4-18-2017";
                     //string currentDateTime = DateTime.UtcNow.Date.ToString();
                     //rec.Date = currentDateTime.Remove(10);
                         
                     rec.Image = bytes;
 
-                    var sv = new WebService();
-                    var es = sv.RegisterReceipt(rec);
+                    //var sv = new WebService();
+                    //var es = sv.RegisterReceipt(rec);
                 }
 
 
@@ -144,6 +146,10 @@ namespace HSA_App
                 //rec.Total = (float) total;
                 //var sv = new WebService();
                 //var es = sv.RegisterReceipt(rec);
+                rec.Total = (float) total;
+                rec.Date = DateTime.UtcNow.ToString();
+                var sv = new WebService();
+                var es = sv.RegisterReceipt(rec);
             }
             catch (Exception ex)
             {
@@ -210,6 +216,8 @@ namespace HSA_App
 
             if (receipt == null)
             {
+                Debug.WriteLine("Receipt was null");
+                return;
                 //display.Text = "Invalid login information!";
             }
             //Clear sources

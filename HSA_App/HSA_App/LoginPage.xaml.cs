@@ -85,8 +85,6 @@ namespace HSA_App
 					//Getuser object back based on username
 					User user = await sv.GetUsers(username.Text, password.Text);
 
-					Debug.WriteLine(user.FirstName);
-
 					if (user.UserName == null)
 					{
 						display.TextColor = Color.Red;
@@ -126,7 +124,7 @@ namespace HSA_App
 		public void handlePasswordHelp(object sender, EventArgs e)
 		{
 			display.Text = "You have requested help with your username/password";
-            EmailHandler.sendForgotPasswordEmail("zane.spalding@gmail.com");
+            App.Current.MainPage.Navigation.PushModalAsync(new ForgotEmailPage());
 		}
 	}
 }

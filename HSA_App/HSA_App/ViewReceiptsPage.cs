@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HSA_App
@@ -11,50 +11,35 @@ namespace HSA_App
     
     public class ViewReceiptsPage : ContentPage
     {
-        User me = new User();
-        StackLayout parent = null;
+        TableRoot tableRoot = new TableRoot("Receipts");
 
         public ViewReceiptsPage(List<ImageSource> sources, List<ReceiptRest> receipts)
         {
-            parent = new StackLayout();
-
-            Button button = new Button
+            tableRoot.Add(new TableSection
             {
-                Text = "< Back",
-                HeightRequest = 45,
-                HorizontalOptions = LayoutOptions.Start,
-                VerticalOptions = LayoutOptions.Start,   
-            };
-            parent.Children.Add(button);
-            button.Clicked += OnButtonClicked;
+                new buttonCell { }
+            });
 
             foreach (ImageSource source in sources)
             {
-                Image image = new Image
+                tableRoot.Add(new TableSection(receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Date)
                 {
-                    Source = source
-                };
-                
-                Label date = new Label
-                {
-                    Text = receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Date
-                };
-                
-                Label total = new Label
-                {
-                    Text = receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Total.ToString()
-                };
-                parent.Children.Add(image);
-                parent.Children.Add(date);
-                parent.Children.Add(total);
-            }
+                    new ImageCell
+                    {
+                        ImageSource = source,
+                        Text = "Total: " + receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Total.ToString(),
+                        TextColor = Color.FromHex("#0A3079")
+                    }
+                });
 
-            Content = new ScrollView { Content = parent };
+            }
+            Content = new TableView { Root = tableRoot };
         }
 
         void OnButtonClicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new NavigationLocal(me));
+            //App.Current.MainPage = new NavigationPage(new NavigationLocal(me));
+            App.Current.MainPage.Navigation.PopModalAsync();
         }
     }
 }
