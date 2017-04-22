@@ -14,7 +14,7 @@ namespace HSA_App
         User me = new User();
         StackLayout parent = null;
 
-        public ViewReceiptsPage(List<ImageSource> sources)
+        public ViewReceiptsPage(List<ImageSource> sources, List<ReceiptRest> receipts)
         {
             parent = new StackLayout();
 
@@ -34,7 +34,19 @@ namespace HSA_App
                 {
                     Source = source
                 };
+                
+                Label date = new Label
+                {
+                    Text = receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Date
+                };
+                
+                Label total = new Label
+                {
+                    Text = receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Total.ToString()
+                };
                 parent.Children.Add(image);
+                parent.Children.Add(date);
+                parent.Children.Add(total);
             }
 
             Content = new ScrollView { Content = parent };

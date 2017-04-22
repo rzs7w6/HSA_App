@@ -72,54 +72,46 @@ namespace HSA_App
 			}
 			else
 			{
-				display.Text = "";
-				display.TextColor = Color.White;
-				password.BackgroundColor = Color.White;
-
-				//Start our webservice
-				var sv = new WebService();
-
-				//Getuser object back based on username
-				User user = await sv.GetUsers(username.Text, password.Text);
-
-                if(user == null)
-                {
-                    display.Text = "Invalid login information!";
-                }
-                //Debug.WriteLine("just want to check user");
-                /*
-				//Create byte array from string
-				byte[] EncryptedPass = Encoding.UTF8.GetBytes(user.HashedPassword);
-				byte[] Salt = Encoding.UTF8.GetBytes(user.Salt);
-
-				//Decrypt That hoe
-				byte[] encrypted = Crypto.EncryptAes(password.Text, password.Text,Salt);
-
-				//Unecrypted Password
-				Debug.WriteLine(Encoding.UTF8.GetString(encrypted,0,encrypted.Length));
-				Debug.WriteLine(user.HashedPassword);
-
-				if (user != null)
+				try
 				{
-					App.Current.MainPage = new NavigationPage(new NavigationLocal(user));
+
+					display.Text = "";
+					display.TextColor = Color.White;
+					password.BackgroundColor = Color.White;
+
+					//Start our webservice
+					var sv = new WebService();
+
+					//Getuser object back based on username
+					User user = await sv.GetUsers(username.Text, password.Text);
+
+					if (user.UserName == null)
+					{
+						display.Text = "Invalid login information!";
+					}
+					else
+					{
+
+
+						if (user.UserName.Equals(username.Text) && user.HashedPassword.Equals(password.Text))
+						{
+							App.Current.MainPage = new NavigationPage(new NavigationLocal(user));
+						}
+						else
+						{
+							display.TextColor = Color.Red;
+							display.Text = "Invalid login information!";
+						}
+					}
 				}
-				else
+				catch (Exception ex)
 				{
-					display.Text = "Invalid login information!";
-				}*/
-
-                if (user.UserName.Equals(username.Text) && user.HashedPassword.Equals(password.Text))
-                {
-                    App.Current.MainPage = new NavigationPage(new NavigationLocal(user));
-                }
-                else
-                {
-                    display.TextColor = Color.Red;
-                    display.Text = "Invalid login information!";
-                }
-
+					Debug.WriteLine(ex);
+				}
+			
+				}
 			}
-        }
+        
 
 
 		public void handleRegister(object sender, EventArgs e)

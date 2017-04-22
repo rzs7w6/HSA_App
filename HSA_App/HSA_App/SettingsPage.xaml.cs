@@ -23,9 +23,37 @@ namespace HSA_App
             me = null;
             App.Current.MainPage = new LoginPage();
         }
-        public void handleUpdateAccount(object sender, EventArgs e)
+        public async void handleUpdateAccount(object sender, EventArgs e)
         {
-            //TODO handle update account information
+			var amount = deposit.Text;
+			double dollar = 0;
+
+			try
+			{
+				dollar = Convert.ToDouble(amount);
+				display.Text = "";
+			}
+			catch(Exception ex)
+			{
+				display.Text = "That's not a dollar amount";
+			}
+
+			try
+			{
+				var sv = new WebService();
+
+				Balance balance = await sv.GetBalance(me.AccountNumber);
+
+				double currentAmount = balance.AccountBalance;
+
+				double newBalance = currentAmount + dollar;
+
+			}
+			catch(Exception ex)
+			{
+				display.Text = "Error Occured when trying to update your account balance";
+			}
+
         }
     }
 }

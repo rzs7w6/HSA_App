@@ -15,12 +15,9 @@ namespace HSA_App
             if (user == null)
                 Debug.WriteLine("\n\n\n\n\nTHE USER IS NULL\n\n\n\n");
 			InitializeComponent();
-			//me = user;
-			//accountBalance.Text = "$3000.00";
-            getBalance(user);
-            
-            CouponListPage();
-
+			getBalance(user);
+			me = user;
+			CouponListPage();
 		}
 
         private async void getBalance(User user)
