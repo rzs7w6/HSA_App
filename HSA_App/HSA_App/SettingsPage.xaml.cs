@@ -35,6 +35,7 @@ namespace HSA_App
 			}
 			catch(Exception ex)
 			{
+				display.TextColor = Color.Red;
 				display.Text = "That's not a dollar amount";
 			}
 
