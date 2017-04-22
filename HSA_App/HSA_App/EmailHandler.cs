@@ -15,9 +15,9 @@ namespace HSA_App
 
         private static readonly HttpClient client = new HttpClient();
 
-        public static async Task<bool> sendForgotPasswordEmail(String recepient)
+        public static async Task<bool> sendForgotPasswordEmail(String recepient, String newPassword)
         {
-            String body = "Your new password is: WOOOOO";
+            String body = "Your new password is: " + newPassword;
             Dictionary<string, string> values = buildRequest(recepient, body);
 
             var content = new FormUrlEncodedContent(values);
@@ -39,7 +39,7 @@ namespace HSA_App
                { "api_key", password },
                { "to", recepient },
                { "toname", "Customer" },
-               { "subject", "UMB" },
+               { "subject", "UMB HSA Password Reset" },
                { "text", body },
                { "from", "info@domain.com" },
             };

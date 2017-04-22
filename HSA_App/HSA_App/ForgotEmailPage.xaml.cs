@@ -29,8 +29,9 @@ namespace HSA_App
 
         private async void Submit(Object sender, EventArgs e)
         {
-            UpdatePassword(RandomPassword(8));
-            await EmailHandler.sendForgotPasswordEmail(entry.Text);
+            string password = RandomPassword(8);
+            UpdatePassword(password);
+            await EmailHandler.sendForgotPasswordEmail(entry.Text, password);
             await App.Current.MainPage.Navigation.PopModalAsync();
         }
 
