@@ -30,6 +30,47 @@ namespace HSA_REST
             }
         }
 
+        public void updateBalance(Int64 username, double amount)
+        {
+ 
+            string sqlString = "UPDATE balance SET AccountBalance = 'amount' WHERE AccountNumber = " + username;
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
+            cmd.ExecuteNonQuery();
+
+        }
+
+        public long setBalance(Balance userToSave)
+        {
+
+           // string sqlString = "UPDATE balance SET AccountBalance = " + userToSave.AccountBalance + " WHERE AccountNumber = " + userToSave.AccountNumber;
+            //MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
+            //cmd.ExecuteNonQuery();
+
+            string sqlString = "UPDATE balance SET AccountBalance = " + userToSave.AccountBalance + " WHERE AccountNumber = " + userToSave.AccountNumber;
+            //String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, HashedPassword, UserName) VALUES (23432450098,'Bryan','Boswell','2-3-1456', 'jk4h3kj3h5k4j3h5k', 'Dododo', '2kjk3j4kj34kj', 'email@email.com')";
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
+            cmd.ExecuteNonQuery();
+            long id = cmd.LastInsertedId;
+            return id;
+
+        }
+
+        public long saveBalance(Balance userToSave)
+        {
+            //if (!isUserDuplicate(userToSave))
+            //{
+                //conn.Open();
+                String sqlString = "INSERT INTO balance(AccountNumber, AccountBalance) VALUES ('" + userToSave.AccountNumber + "','" + userToSave.AccountBalance + "')";
+                //String sqlString = "INSERT INTO user(AccountNumber, FirstName, LastName, HashedPassword, UserName) VALUES (23432450098,'Bryan','Boswell','2-3-1456', 'jk4h3kj3h5k4j3h5k', 'Dododo', '2kjk3j4kj34kj', 'email@email.com')";
+                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
+                cmd.ExecuteNonQuery();
+                long id = cmd.LastInsertedId;
+                return id;
+           // }
+            //return -1;
+        }
+
+
         public Balance getBalance(Int64 username)
         {
             Balance b = new Balance();

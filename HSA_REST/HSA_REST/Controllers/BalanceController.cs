@@ -25,15 +25,26 @@ namespace HSA_REST.Controllers
             return balance;
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+
+        // POST: api/user
+        public void Post([FromBody]Balance value)
         {
+            BalancePer pp = new BalancePer();
+            long id;
+            id = pp.saveBalance(value);
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public void Put([FromBody]Balance value)
         {
+            BalancePer pp = new BalancePer();
+            pp.setBalance(value);
         }
+
+
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
         // DELETE api/<controller>/5
         public void Delete(int id)
