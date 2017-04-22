@@ -11,10 +11,6 @@ namespace HSA_App
 {
     public class ViewReceiptsPage : ContentPage
     { 
-    //    Command zoomCommand<ImageSource>();
-    //    public Command ZoomCommand =>
-    //                zoomCommand ?? (zoomCommand = new Command(async () => await ExecuteZoomCommandAsync()));
-
         private async Task ExecuteZoomCommandAsync(string param)
         {
             Debug.WriteLine(param);

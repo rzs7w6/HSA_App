@@ -26,7 +26,14 @@ namespace HSA_App
                     //    Source = source
                     //}
                     new PinchToZoomContainer {
-                        Content = new Image { Source = source }
+                        Content = new Image {
+                            Source = source,
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            VerticalOptions = LayoutOptions.FillAndExpand
+                        },
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.CenterAndExpand
+
                     },
                     new Label
                     {
@@ -95,8 +102,29 @@ namespace HSA_App
                     double targetY = yOffset - (originY * Content.Height) * (currentScale - startScale);
 
                     // Apply translation based on the change in origin.
-                    Content.TranslationX = targetX;
-                    Content.TranslationY = targetY;
+                    if (targetX > -Content.Width * (currentScale - 1))
+                    {
+
+                        Content.TranslationX = -Content.Width * (currentScale - 1);
+                    }
+                    else if (targetX < 0)
+                    {
+                        Content.TranslationX = 0;
+                    }
+                    else
+                        Content.TranslationX = targetX;
+
+                    if (targetY > -Content.Height * (currentScale - 1))
+                    {
+
+                        Content.TranslationY = -Content.Height * (currentScale - 1);
+                    }
+                    else if (targetY < 0)
+                    {
+                        Content.TranslationY = 0;
+                    }
+                    else
+                        Content.TranslationY = targetY;
 
                     // Apply scale factor.
                     Content.Scale = currentScale;

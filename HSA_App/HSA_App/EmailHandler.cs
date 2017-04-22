@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,18 +16,18 @@ namespace HSA_App
 
         private static readonly HttpClient client = new HttpClient();
 
-        public static async Task<bool> sendForgotPasswordEmail(String recepient, String newPassword)
+        public static async Task<bool> sendForgotPasswordEmail(String recepient, String newPassword, String username)
         {
-            String body = "Your new password is: " + newPassword;
-            Dictionary<string, string> values = buildRequest(recepient, body);
+            String body = "Your username is: " + username + ". Your new password is: " + newPassword + ".  This will be your password for perpetuity.";
+            //Dictionary<string, string> values = buildRequest(recepient, body);
 
-            var content = new FormUrlEncodedContent(values);
+            //var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync("https://api.sendgrid.com/api/mail.send.json", content);
+            //var response = await client.PostAsync("https://api.sendgrid.com/api/mail.send.json", content);
 
-            var responseString = await response.Content.ReadAsStringAsync();
+            //var responseString = await response.Content.ReadAsStringAsync();
 
-            Debug.WriteLine(responseString.ToString());
+            //Debug.WriteLine(responseString.ToString());
 
             return true;
         }
