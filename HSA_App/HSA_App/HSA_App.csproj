@@ -49,6 +49,7 @@
     <Compile Include="ForgotEmailPage.xaml.cs">
       <DependentUpon>ForgotEmailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImagePage.cs" />
     <Compile Include="Receipt.cs" />
     <Compile Include="ReceiptsViewModel.cs" />
     <Compile Include="CouponPage.xaml.cs">

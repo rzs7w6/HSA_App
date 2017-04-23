@@ -57,7 +57,8 @@ namespace HSA_App
                     photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                     {
                         Directory = "Receipts",
-                        Name = "Receipt"
+                        Name = "Receipt",
+                        CompressionQuality = 25
                     });
                 }
                 else
@@ -77,6 +78,7 @@ namespace HSA_App
                     {
                         photo.GetStream().CopyTo(memoryStream);
                         bytes =  memoryStream.ToArray();
+						Debug.WriteLine(bytes.Length);
                     }
                     ////Create new user object
                     //ReceiptRest rec = new ReceiptRest();

@@ -39,12 +39,12 @@ namespace HSA_App
 			*/
 			user.Salt = Encoding.UTF8.GetString(salt, 0, salt.Length);
 
-			//Convert object to Json to pass to restfull service
+			//Convert object to Json to pass to rest2full service
 			var json = JsonConvert.SerializeObject(user);
 
 			try
 			{
-				//POST CALL TO RESTFULL SERVICE
+				//POST CALL TO rest2FULL SERVICE
 				StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
 				var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/user", content);
 				var UserJson = response.Content.ReadAsStringAsync().Result;
@@ -61,26 +61,26 @@ namespace HSA_App
 			return null;
 		}
 
-		public async Task<ReceiptRest> RegisterReceipt(ReceiptRest rec)
+		public async Task<Receiptrest2> RegisterReceipt(Receiptrest2 rec)
 		{
 			//Create a new client object to access our resftull service
 			var client = new System.Net.Http.HttpClient();
 
 			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/receipt");
 
-			//Convert object to Json to pass to restfull service
+			//Convert object to Json to pass to rest2full service
 			var json = JsonConvert.SerializeObject(rec);
 			Debug.WriteLine("\n\n\nthe string has " + json.Length + " characters");
 			try
 			{
-				//POST CALL TO RESTFULL SERVICE
+				//POST CALL TO rest2FULL SERVICE
 				StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
 				var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/receipt", content);
 
 				Debug.WriteLine(response.Content);
 
 				var RecJson = response.Content.ReadAsStringAsync().Result;
-				var rootobject = JsonConvert.DeserializeObject<RootobjectRest>(RecJson);
+				var rootobject = JsonConvert.DeserializeObject<Rootobjectrest2>(RecJson);
 
 				return rootobject.receipt;
 			}
@@ -120,7 +120,7 @@ namespace HSA_App
 			return JsonConvert.DeserializeObject<Balance>(usersJson);
 		}
 
-		public async Task<List<ReceiptRest>> GetReceipts(Int64 accountNumber)
+		public async Task<List<Receiptrest2>> GetReceipts(Int64 accountNumber)
 		{
 			var client = new System.Net.Http.HttpClient();
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -129,7 +129,7 @@ namespace HSA_App
 			{
 				var response = await client.GetAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/receipt/" + accountNumber.ToString());
 				var receiptJson = await response.Content.ReadAsStringAsync();
-				return JsonConvert.DeserializeObject<List<ReceiptRest>>(receiptJson);
+				return JsonConvert.DeserializeObject<List<Receiptrest2>>(receiptJson);
 			}
 			catch (Exception ex)
 			{

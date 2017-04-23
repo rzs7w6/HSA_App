@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -8,9 +9,13 @@ using Xamarin.Forms;
 
 namespace HSA_App
 {
-    
     public class ViewReceiptsPage : ContentPage
-    {
+    { 
+        private async Task ExecuteZoomCommandAsync(string param)
+        {
+            Debug.WriteLine(param);
+        }
+
         TableRoot tableRoot = new TableRoot("Receipts");
 
         public ViewReceiptsPage(List<ImageSource> sources, List<ReceiptRest> receipts)
@@ -28,7 +33,12 @@ namespace HSA_App
                     {
                         ImageSource = source,
                         Text = "Total: " + receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Total.ToString(),
-                        TextColor = Color.FromHex("#0A3079")
+                        TextColor = Color.FromHex("#0A3079"),
+                        CommandParameter = source,
+                        Command = new Command<ImageSource>(execute: (ImageSource image) =>
+                        {
+                            App.Current.MainPage.Navigation.PushModalAsync(new ImagePage(image, receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Total.ToString(), receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Date));
+                        })
                     }
                 });
 
