@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="#f9f9f9"
@@ -18,12 +18,21 @@
             
             VerticalOptions="Center"
             HorizontalOptions="Fill" />
-    <Button x:Name="updateAccountButton"
+    <Button x:Name="Deposite"
             Clicked="handleUpdateAccount"
-            Text="Update Account"
-            
+            Text="Deposite From Checking Account"
             VerticalOptions="Center"
             HorizontalOptions="Fill" />
+
+	<Entry  x:Name="deposit"
+            Placeholder="$0.00"
+            HeightRequest="45"
+            VerticalOptions="Center"
+		    HorizontalOptions="Fill"
+            Text=""
+            TextColor="#0A3079"/>
+
+		
     <Label x:Name="display"
            Text=""
            VerticalOptions="End"

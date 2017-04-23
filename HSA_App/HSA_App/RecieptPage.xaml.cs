@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +16,7 @@ namespace HSA_App
         {
             InitializeComponent();
 			me = user;
-            BindingContext = new ReceiptsViewModel();
-
+            BindingContext = new ReceiptsViewModel(user);
         }
     }
 }

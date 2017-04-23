@@ -33,7 +33,7 @@ namespace HSA_REST
         public List<Receipt> getReceipt(Int64 username)
         {
             List<Receipt> list = new List<Receipt>();
-            Receipt u = new Receipt();
+            
             Console.WriteLine("\n\n\n\n"+username);
             MySqlDataReader MySqlReader = null;
            // Int64 recint = Convert.ToInt64(username);
@@ -54,7 +54,7 @@ namespace HSA_REST
 
             while (MySqlReader.Read())
             {
-                
+                Receipt u = new Receipt();
                 u.AccountNumber = MySqlReader.GetInt64(0);
                 u.Total = MySqlReader.GetFloat(1);
                 u.Date = MySqlReader.GetString(2);
@@ -73,14 +73,14 @@ namespace HSA_REST
         {
 
             //conn.Open();
-            var buff = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
+            //var buff = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
             //String sqlString = "INSERT INTO receipt(AccountNumber, Total, Date, Image) VALUES ('" + receiptToSave.AccountNumber + "','" + receiptToSave.Total + "','" + receiptToSave.Date + "','" + "@image" + "')";
             //String sqlString = "INSERT INTO receipt(AccountNumber, Total, Date, Image) VALUES ('" + 12345678900 + "','" + 45.6 + "','" + "3-34-1999" + "','" + receiptToSave.Image + "')";
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand("insert into receipt set AccountNumber = @accountnum, Total = @total, Date = @date, Image = @image", conn);
             cmd.Parameters.Add("@accountnum", MySqlDbType.Int64).Value = receiptToSave.AccountNumber;
             cmd.Parameters.Add("@total", MySqlDbType.Float).Value = receiptToSave.Total;
             cmd.Parameters.Add("@date", MySqlDbType.VarChar).Value = receiptToSave.Date;
-            cmd.Parameters.Add("@image", MySqlDbType.Blob).Value = receiptToSave.Image;
+            cmd.Parameters.Add("@image", MySqlDbType.LongBlob).Value = receiptToSave.Image;
             cmd.ExecuteNonQuery();
             long id = cmd.LastInsertedId;
             return id;

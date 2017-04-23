@@ -7,41 +7,7 @@
              BackgroundColor="#f9f9f9">
     <ScrollView>
 
-<<<<<<< HEAD
-	<StackLayout Spacing="5">
-	<Label  Text="Registration"/>
-           <Button x:Name="backButton"
-            Clicked="handleBack"
-            Text="Back"
-            HeightRequest="45"
-            VerticalOptions="Start"
-            HorizontalOptions="Start" />
-            <Label  Text="Registration"
-            FontSize="30"
-            HorizontalTextAlignment="Center"
-            VerticalOptions="Start"
-            HorizontalOptions="FillAndExpand"
-            Margin="0,40,0,0" />
-            <Entry  x:Name="fname"
-            Placeholder="First name"
-            HeightRequest="45"
-            VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand"
-            Text="" />
-            <Entry  x:Name="lname"
-            Placeholder="Last name"
-            HeightRequest="45"
-            VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand" 
-            Text="" />
 
-            <Entry  x:Name="email"
-            Placeholder="Email"
-            HeightRequest="45"
-            VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand"
-			Keyboard="Email">
-=======
         <StackLayout Spacing="5" Margin="15">
             <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
                 <StackLayout Orientation="Vertical"  HorizontalOptions="Start">
@@ -89,24 +55,10 @@
 			    HorizontalOptions="Fill"
 			    Keyboard="Email"
                 TextColor="#0A3079">
->>>>>>> master
                 <Entry.Behaviors>
                     <local:EmailBehaviorValidator x:Name="emailValidator"/>
                 </Entry.Behaviors>
             </Entry>
-<<<<<<< HEAD
-                   
-		<Entry x:Name="accountNum"
-			Placeholder="Account Number"
-			Keyboard="Numeric"
-			HorizontalOptions="CenterAndExpand"
-			VerticalOptions="CenterAndExpand"
-			Text=""/>
-            <Label x:Name="dobLabel"
-			Text="Date of Birth"
-			HorizontalOptions="CenterAndExpand"
-			VerticalOptions="CenterAndExpand"/>
-=======
 
             <Entry 
                 x:Name="accountNum"
@@ -125,7 +77,6 @@
 			    HorizontalOptions="Fill"
                 TextColor="#0A3079"
                    />
->>>>>>> master
             <DatePicker VerticalOptions="CenterAndExpand"
 			        HorizontalOptions="CenterAndExpand"
 			        x:Name="dobPicker" Date="{Binding DOB}">

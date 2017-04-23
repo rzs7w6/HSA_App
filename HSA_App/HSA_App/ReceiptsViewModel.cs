@@ -31,23 +31,34 @@ namespace HSA_App
         public Command AddInvoiceCommand =>
                     addInvoiceCommand ?? (addInvoiceCommand = new Command(async () => await ExecuteAddInvoiceCommandAsync()));
 
+        private User user;
+
+        public ReceiptsViewModel(User _user)
+        {
+            this.user = _user;
+        }
+
         async Task ExecuteAddInvoiceCommandAsync()
         {
             double total = 0.0;
             try
             {
                 IsBusy = true;
+                //ReceiptRest rec = new ReceiptRest();
 
                 // 1. Add camera logic.
                 await CrossMedia.Current.Initialize();
 
                 MediaFile photo;
+
+                ReceiptRest rec = new ReceiptRest();
                 if (CrossMedia.Current.IsCameraAvailable)
                 {
                     photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                     {
                         Directory = "Receipts",
-                        Name = "Receipt"
+                        Name = "Receipt",
+                        CompressionQuality = 25
                     });
                 }
                 else
@@ -67,27 +78,21 @@ namespace HSA_App
                     {
                         photo.GetStream().CopyTo(memoryStream);
                         bytes =  memoryStream.ToArray();
+						Debug.WriteLine(bytes.Length);
                     }
-
-                    //sources.Add(ImageSource.FromStream(() => new MemoryStream(bytes)));
-
-                    //Create new user object
-                    ReceiptRest rec = new ReceiptRest();
-                    rec.AccountNumber = 12345678901;
-                    rec.Total = 5;
-                    rec.Date = "5-21-1860";
+                    ////Create new user object
+                    //ReceiptRest rec = new ReceiptRest();
+                    rec.AccountNumber = user.AccountNumber;
+                    //rec.AccountNumber = 12345678910;
+                    //rec.Total = 10;
+                    //rec.Date = "4-18-2017";
+                    //string currentDateTime = DateTime.UtcNow.Date.ToString();
+                    //rec.Date = currentDateTime.Remove(10);
+                        
                     rec.Image = bytes;
 
-                    //rec.AccountNumber = Convert.ToInt64(accountNum.Text);
-                    //Debug.WriteLine("\n\n\n\n\nThere was Nour account number!  " + person.AccountNumber);
-
-                    //person.HashedPassword = password1.Text;
-
-                    var sv = new WebService();
-                    var es = sv.RegisterReceipt(rec);
-                    //App.Current.MainPage = new NavigationPage(new NavigationLocal(person));
-                    //Add to database
-                    //POST bytes, DateTime.UtcNow, total, xxxxxxxx (divorced from main navigation for now)
+                    //var sv = new WebService();
+                    //var es = sv.RegisterReceipt(rec);
                 }
 
 
@@ -140,6 +145,13 @@ namespace HSA_App
                     Photo = photo.Path,
                     TimeStamp = DateTime.Now
                 });
+                //rec.Total = (float) total;
+                //var sv = new WebService();
+                //var es = sv.RegisterReceipt(rec);
+                rec.Total = (float) total;
+                rec.Date = DateTime.UtcNow.ToString();
+                var sv = new WebService();
+                var es = sv.RegisterReceipt(rec);
             }
             catch (Exception ex)
             {
@@ -192,6 +204,9 @@ namespace HSA_App
         public Command ViewInvoiceCommand =>
                     viewInvoiceCommand ?? (viewInvoiceCommand = new Command(async () => await ExecuteViewInvoiceCommandAsync()));
         List<ImageSource> sources = new List<ImageSource>();
+        //private User user;
+
+
         async Task ExecuteViewInvoiceCommandAsync()
         {
             //Retrieve from database
@@ -199,10 +214,12 @@ namespace HSA_App
             var sv = new WebService();
 
             //Getuser object back based on username
-            List<ReceiptRest> receipt = await sv.GetReceipts(12345678901);
+            List<ReceiptRest> receipt = await sv.GetReceipts(user.AccountNumber);
 
             if (receipt == null)
             {
+                Debug.WriteLine("Receipt was null");
+                return;
                 //display.Text = "Invalid login information!";
             }
             //Clear sources
@@ -212,7 +229,7 @@ namespace HSA_App
             {
                 sources.Add(ImageSource.FromStream(() => new MemoryStream(index.Image)));
             }
-            var viewPage = new ViewReceiptsPage(sources);
+            var viewPage = new ViewReceiptsPage(sources, receipt);
 
             await App.Current.MainPage.Navigation.PushModalAsync(viewPage);
         }

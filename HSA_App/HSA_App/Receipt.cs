@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,13 +14,6 @@ namespace HSA_App
         public float Total { get; set; }
         public string Date { get; set; }
         public byte[] Image { get; set; }
-
-
-    }
-
-    public class RootobjectRest1
-    {
-        public List<ReceiptRest> receipt { get; set; }
     }
 
     public class RootobjectRest
