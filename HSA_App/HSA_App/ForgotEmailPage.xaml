@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HSA_App.ForgotEmailPage">
   <StackLayout Spacing="20" Margin="15">
-    <Label Text="Enter Your Email Below:"
+    <Label Text="Enter Your Username Below:"
             FontSize="20"
             VerticalOptions="Start"
             HorizontalOptions="Center"

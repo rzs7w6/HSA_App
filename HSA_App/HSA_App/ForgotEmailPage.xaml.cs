@@ -29,18 +29,26 @@ namespace HSA_App
 
         private async void Submit(Object sender, EventArgs e)
         {
-            string username;
-            string password = RandomPassword(8);
-            username = await UpdatePassword(password);
-            await EmailHandler.sendForgotPasswordEmail(entry.Text, password, username);
+            string username = entry.Text;
+            //Start our webservice
+            var sv = new WebService();
+
+            //Getuser object back based on username
+            User user = await sv.GetUsers(username, "");
+            string newPassword = RandomPassword(8);
+
+            await UpdatePassword(newPassword);
+
+            await EmailHandler.sendForgotPasswordEmail(entry.Text, newPassword, username);
             await App.Current.MainPage.Navigation.PopModalAsync();
         }
 
-        private async Task<string> UpdatePassword(string newPassword)
+        private async Task UpdatePassword(string newPassword)
         {
-            Debug.WriteLine(newPassword);
-            return "test";
+            
+            return;
         }
+        
 
     }
 }
