@@ -9,7 +9,7 @@
             HorizontalOptions="Center"
             Margin="0,40,0,0"
             TextColor="#0A3079"/>
-    <Entry x:Name="entry" Placeholder="Email"
+    <Entry x:Name="entry" Placeholder="Username"
            FontSize="15"
             VerticalOptions="Center"
             HorizontalOptions="Fill"

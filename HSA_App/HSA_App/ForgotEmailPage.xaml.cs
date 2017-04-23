@@ -35,11 +35,16 @@ namespace HSA_App
 
             //Getuser object back based on username
             User user = await sv.GetUsers(username, "");
+            if (user == null || user.UserName == null || user.Email == null || user.Email == "" || user.UserName == "")
+            {
+                await DisplayAlert("Error", "User does not exist. Try again.", "OK");
+                return;
+            }
             string newPassword = RandomPassword(8);
 
             await UpdatePassword(newPassword);
 
-            await EmailHandler.sendForgotPasswordEmail(entry.Text, newPassword, username);
+            await EmailHandler.sendForgotPasswordEmail(user.Email, newPassword, username);
             await App.Current.MainPage.Navigation.PopModalAsync();
         }
 
