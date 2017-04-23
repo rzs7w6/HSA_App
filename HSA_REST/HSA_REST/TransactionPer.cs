@@ -72,7 +72,48 @@ namespace HSA_REST
             //return -1;
         }
 
-        
+
+        public List<Transaction> getAllTrans(Int64 username)
+        {
+            List<Transaction> list = new List<Transaction>();
+
+            Console.WriteLine("\n\n\n\n" + username);
+            MySqlDataReader MySqlReader = null;
+            // Int64 recint = Convert.ToInt64(username);
+            string sqlString = "SELECT * FROM transaction_history WHERE AccountNumber = " + username;
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sqlString, conn);
+
+            
+            try
+            {
+                MySqlReader = cmd.ExecuteReader();
+            }
+            catch (SqlException oError)
+            {
+                //bFailed = true;
+                Console.WriteLine(oError.Message);
+            }
+            
+
+
+            while (MySqlReader.Read())
+            {
+                Transaction u = new Transaction();
+                u.AccountNumber = MySqlReader.GetInt64(0);
+                u.Type = MySqlReader.GetString(1);
+                u.Amount = MySqlReader.GetDouble(2);
+                u.Date = MySqlReader.GetString(3);
+
+
+                //u.Image = null;
+                //u.Image = MySqlReader.GetBytes(3,5, buff,8,6);
+                list.Add(u);
+            }
+
+            return list;
+        }
+
+
         public Double getTransaction(Int64 username)
         {
             //Transaction b = new Transaction();
