@@ -24,7 +24,7 @@ namespace HSA_App
 			//Create a new client object to access our resftull service
 			var client = new System.Net.Http.HttpClient();
 
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/user");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user");
 
 			var pass = user.HashedPassword;
 
@@ -39,14 +39,14 @@ namespace HSA_App
 			*/
 			user.Salt = Encoding.UTF8.GetString(salt, 0, salt.Length);
 
-			//Convert object to Json to pass to rest2full service
+			//Convert object to Json to pass to restfull service
 			var json = JsonConvert.SerializeObject(user);
 
 			try
 			{
-				//POST CALL TO rest2FULL SERVICE
+				//POST CALL TO restFULL SERVICE
 				StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
-				var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/user", content);
+				var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user", content);
 				var UserJson = response.Content.ReadAsStringAsync().Result;
 				var rootobject = JsonConvert.DeserializeObject<Rootobject>(UserJson);
 
@@ -66,16 +66,16 @@ namespace HSA_App
 			//Create a new client object to access our resftull service
 			var client = new System.Net.Http.HttpClient();
 
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/receipt");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt");
 
-			//Convert object to Json to pass to rest2full service
+			//Convert object to Json to pass to restfull service
 			var json = JsonConvert.SerializeObject(rec);
 			Debug.WriteLine("\n\n\nthe string has " + json.Length + " characters");
 			try
 			{
-				//POST CALL TO rest2FULL SERVICE
+				//POST CALL TO restFULL SERVICE
 				StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
-				var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/receipt", content);
+				var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt", content);
 
 				Debug.WriteLine(response.Content);
 
@@ -100,7 +100,7 @@ namespace HSA_App
 		{
 			var client = new System.Net.Http.HttpClient();
 
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/user/");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/user/");
 
 			var response = await client.GetAsync(client.BaseAddress + "\"" + username + "\"");
 
@@ -113,7 +113,7 @@ namespace HSA_App
 		{
 			var client = new System.Net.Http.HttpClient();
 
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/balance/");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/balance/");
 
 			var response = await client.GetAsync(client.BaseAddress + accountNumber.ToString());
 
@@ -126,10 +126,10 @@ namespace HSA_App
 		{
 			var client = new System.Net.Http.HttpClient();
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/receipt/");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt/");
 			try
 			{
-				var response = await client.GetAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/receipt/" + accountNumber.ToString());
+				var response = await client.GetAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/receipt/" + accountNumber.ToString());
 				var receiptJson = await response.Content.ReadAsStringAsync();
 				return JsonConvert.DeserializeObject<List<ReceiptRest>>(receiptJson);
 			}
@@ -144,10 +144,10 @@ namespace HSA_App
 		{
 			var client = new System.Net.Http.HttpClient();
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/transaction/");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/transaction/");
 			try
 			{
-				var response = await client.PutAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/transaction/"+accountNumber.ToString(),null);
+				var response = await client.PutAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/transaction/"+accountNumber.ToString(),null);
 				var transactionJson = await response.Content.ReadAsStringAsync();
 				return JsonConvert.DeserializeObject<List<Transaction>>(transactionJson);
 			}
@@ -164,14 +164,14 @@ namespace HSA_App
 
 			var client = new System.Net.Http.HttpClient();
 
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/balance");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/balance");
 
 			var json = JsonConvert.SerializeObject(balance);
 
 			try
 			{
 				StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
-				var response = await client.PutAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/balance", content);
+				var response = await client.PutAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/balance", content);
 
 				Debug.WriteLine(response.Content);
 			}
@@ -190,14 +190,14 @@ namespace HSA_App
 
 			var client = new System.Net.Http.HttpClient();
 
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/balance");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/balance");
 
 			var json = JsonConvert.SerializeObject(balance);
 
 			try
 			{
 				StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
-				var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/balance", content);
+				var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/balance", content);
 			}
 			catch (Exception ex)
 			{
@@ -212,14 +212,14 @@ namespace HSA_App
 		{
 			var client = new System.Net.Http.HttpClient();
 
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/transaction");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/transaction");
 
 			var json = JsonConvert.SerializeObject(transaction);
 
 			try
 			{
 				StringContent content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
-				var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/transaction", content);
+				var response = await client.PostAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/transaction", content);
 			}
 			catch (Exception ex)
 			{
@@ -236,11 +236,11 @@ namespace HSA_App
 
 			var client = new System.Net.Http.HttpClient();
 
-			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/transaction");
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/transaction");
 
 			try
 			{
-				var response = await client.GetAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/transaction/" + accountNum.ToString());
+				var response = await client.GetAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest/api/transaction/" + accountNum.ToString());
 				var depostring = await response.Content.ReadAsStringAsync();
 				depoamont = Convert.ToDouble(depostring);
 			}

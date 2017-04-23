@@ -63,7 +63,11 @@ namespace HSA_App
 			var sv = new WebService();
 
 			List<Transaction> transactionlist = await sv.GetTransactions(me.AccountNumber);
-
+            if (transactionlist == null || transactionlist.Count == 0)
+            {
+                trans.Add(new Transaction { Type = "NO TRANSACTION HISTORY", Date = "Blue" });
+                return;
+            }
 			int i = 0;
 			int j = 0;
 			string type = "";
