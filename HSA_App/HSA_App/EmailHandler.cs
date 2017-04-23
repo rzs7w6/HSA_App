@@ -20,7 +20,7 @@ namespace HSA_App
         public static async Task<bool> sendForgotPasswordEmail(String recepient, String newPassword, String username)
         {
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            String body = "Your new password is: " + newPassword + ".  This will be your password for perpetuity.";
+            String body = "Your new password is: " + newPassword + ".";
             Dictionary<string, string> values = buildRequest(recepient, body);
             string requestUri = "http://ec2-54-68-37-246.us-west-2.compute.amazonaws.com:8081/sendEmail/?to=" + recepient + " &subject=UMB HSA Password Reset&body=" + body;
             var content = new FormUrlEncodedContent(values);
