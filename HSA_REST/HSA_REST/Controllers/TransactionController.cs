@@ -26,6 +26,15 @@ namespace HSA_REST.Controllers
         }
         
 
+        // GET: api/user/"username"
+        public List<Transaction> Put(Int64 username)
+        {
+            TransactionPer up = new TransactionPer();
+            List<Transaction> receipt = up.getAllTrans(username);
+
+            return receipt;
+        }
+
         // POST: api/user
         public void Post([FromBody]Transaction value)
         {

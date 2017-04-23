@@ -58,7 +58,7 @@ namespace HSA_App
                     {
                         Directory = "Receipts",
                         Name = "Receipt",
-                        CompressionQuality = 0
+                        CompressionQuality = 25
                     });
                 }
                 else
@@ -78,6 +78,7 @@ namespace HSA_App
                     {
                         photo.GetStream().CopyTo(memoryStream);
                         bytes =  memoryStream.ToArray();
+						Debug.WriteLine(bytes.Length);
                     }
                     ////Create new user object
                     //ReceiptRest rec = new ReceiptRest();
