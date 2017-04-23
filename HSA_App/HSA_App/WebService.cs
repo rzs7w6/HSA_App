@@ -61,7 +61,7 @@ namespace HSA_App
 			return null;
 		}
 
-		public async Task<Receiptrest2> RegisterReceipt(Receiptrest2 rec)
+		public async Task<ReceiptRest> RegisterReceipt(ReceiptRest rec)
 		{
 			//Create a new client object to access our resftull service
 			var client = new System.Net.Http.HttpClient();
@@ -80,9 +80,11 @@ namespace HSA_App
 				Debug.WriteLine(response.Content);
 
 				var RecJson = response.Content.ReadAsStringAsync().Result;
-				var rootobject = JsonConvert.DeserializeObject<Rootobjectrest2>(RecJson);
+				var rootobject = JsonConvert.DeserializeObject<ReceiptRest>(RecJson);
 
-				return rootobject.receipt;
+
+				//MADE CHANGE HERE!!!
+				return rootobject;
 			}
 			catch (Exception ex)
 			{
@@ -120,7 +122,7 @@ namespace HSA_App
 			return JsonConvert.DeserializeObject<Balance>(usersJson);
 		}
 
-		public async Task<List<Receiptrest2>> GetReceipts(Int64 accountNumber)
+		public async Task<List<ReceiptRest>> GetReceipts(Int64 accountNumber)
 		{
 			var client = new System.Net.Http.HttpClient();
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -129,12 +131,31 @@ namespace HSA_App
 			{
 				var response = await client.GetAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/receipt/" + accountNumber.ToString());
 				var receiptJson = await response.Content.ReadAsStringAsync();
-				return JsonConvert.DeserializeObject<List<Receiptrest2>>(receiptJson);
+				return JsonConvert.DeserializeObject<List<ReceiptRest>>(receiptJson);
 			}
 			catch (Exception ex)
 			{
 				Debug.WriteLine("\n\n\n\n\n\n" + ex);
 			}
+			return null;
+		}
+
+		public async Task<List<Transaction>> GetTransactions(Int64 accountNumber)
+		{
+			var client = new System.Net.Http.HttpClient();
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			client.BaseAddress = new Uri("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/transaction/");
+			try
+			{
+				var response = await client.PutAsync("http://ec2-54-69-2-41.us-west-2.compute.amazonaws.com/rest2/api/transaction/"+accountNumber.ToString(),null);
+				var transactionJson = await response.Content.ReadAsStringAsync();
+				return JsonConvert.DeserializeObject<List<Transaction>>(transactionJson);
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine("\n\n\n\n\n\n" + ex);
+			}
+
 			return null;
 		}
 

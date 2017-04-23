@@ -12,33 +12,34 @@ namespace HSA_App
 
 		public LandingPage(User user)
 		{
-            if (user == null)
-                Debug.WriteLine("\n\n\n\n\nTHE USER IS NULL\n\n\n\n");
+			if (user == null)
+				Debug.WriteLine("\n\n\n\n\nTHE USER IS NULL\n\n\n\n");
 			InitializeComponent();
 			getBalance(user);
 			me = user;
-			CouponListPage();
+			//CouponListPage();
+			TransactionListPage();
 		}
 
-        private async void getBalance(User user)
-        {
-            var sv = new WebService();
+		private async void getBalance(User user)
+		{
+			var sv = new WebService();
 
-            Balance balance = await sv.GetBalance(user.AccountNumber);
+			Balance balance = await sv.GetBalance(user.AccountNumber);
 
-            accountBalance.Text = balance.AccountBalance.ToString();
+			accountBalance.Text = balance.AccountBalance.ToString();
 
-            if(balance == null)
-            {
-                accountBalance.Text = "$0.00";
-            }
-            else
-            {
-                accountBalance.Text = "$" + balance.AccountBalance.ToString();
-            }
-        }
+			if (balance == null)
+			{
+				accountBalance.Text = "$0.00";
+			}
+			else
+			{
+				accountBalance.Text = "$" + balance.AccountBalance.ToString();
+			}
+		}
 
-        ObservableCollection<Coupon> coupons = new ObservableCollection<Coupon>();
+		/*ObservableCollection<Coupon> coupons = new ObservableCollection<Coupon>();
         private void CouponListPage()
         {
             //defined in XAML to follow
@@ -49,6 +50,57 @@ namespace HSA_App
             coupons.Add(new Coupon { StoreName = "Drug Store #1", CouponDetails = "$10" });
             coupons.Add(new Coupon { StoreName = "Rite Aide", CouponDetails = "$10" });
             coupons.Add(new Coupon { StoreName = "HyVee", CouponDetails = "$10" });
-        }
-    }
+        }*/
+
+
+		private async void TransactionListPage()
+		{
+			ObservableCollection<Transaction> trans = new ObservableCollection<Transaction>();
+
+			//defined in XAML to follow
+			TransactionView.ItemsSource = trans;
+
+			var sv = new WebService();
+
+			List<Transaction> transactionlist = await sv.GetTransactions(me.AccountNumber);
+
+			int i = 0;
+			int j = 0;
+			string type = "";
+			string date = "";
+			foreach (Transaction t in transactionlist){
+				Debug.WriteLine(t.Amount);
+
+				if(t.Type == "D")
+				{
+					for (j = 0; j < 10; j++)
+					{
+						date += t.Date[j];
+					}
+
+					type = "DEPOSIT -- Amount: $" + t.Amount + " Date: " + date + "--";
+					trans.Add(new Transaction { Type = type, Date = "Green" });
+					date = "";
+				}
+				else
+				{	
+					for (j = 0; j < 10; j++)
+					{
+						date += t.Date[j];
+					}
+
+					type = "WITHDRAWL -- Amount: $" + t.Amount + " Date: " + date + "-- ";
+					trans.Add(new Transaction { Type = type, Date = "Red" });
+					date = "";
+				}
+
+				i++;
+			}
+
+			if (i == 0)
+			{
+				trans.Add(new Transaction { Type = "NO TRANSACTION HISTORY", Date = "Blue" });
+			}
+		}
+	}
 }

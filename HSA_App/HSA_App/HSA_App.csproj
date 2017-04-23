@@ -42,7 +42,6 @@
     <Compile Include="buttonCell.cs" />
     <Compile Include="CameraResult.cs" />
     <Compile Include="CardViewCell.cs" />
-    <Compile Include="Credentials.cs" />
     <Compile Include="Crypto.cs" />
     <Compile Include="EmailHandler.cs" />
     <Compile Include="Expense.cs" />
@@ -79,6 +78,7 @@
     <Compile Include="Coupon.cs" />
     <Compile Include="EmailBehaviorValidator.cs" />
     <Compile Include="Transaction.cs" />
+    <Compile Include="Credentials.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
