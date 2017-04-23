@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,16 +19,18 @@ namespace HSA_App
 
         public static async Task<bool> sendForgotPasswordEmail(String recepient, String newPassword, String username)
         {
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             String body = "Your username is: " + username + ". Your new password is: " + newPassword + ".  This will be your password for perpetuity.";
-            //Dictionary<string, string> values = buildRequest(recepient, body);
+            Dictionary<string, string> values = buildRequest(recepient, body);
+            string requestUri = "http://ec2-54-68-37-246.us-west-2.compute.amazonaws.com:8081/sendEmail/?to=" + recepient + " &subject=UMB HSA Password Reset&body=" + body;
+            var content = new FormUrlEncodedContent(values);
+            var emptyContent = new StringContent("");
 
-            //var content = new FormUrlEncodedContent(values);
+            var response = await client.PostAsync(requestUri, emptyContent);
 
-            //var response = await client.PostAsync("https://api.sendgrid.com/api/mail.send.json", content);
+            var responseString = await response.Content.ReadAsStringAsync();
 
-            //var responseString = await response.Content.ReadAsStringAsync();
-
-            //Debug.WriteLine(responseString.ToString());
+            Debug.WriteLine(responseString.ToString());
 
             return true;
         }
@@ -36,13 +39,9 @@ namespace HSA_App
         {
             Dictionary<string, string> values = new Dictionary<string, string>
             {
-               { "api_user", userName },
-               { "api_key", password },
                { "to", recepient },
-               { "toname", "Customer" },
                { "subject", "UMB HSA Password Reset" },
-               { "text", body },
-               { "from", "info@domain.com" },
+               { "body", body }
             };
 
             return values;
