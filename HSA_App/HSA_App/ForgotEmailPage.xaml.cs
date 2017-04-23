@@ -42,16 +42,20 @@ namespace HSA_App
             }
             string newPassword = RandomPassword(8);
 
-            await UpdatePassword(newPassword);
+            if(!await UpdatePassword(newPassword))
+            {
+                await DisplayAlert("Error", "There was an error in updating your password. Try again.", "OK");
+                return;
+            }
 
             await EmailHandler.sendForgotPasswordEmail(user.Email, newPassword, username);
             await App.Current.MainPage.Navigation.PopModalAsync();
         }
 
-        private async Task UpdatePassword(string newPassword)
+        private async Task<bool> UpdatePassword(string newPassword)
         {
             
-            return;
+            return true;
         }
         
 
