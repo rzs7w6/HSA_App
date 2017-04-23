@@ -57,7 +57,8 @@ namespace HSA_App
                     photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                     {
                         Directory = "Receipts",
-                        Name = "Receipt"
+                        Name = "Receipt",
+                        CompressionQuality = 0
                     });
                 }
                 else
