@@ -201,7 +201,7 @@ namespace HSA_App
 				person.LastName = lname.Text;
 				person.UserName = username.Text;
                 person.AccountNumber = Convert.ToInt64(accountNum.Text);
-                //Debug.WriteLine("\n\n\n\n\nThere was Nour account number!  " + person.AccountNumber);
+				person.Email = email.Text;
 
                 person.HashedPassword = password1.Text;
 
