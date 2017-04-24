@@ -56,7 +56,7 @@ namespace HSA_App
 						display.Text = "You have Deposited $" + depoamount.ToString() + ".00 in the last 365 days. Your limit is $5,000 anually";
 						return;
 					}
-					else if (depoamount <= 0)
+					else if (dollar <= 0)
 					{
 						display.TextColor = Color.Red;
 						display.Text = "You can't deposit a zero or negative amount SILLY!";
