@@ -12,20 +12,12 @@ namespace HSA_App
 
 		public LandingPage(User user)
 		{
-<<<<<<< HEAD
-			//InitializeComponent();
-			//accountBalance.Text = "$3000.00";
-=======
+
 			if (user == null)
 				Debug.WriteLine("\n\n\n\n\nTHE USER IS NULL\n\n\n\n");
->>>>>>> master
 			InitializeComponent();
 			getBalance(user);
 			me = user;
-<<<<<<< HEAD
-			accountBalance.Text = "$3000.00";
-           	 	CouponListPage();
-=======
 			//CouponListPage();
 			TransactionListPage();
 		}
@@ -37,7 +29,7 @@ namespace HSA_App
 			Balance balance = await sv.GetBalance(user.AccountNumber);
 
 			accountBalance.Text = balance.AccountBalance.ToString();
->>>>>>> master
+			nameLabel.Text = "Welcome "+ me.FirstName + "!";
 
 			if (balance == null)
 			{
