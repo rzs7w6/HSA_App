@@ -11,8 +11,7 @@
             Clicked="GetCoupons"
             HeightRequest="50"
 			VerticalOptions="Center"
-			HorizontalOptions="Center"
-            >
+			HorizontalOptions="Center">
         </Button>
         <ListView x:Name="CouponView">
             <ListView.ItemTemplate>

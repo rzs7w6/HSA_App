@@ -12,6 +12,7 @@ namespace HSA_App
 
 		public LandingPage(User user)
 		{
+
 			if (user == null)
 				Debug.WriteLine("\n\n\n\n\nTHE USER IS NULL\n\n\n\n");
 			InitializeComponent();
@@ -28,6 +29,7 @@ namespace HSA_App
 			Balance balance = await sv.GetBalance(user.AccountNumber);
 
 			accountBalance.Text = balance.AccountBalance.ToString();
+			nameLabel.Text = "Welcome "+ me.FirstName + "!";
 
 			if (balance == null)
 			{
