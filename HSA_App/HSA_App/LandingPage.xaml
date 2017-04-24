@@ -38,7 +38,7 @@
             <ListView x:Name="TransactionView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Type}" TextColor="{Binding Date}"/>
+                        <TextCell Text="{Binding Type}" TextColor="{Binding Date}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
