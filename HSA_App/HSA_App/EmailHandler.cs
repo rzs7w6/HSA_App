@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,18 +12,21 @@ namespace HSA_App
 {
     class EmailHandler
     {
-        private static String userName = "rzs7w6";
-        private static String password = "";
+        private static String userName = Credentials.username;
+        private static String password = Credentials.password;
+
         private static readonly HttpClient client = new HttpClient();
 
-        public static async Task<bool> sendForgotPasswordEmail(String recepient)
+        public static async Task<bool> sendForgotPasswordEmail(String recepient, String newPassword, String username)
         {
-            String body = "Your new password is: WOOOOO";
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            String body = "Your new password is: " + newPassword + ".";
             Dictionary<string, string> values = buildRequest(recepient, body);
-
+            string requestUri = "http://ec2-54-68-37-246.us-west-2.compute.amazonaws.com:8081/sendEmail/?to=" + recepient + " &subject=UMB HSA Password Reset&body=" + body;
             var content = new FormUrlEncodedContent(values);
+            var emptyContent = new StringContent("");
 
-            var response = await client.PostAsync("https://api.sendgrid.com/api/mail.send.json", content);
+            var response = await client.PostAsync(requestUri, emptyContent);
 
             var responseString = await response.Content.ReadAsStringAsync();
 
@@ -34,13 +39,9 @@ namespace HSA_App
         {
             Dictionary<string, string> values = new Dictionary<string, string>
             {
-               { "api_user", userName },
-               { "api_key", password },
                { "to", recepient },
-               { "toname", "Customer" },
-               { "subject", "UMB" },
-               { "text", body },
-               { "from", "info@domain.com" },
+               { "subject", "UMB HSA Password Reset" },
+               { "body", body }
             };
 
             return values;

@@ -39,11 +39,16 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Balance.cs" />
+    <Compile Include="buttonCell.cs" />
     <Compile Include="CameraResult.cs" />
     <Compile Include="CardViewCell.cs" />
     <Compile Include="Crypto.cs" />
     <Compile Include="EmailHandler.cs" />
     <Compile Include="Expense.cs" />
+    <Compile Include="ForgotEmailPage.xaml.cs">
+      <DependentUpon>ForgotEmailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImagePage.cs" />
     <Compile Include="Receipt.cs" />
     <Compile Include="ReceiptsViewModel.cs" />
     <Compile Include="CouponPage.xaml.cs">
@@ -72,6 +77,8 @@
     <Compile Include="WebService.cs" />
     <Compile Include="Coupon.cs" />
     <Compile Include="EmailBehaviorValidator.cs" />
+    <Compile Include="Transaction.cs" />
+    <Compile Include="Credentials.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -164,7 +171,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ForgotEmailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

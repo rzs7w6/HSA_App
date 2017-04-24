@@ -1,48 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HSA_App
 {
-    
     public class ViewReceiptsPage : ContentPage
-    {
-        User me = new User();
-        StackLayout parent = null;
-
-        public ViewReceiptsPage(List<ImageSource> sources)
+    { 
+        private async Task ExecuteZoomCommandAsync(string param)
         {
-            parent = new StackLayout();
+            Debug.WriteLine(param);
+        }
 
-            Button button = new Button
+        TableRoot tableRoot = new TableRoot("Receipts");
+
+        public ViewReceiptsPage(List<ImageSource> sources, List<ReceiptRest> receipts)
+        {
+            tableRoot.Add(new TableSection
             {
-                Text = "< Back",
-                HeightRequest = 45,
-                HorizontalOptions = LayoutOptions.Start,
-                VerticalOptions = LayoutOptions.Start,   
-            };
-            parent.Children.Add(button);
-            button.Clicked += OnButtonClicked;
+                new buttonCell { }
+            });
 
             foreach (ImageSource source in sources)
             {
-                Image image = new Image
+                tableRoot.Add(new TableSection(receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Date)
                 {
-                    Source = source
-                };
-                parent.Children.Add(image);
-            }
+                    new ImageCell
+                    {
+                        ImageSource = source,
+                        Text = "Total: " + receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Total.ToString(),
+                        TextColor = Color.FromHex("#0A3079"),
+                        CommandParameter = source,
+                        Command = new Command<ImageSource>(execute: (ImageSource image) =>
+                        {
+                            App.Current.MainPage.Navigation.PushModalAsync(new ImagePage(image, receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Total.ToString(), receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Date));
+                        })
+                    }
+                });
 
-            Content = new ScrollView { Content = parent };
+            }
+            Content = new TableView { Root = tableRoot };
         }
 
         void OnButtonClicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new NavigationLocal(me));
+            //App.Current.MainPage = new NavigationPage(new NavigationLocal(me));
+            App.Current.MainPage.Navigation.PopModalAsync();
         }
     }
 }

@@ -8,39 +8,49 @@ using HSA_REST.Models;
 
 namespace HSA_REST.Controllers
 {
-    public class BalanceController : ApiController
+    public class TransactionController : ApiController
     {
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "value1T", "value2T" };
         }
-
+        
         // GET api/<controller>/5
-        public Balance Get(Int64 username)
+        public Double Get(Int64 username)
         {
-            BalancePer up = new BalancePer();
-            Balance balance = up.getBalance(username);
+            TransactionPer up = new TransactionPer();
+            Double transaction = up.getTransaction(username);
 
-            return balance;
+            return transaction;
         }
+        
 
+        // GET: api/user/"username"
+        public List<Transaction> Put(Int64 username)
+        {
+            TransactionPer up = new TransactionPer();
+            List<Transaction> receipt = up.getAllTrans(username);
+
+            return receipt;
+        }
 
         // POST: api/user
-        public void Post([FromBody]Balance value)
+        public void Post([FromBody]Transaction value)
         {
-            BalancePer pp = new BalancePer();
+            TransactionPer pp = new TransactionPer();
             long id;
-            id = pp.saveBalance(value);
+            id = pp.saveTransaction(value);
         }
 
+        /*
         // PUT api/<controller>/5
         public void Put([FromBody]Balance value)
         {
             BalancePer pp = new BalancePer();
             pp.setBalance(value);
         }
-
+        */
 
         //public void Put(int id, [FromBody]string value)
         //{

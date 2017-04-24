@@ -33,7 +33,7 @@ namespace HSA_REST
         public List<Receipt> getReceipt(Int64 username)
         {
             List<Receipt> list = new List<Receipt>();
-            Receipt u = new Receipt();
+            
             Console.WriteLine("\n\n\n\n"+username);
             MySqlDataReader MySqlReader = null;
            // Int64 recint = Convert.ToInt64(username);
@@ -54,7 +54,7 @@ namespace HSA_REST
 
             while (MySqlReader.Read())
             {
-                
+                Receipt u = new Receipt();
                 u.AccountNumber = MySqlReader.GetInt64(0);
                 u.Total = MySqlReader.GetFloat(1);
                 u.Date = MySqlReader.GetString(2);

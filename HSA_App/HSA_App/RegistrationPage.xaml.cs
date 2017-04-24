@@ -201,7 +201,7 @@ namespace HSA_App
 				person.LastName = lname.Text;
 				person.UserName = username.Text;
                 person.AccountNumber = Convert.ToInt64(accountNum.Text);
-                //Debug.WriteLine("\n\n\n\n\nThere was Nour account number!  " + person.AccountNumber);
+				person.Email = email.Text;
 
                 person.HashedPassword = password1.Text;
 
@@ -212,8 +212,21 @@ namespace HSA_App
 
                 person.Birthday = birthday;
 				var sv = new WebService();
-				var es = sv.RegisterUser(person);
-                App.Current.MainPage = new NavigationPage(new NavigationLocal(person));
+				var es = await sv.RegisterUser(person);
+
+				Balance balance = new Balance();
+				balance.AccountBalance = 0;
+				balance.AccountNumber = person.AccountNumber;
+
+				int result = await sv.GenerateBalance(balance);
+				if (result == 1)
+				{
+					App.Current.MainPage = new NavigationPage(new NavigationLocal(person));
+				}
+				else
+				{
+					Debug.WriteLine("ERROR WITH BALANCE CREATION!!\n");
+				}
 
             }
         }

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HSA_App.ForgotEmailPage">
+  <StackLayout Spacing="20" Margin="15">
+    <Label Text="Enter Your Username Below:"
+            FontSize="20"
+            VerticalOptions="Start"
+            HorizontalOptions="Center"
+            Margin="0,40,0,0"
+            TextColor="#0A3079"/>
+    <Entry x:Name="entry" Placeholder="Username"
+           FontSize="15"
+            VerticalOptions="Center"
+            HorizontalOptions="Fill"
+            Margin="0,40,0,0"
+            TextColor="#0A3079"/>
+    <Button Clicked="Submit" Text="Submit" 
+            FontSize="20"
+            VerticalOptions="End"
+            HorizontalOptions="Center"
+            Margin="0,40,0,0" 
+            TextColor="#0A3079"/>
+  </StackLayout>
+</ContentPage>
