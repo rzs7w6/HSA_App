@@ -250,7 +250,6 @@ namespace HSA_App
 				return -1;
 			}
 
-
 			return depoamont;
 		}
 	}

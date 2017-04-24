@@ -12,7 +12,6 @@ namespace HSA_App
 
 		public LandingPage(User user)
 		{
-
 			if (user == null)
 				Debug.WriteLine("\n\n\n\n\nTHE USER IS NULL\n\n\n\n");
 			InitializeComponent();
@@ -29,7 +28,6 @@ namespace HSA_App
 			Balance balance = await sv.GetBalance(user.AccountNumber);
 
 			accountBalance.Text = balance.AccountBalance.ToString();
-			nameLabel.Text = "Welcome "+ me.FirstName + "!";
 
 			if (balance == null)
 			{
@@ -84,7 +82,7 @@ namespace HSA_App
 						date += t.Date[j];
 					}
 
-					type = "DEPOSIT -- Amount: $" + t.Amount + " Date: " + date + "--";
+					type = "            Amount: $" + t.Amount.ToString(".00") + " Date: " + date;
 					trans.Add(new Transaction { Type = type, Date = "Green" });
 					date = "";
 				}
@@ -95,7 +93,7 @@ namespace HSA_App
 						date += t.Date[j];
 					}
 
-					type = "WITHDRAWL -- Amount: $" + t.Amount + " Date: " + date + "-- ";
+					type = "            Amount: -$" + t.Amount.ToString(".00")  + " Date: " + date;
 					trans.Add(new Transaction { Type = type, Date = "Red" });
 					date = "";
 				}
