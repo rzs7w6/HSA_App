@@ -12,8 +12,8 @@ namespace HSA_App
 {
     class EmailHandler
     {
-        private static String userName = Credentials.username;
-        private static String password = Credentials.password;
+        public static string username = "capstone_tbd";
+        public static string password = "capstone1";
 
         private static readonly HttpClient client = new HttpClient();
 

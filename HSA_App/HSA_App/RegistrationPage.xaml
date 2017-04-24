@@ -26,6 +26,7 @@
                         HorizontalTextAlignment="Center"
                         VerticalOptions="Start"
 			            HorizontalOptions="Fill"
+                        TextColor="#0A3079"
                         Margin="0,0,0,0" />
                 </StackLayout>  
             </StackLayout>
@@ -44,6 +45,7 @@
                 HeightRequest="45"
                 VerticalOptions="Center"
 			    HorizontalOptions="Fill" 
+                    TextColor="#0A3079"
                 Text="" />
 
             <Entry  

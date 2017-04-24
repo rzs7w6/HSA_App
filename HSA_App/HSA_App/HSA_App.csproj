@@ -78,7 +78,6 @@
     <Compile Include="Coupon.cs" />
     <Compile Include="EmailBehaviorValidator.cs" />
     <Compile Include="Transaction.cs" />
-    <Compile Include="Credentials.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
