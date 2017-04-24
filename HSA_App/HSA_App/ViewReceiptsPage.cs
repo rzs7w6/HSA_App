@@ -20,30 +20,38 @@ namespace HSA_App
 
         public ViewReceiptsPage(List<ImageSource> sources, List<ReceiptRest> receipts)
         {
-            tableRoot.Add(new TableSection
-            {
-                new buttonCell { }
-            });
 
-            foreach (ImageSource source in sources)
-            {
-                tableRoot.Add(new TableSection(receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Date)
-                {
-                    new ImageCell
-                    {
-                        ImageSource = source,
+			try
+			{
+				tableRoot.Add(new TableSection
+			{
+				new buttonCell { }
+			});
+
+				foreach (ImageSource source in sources)
+				{
+					tableRoot.Add(new TableSection(receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Date)
+				{
+					new ImageCell
+					{
+                        //ImageSource = source,
                         Text = "Total: " + receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Total.ToString(),
-                        TextColor = Color.FromHex("#0A3079"),
-                        CommandParameter = source,
-                        Command = new Command<ImageSource>(execute: (ImageSource image) =>
-                        {
-                            App.Current.MainPage.Navigation.PushModalAsync(new ImagePage(image, receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Total.ToString(), receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Date));
-                        })
-                    }
-                });
+						TextColor = Color.FromHex("#0A3079"),
+						CommandParameter = source,
+						Command = new Command<ImageSource>(execute: (ImageSource image) =>
+						{
+							App.Current.MainPage.Navigation.PushModalAsync(new ImagePage(image, receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Total.ToString(), receipts.ElementAt<ReceiptRest>(sources.IndexOf(source)).Date));
+						})
+					}
+				});
 
-            }
-            Content = new TableView { Root = tableRoot };
+				}
+				Content = new TableView { Root = tableRoot };
+			}
+			catch(Exception ex)
+			{
+				Debug.WriteLine(ex);
+			}
         }
 
         void OnButtonClicked(object sender, EventArgs e)
