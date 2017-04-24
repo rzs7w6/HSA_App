@@ -6,6 +6,13 @@
 	         x:Class="HSA_App.LandingPage">
     <StackLayout Spacing="10">
         <StackLayout Spacing="10" BackgroundColor="#0A3079">
+		<Label x:Name="nameLabel"
+			Text=""
+			HorizontalOptions="Center"
+			VerticalOptions="Fill"
+			FontSize="16"
+            TextColor="White"   
+               />	
             <Label x:Name="label"
 			Text="Account balance"
 			HorizontalOptions="Center"

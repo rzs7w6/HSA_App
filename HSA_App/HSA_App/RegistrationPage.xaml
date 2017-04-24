@@ -7,6 +7,7 @@
              BackgroundColor="#f9f9f9">
     <ScrollView>
 
+
         <StackLayout Spacing="5" Margin="15">
             <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
                 <StackLayout Orientation="Vertical"  HorizontalOptions="Start">
@@ -26,6 +27,7 @@
                         HorizontalTextAlignment="Center"
                         VerticalOptions="Start"
 			            HorizontalOptions="Fill"
+                        TextColor="#0A3079"
                         Margin="0,0,0,0" />
                 </StackLayout>  
             </StackLayout>
@@ -44,6 +46,7 @@
                 HeightRequest="45"
                 VerticalOptions="Center"
 			    HorizontalOptions="Fill" 
+                    TextColor="#0A3079"
                 Text="" />
 
             <Entry  

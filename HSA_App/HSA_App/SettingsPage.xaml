@@ -18,9 +18,9 @@
             
             VerticalOptions="Center"
             HorizontalOptions="Fill" />
-    <Button x:Name="Deposite"
+    <Button x:Name="Deposit"
             Clicked="handleUpdateAccount"
-            Text="Deposite From Checking Account"
+            Text="Deposit From Checking Account"
             VerticalOptions="Center"
             HorizontalOptions="Fill" />
 
