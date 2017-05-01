@@ -44,14 +44,14 @@ namespace HSA_App
 			try
 			{
 				IsBusy = true;
-				//ReceiptRest rec = new ReceiptRest();
+				ReceiptRest rec = new ReceiptRest();
 
 				// 1. Add camera logic.
 				await CrossMedia.Current.Initialize();
 
 				MediaFile photo;
 
-				ReceiptRest rec = new ReceiptRest();
+				//ReceiptRest rec = new ReceiptRest();
 				if (CrossMedia.Current.IsCameraAvailable)
 				{
 					photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
@@ -173,60 +173,65 @@ namespace HSA_App
                     Photo = photo.Path,
                     TimeStamp = DateTime.Now
                 };
-
-                await App.Current.MainPage.Navigation.PushModalAsync(new UserCorrectsTotal(ref receipt));
+                    
+                    await App.Current.MainPage.Navigation.PushModalAsync(new UserCorrectsTotal(receipt, Invoices, user, rec));
 
                 // 3. Add to data-bound collection.
-                Invoices.Add(receipt);
+                //Invoices.Add(receipt);
 
 
-				//rec.Total = (float) total;
-				//var sv = new WebService();
-				//var es = sv.RegisterReceipt(rec);
+                //rec.Total = (float) total;
+                //var sv = new WebService();
+                //var es = sv.RegisterReceipt(rec);
 
-				try
-				{
-					var sv = new WebService();
+    //            try
+    //            {
+    //                var sv = new WebService();
 
-					//Withdrawl money from account
-					Balance balance = await sv.GetBalance(user.AccountNumber);
-					balance.AccountBalance -= (float)total;
+    //                //Withdrawl money from account
+    //                Balance balance = await sv.GetBalance(user.AccountNumber);
+    //                balance.AccountBalance -= (float)total;
 
-					if (balance.AccountBalance < 0)
-					{
-						Debug.WriteLine("You cannot complete this transaction due to insufficent funds");
-						return;
-					}
+    //                if (balance.AccountBalance < 0)
+    //                {
+    //                    Debug.WriteLine("You cannot complete this transaction due to insufficent funds");
+    //                    return;
+    //                }
 
-					int b = await sv.UpdateBalance(balance);
-					if (b == -1)
-					{
-						Debug.WriteLine("Unable to update balance\n");
-						return;
-					}
+    //                int b = await sv.UpdateBalance(balance);
+    //                if (b == -1)
+    //                {
+    //                    Debug.WriteLine("Unable to update balance\n");
+    //                    return;
+    //                }
 
-					//Add reciept to Database
-					rec.Total = (float)total;
-					rec.Date = DateTime.Now.ToString("yyyy-MM-dd");
-					var es = await sv.RegisterReceipt(rec);
+    //                //Add reciept to Database
+    //                //rec.Total = (float)total;
+    //                if (Invoices.Count != 0)
+    //                {
+    //                    rec.Total = (float)Invoices.ElementAt<Receipt>(Invoices.Count - 1).Total;
+    //                }
+    //                else rec.Total = (float) 6.66;
+				//	rec.Date = DateTime.Now.ToString("yyyy-MM-dd");
+				//	var es = await sv.RegisterReceipt(rec);
 
-					//Add transaction to Databse
-					Transaction trans = new Transaction();
-					trans.AccountNumber = user.AccountNumber;
-					trans.Type = "W";
-					trans.Date = DateTime.Now.ToString("yyyy-MM-dd");
-					trans.Amount = total;
-					int result = await sv.DepositTransaction(trans);
+				//	//Add transaction to Databse
+				//	Transaction trans = new Transaction();
+				//	trans.AccountNumber = user.AccountNumber;
+				//	trans.Type = "W";
+				//	trans.Date = DateTime.Now.ToString("yyyy-MM-dd");
+				//	trans.Amount = total;
+				//	int result = await sv.DepositTransaction(trans);
 
-					if (result == -1)
-					{
-						Debug.WriteLine("Unable to add transaction");
-					}
-				}
-				catch (Exception ex)
-				{
-					Debug.WriteLine(ex);
-				}
+				//	if (result == -1)
+				//	{
+				//		Debug.WriteLine("Unable to add transaction");
+				//	}
+				//}
+				//catch (Exception ex)
+				//{
+				//	Debug.WriteLine(ex);
+				//}
 			}
 			catch (Exception ex)
 			{
