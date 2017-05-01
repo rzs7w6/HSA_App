@@ -15,5 +15,10 @@ namespace HSA_App
         public double Total { get; set; } = 15.0;
         public DateTime TimeStamp { get; set; } = UtcNow;
         public string Photo { get; set; } = Empty;
+
+        public void updateTotal(double total)
+        {
+            Total = total;
+        }
     }
 }
