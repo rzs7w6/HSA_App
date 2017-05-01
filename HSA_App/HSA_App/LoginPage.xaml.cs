@@ -96,7 +96,11 @@ namespace HSA_App
 
 						if (user.UserName.Equals(username.Text) && user.HashedPassword.Equals(password.Text))
 						{
-							App.Current.MainPage = new NavigationPage(new NavigationLocal(user));
+							App.Current.MainPage = new NavigationPage(new NavigationLocal(user))
+							{
+								BarBackgroundColor = Color.FromHex("#0A3079"),
+								BarTextColor = Color.White
+							};
 						}
 						else
 						{

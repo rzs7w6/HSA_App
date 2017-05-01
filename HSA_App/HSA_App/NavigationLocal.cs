@@ -10,8 +10,8 @@ namespace HSA_App
 {
     public class NavigationLocal : TabbedPage
     {
-        public NavigationLocal(User user)
-        {
+		public NavigationLocal(User user)
+		{
 			this.Title = "               UMB Health Savings";
 			this.Children.Add(new LandingPage(user));
 			this.Children.Add(new RecieptPage(user));
