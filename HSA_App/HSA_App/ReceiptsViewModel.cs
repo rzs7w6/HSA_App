@@ -167,15 +167,17 @@ namespace HSA_App
 
 				PrintStatus($"Found total {total.ToString("C")} " +
 					$"and we had {text.Regions.Count()} regions");
+                Receipt receipt = new Receipt
+                {
+                    Total = total,
+                    Photo = photo.Path,
+                    TimeStamp = DateTime.Now
+                };
 
+                await App.Current.MainPage.Navigation.PushModalAsync(new UserCorrectsTotal(ref receipt));
 
-				// 3. Add to data-bound collection.
-				Invoices.Add(new Receipt
-				{
-					Total = total,
-					Photo = photo.Path,
-					TimeStamp = DateTime.Now
-				});
+                // 3. Add to data-bound collection.
+                Invoices.Add(receipt);
 
 
 				//rec.Total = (float) total;
