@@ -202,13 +202,9 @@ namespace HSA_App
                     Photo = photo.Path,
                     TimeStamp = DateTime.Now
                 };
-<<<<<<< HEAD
+                                    
+                await App.Current.MainPage.Navigation.PushModalAsync(new UserCorrectsTotal(receipt, Invoices, user, rec));
 
-                //await App.Current.MainPage.Navigation.PushModalAsync(new UserCorrectsTotal(ref receipt));
-=======
-                    
-                    await App.Current.MainPage.Navigation.PushModalAsync(new UserCorrectsTotal(receipt, Invoices, user, rec));
->>>>>>> origin/master
 
                 // 3. Add to data-bound collection.
                 //Invoices.Add(receipt);
