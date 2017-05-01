@@ -143,6 +143,35 @@ namespace HSA_App
 
 				}
 
+				double maybe = 0.0;
+
+				//If we couldn't find any dollar signs
+				if(total == 0.0)
+				{
+					foreach (var region in text.Regions)
+				{
+					foreach (var line in region.Lines)
+					{
+						var word = string.Join(" ", line.Words.Select(w => w.Text));
+
+
+							if (word.Contains(".") == true)
+							{
+
+								if (Double.TryParse(word, out maybe))
+								{
+									if (maybe > total)
+									{
+										total = maybe;
+									}
+								}
+							}
+							
+					}
+
+				}
+				}
+
 				//CHECK FOR WORD CASH TO BE FOUND ANYWHERE, WE DONT REIMBURSE CASH PURCHASES! 
 				foreach (var region in text.Regions)
 				{
@@ -174,7 +203,7 @@ namespace HSA_App
                     TimeStamp = DateTime.Now
                 };
 
-                await App.Current.MainPage.Navigation.PushModalAsync(new UserCorrectsTotal(ref receipt));
+                //await App.Current.MainPage.Navigation.PushModalAsync(new UserCorrectsTotal(ref receipt));
 
                 // 3. Add to data-bound collection.
                 Invoices.Add(receipt);
