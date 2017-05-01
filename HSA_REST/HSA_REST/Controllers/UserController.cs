@@ -11,11 +11,16 @@ namespace HSA_REST.Controllers
 {
     public class UserController : ApiController
     {
-        // GET: api/Person
+        // GET: api/user
         public IEnumerable<string> Get()
         {
             return new string[] { "Person1", "Person2" };
         }
+
+        //public bool isUserDuplicate(string uname)
+        //{
+
+        //}
 
         /*
         public ArrayList Get()
@@ -24,23 +29,23 @@ namespace HSA_REST.Controllers
         }
         */
 
-        // GET: api/Person/5
-        public User Get(string id)
+        // GET: api/user/"username"
+        public User Get(string userName)
         {
-
             UserPer up = new UserPer();
-            User user = up.getUser(id);
+            User user = up.getUser(userName);
 
             return user;
         }
 
-        // POST: api/Person
+        // POST: api/user
         public void Post([FromBody]User value)
         {
             UserPer pp = new UserPer();
             long id;
             id = pp.saveUser(value);
         }
+
 
         // PUT: api/Person/5
         public void Put(int id, [FromBody]string value)
@@ -51,5 +56,8 @@ namespace HSA_REST.Controllers
         public void Delete(int id)
         {
         }
+
+
+
     }
 }

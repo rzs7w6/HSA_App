@@ -1,20 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	Title="Home"
-	x:Class="HSA_App.LandingPage">
-	<StackLayout Spacing="10">
-		<Image Source="logo.png"/>
-		<Label x:Name="label"
-			Text="Account balance"
-			HorizontalOptions="CenterAndExpand"
-			VerticalOptions="FillAndExpand"
-			FontSize="50"/>
-		<Label x:Name="accountBalance"
+	         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	         BackgroundColor="#f9f9f9"
+			 Icon="home.png" 
+	         x:Class="HSA_App.LandingPage">
+    <StackLayout Spacing="10">
+        <StackLayout Spacing="10" BackgroundColor="#0A3079">
+		<Label x:Name="nameLabel"
 			Text=""
-			HorizontalOptions="CenterAndExpand"
-			VerticalOptions="CenterAndExpand"
-			FontSize="40"/>
+			HorizontalOptions="Center"
+			VerticalOptions="Fill"
+			FontSize="16"
+            TextColor="White"   
+               />	
+            <Label x:Name="label"
+			Text="Account balance"
+			HorizontalOptions="Center"
+			VerticalOptions="Fill"
+			FontSize="16"
+            TextColor="White"   
+               />
+            <Label x:Name="accountBalance"
+			Text=""
+			HorizontalOptions="Center"
+			VerticalOptions="Fill"
+			FontSize="40"
+            TextColor="White" 
+               />
+        </StackLayout>
+        <StackLayout Spacing="10" Margin="15">
+            <Label  x:Name="ExampleShiz"
+                    Text="Transaction History"
+                   HorizontalOptions="Center"
+			       VerticalOptions="Fill"
+			       FontSize="16"
+                   />
+            <ListView x:Name="TransactionView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Type}" TextColor="{Binding Date}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-	</StackLayout>
+        </StackLayout>
+    </StackLayout>
+    
 </ContentPage>

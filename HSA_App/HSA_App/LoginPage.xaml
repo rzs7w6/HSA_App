@@ -1,50 +1,59 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HSA_App.LoginPage">
-  <StackLayout Spacing="20">
-    <Label  Text="UMB Health Services Application"
+             x:Class="HSA_App.LoginPage"
+             BackgroundColor="#f9f9f9">
+  <StackLayout Spacing="20" Margin="15">
+    <Label  Text="UMB Health Savings"
             FontSize="30"
             HorizontalTextAlignment="Center"
             VerticalOptions="Start"
-            HorizontalOptions="FillAndExpand"
-            Margin="0,40,0,0" />
+            HorizontalOptions="Fill"
+            Margin="0,40,0,0" 
+            TextColor="#0A3079"/>
     <Entry  x:Name="username"
             Placeholder="Username"
             HeightRequest="45"
             VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand" 
-            Text="" />
+            HorizontalOptions="Fill" 
+            Text="" 
+            TextColor="#0A3079"/>
     <Entry  x:Name="password"
             Placeholder="Password"
             HeightRequest="45"
             VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand"
+            HorizontalOptions="Fill"
             IsPassword="True"  
-            Text="" />
-    <Button x:Name="loginButton"
+            Text="" 
+            TextColor="#0A3079"/>
+        <Button x:Name="loginButton"
             Clicked="handleLogin"
             Text="Login"
-            HeightRequest="45"
             VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand" />
-    <Label x:Name="display"
+            HorizontalOptions="Fill"
+            BackgroundColor="#0A3079"
+            TextColor="White"/>
+        <Label x:Name="display"
            Text=""	
-           VerticalOptions="FillAndExpand"
-           HorizontalOptions="FillAndExpand" 
+            VerticalOptions="Center"
+            HorizontalOptions="Fill"
            HorizontalTextAlignment="Center" />
-		<Button x:Name="registerUser"
-			Text="New User? Register here"
-			Clicked="handleRegister"
-			Margin="0,0,0,0"
-			HorizontalOptions="Center"
-			VerticalOptions="FillAndExpand"/>
+	<Button 
+        x:Name="registerUser"
+		Text="New User? Register here"
+		Clicked="handleRegister"
+		Margin="0,0,0,0"
+		VerticalOptions="Center"
+        HorizontalOptions="Fill"
+        BackgroundColor="White"
+        />
 	<Button x:Name="forgotPassword"
 			Text="Forgot username/password"
 			Clicked="handlePasswordHelp"
 			Margin="0,0,0,100"
-			HorizontalOptions="Center"
-			VerticalOptions="End"/>
+			HorizontalOptions="Fill"
+			VerticalOptions="End"
+            BackgroundColor="White"/>
 		
   </StackLayout>
 </ContentPage>

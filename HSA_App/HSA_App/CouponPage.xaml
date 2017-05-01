@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Coupons"
+             BackgroundColor="#f9f9f9"
+             Icon="coupon.png"
              x:Class="HSA_App.CouponPage">
-	<StackLayout Spacing="50">
-		<Button
-			x:Name="couponButton"
-			Text="Find Coupons"
-			Clicked="handleCoupon"
-			HeightRequest="50"
+    <StackLayout Spacing="10" Margin="15">
+        <Button
+            x:Name="couponButton"
+            Text="Find Coupons"
+            Clicked="GetCoupons"
+            HeightRequest="50"
 			VerticalOptions="Center"
-			HorizontalOptions="Center"/>
+			HorizontalOptions="Center">
+        </Button>
+        <ListView x:Name="CouponView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding StoreName}" Detail="{Binding CouponDetails}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 
-	</StackLayout>
-	<ListView
-		x:Name="list"
-		IsPullToRefreshEnabled="true"
-		SeparatorColor="Blue">
-		
-	</ListView>
-  
 </ContentPage>

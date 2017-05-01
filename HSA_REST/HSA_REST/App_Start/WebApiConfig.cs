@@ -16,9 +16,11 @@ namespace HSA_REST
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{username}",
+                defaults: new { username = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute("DefaultApi1", "api/{controller}/{AccountNumber}");
         }
     }
 }
